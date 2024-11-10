@@ -1,37 +1,36 @@
 import pygame
-import sys
 
-# Inicializa o Pygame
-pygame.init()
+from states.identification import IdentificationState
+from states.vote import VoteState
+from states.end_state import EndState
 
-# Configura a tela cheia
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-pygame.display.set_caption("BLCKSHRN")
+from states.confirming_vote import ConfirmingVote
 
-# Define a cor do texto e a fonte
-text_color = (255, 255, 255)  # Branco
-font = pygame.font.Font(None, 120)  # Define o tamanho da fonte
+from states.config import screen, clock
 
-# Renderiza o texto
-text = font.render("BLCKSHRN", True, text_color)
-text_rect = text.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2))
 
-# Loop principal
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
-            running = False
+states = {
+    "Identification": IdentificationState(), 
+    "Vote Vereador": VoteState(candidate_number_size=5, position="Vereador", next_state="Vote Prefeito"),
+    "Vote Prefeito": VoteState(candidate_number_size=2, position="Prefeito", next_state="Confirming Vote"), 
+    "Confirming Vote": ConfirmingVote(),
+    "End": EndState()
+}
+current_state = states["Identification"]
 
-    # Preenche a tela com uma cor de fundo
-    screen.fill((0, 0, 0))  # Preto
+while True:
+    # Handle events
+    events = pygame.event.get()
+    current_state.handle_events(events)
 
-    # Exibe o texto no centro da tela
-    screen.blit(text, text_rect)
+    # Check for state change
+    if current_state.next_state:
+        current_state = states[current_state.next_state]
+        current_state.next_state = None  # Reset the next_state
 
-    # Atualiza a tela
+    # Update and render the current state
+    current_state.update()
+    current_state.render(screen)
+
     pygame.display.flip()
-
-# Encerra o Pygame
-pygame.quit()
-sys.exit()
+    clock.tick(60)
