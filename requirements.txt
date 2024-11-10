@@ -1,1 +1,4 @@
-pygame
+cffi==1.17.1
+cryptography==43.0.3
+pycparser==2.22
+pygame==2.6.1
