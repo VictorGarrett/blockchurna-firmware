@@ -19,16 +19,13 @@ states = {
 current_state = states["Identification"]
 
 while True:
-    # Handle events
     events = pygame.event.get()
     current_state.handle_events(events)
 
-    # Check for state change
     if current_state.next_state:
         current_state = states[current_state.next_state]
         current_state.next_state = None  # Reset the next_state
 
-    # Update and render the current state
     current_state.update()
     current_state.render(screen)
 
