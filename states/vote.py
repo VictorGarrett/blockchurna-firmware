@@ -67,7 +67,7 @@ class VoteState(State):
                     self.current_digit = 0
                 elif event.key in range(pygame.K_0, pygame.K_9 + 1):  # Number keys 0-9
                     candidate_number = list(self.candidate_number)
-                    if self.current_digit < 5:
+                    if self.current_digit < self.candidate_number_size:
                         candidate_number[self.current_digit] = str(event.key - pygame.K_0)  # Convert key to char
                         self.current_digit += 1
                     self.candidate_number = ''.join(candidate_number)
