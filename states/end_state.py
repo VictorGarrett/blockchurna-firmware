@@ -27,7 +27,7 @@ class EndState(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
-                self.next_state = "Vote"
+                self.next_state = "Identification"
 
     def render(self, screen):
         if self.first_render:
