@@ -93,8 +93,8 @@ def end_voting():
         json.dump(VOTE_DATA, json_file, indent=4)
 
 def simulate_voting():
-    register_vote("9a282e0d496f47a", "12345", "12")
-    register_vote("19f3cd308f1455b", "54321", "21")
+    register_vote("0bea05cf004534d9cc8c", "12345", "12")
+    register_vote("7b3470be2b9cf73957e8", "54321", "21")
     end_voting()
     
 simulate_voting()
