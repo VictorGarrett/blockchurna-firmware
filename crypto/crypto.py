@@ -10,33 +10,34 @@ def generate_random_hash():
     random_hash = hash_object.hexdigest()
     return random_hash[:20]
 
+
 def generate_key(name: str):
+    path = "./crypto/keys/" + name
     private_key = rsa.generate_private_key(
         public_exponent=65537,
         key_size=2048
     )
-
+    
     public_key = private_key.public_key()
 
-    pem_private_key = private_key.private_bytes(
-        encoding=serialization.Encoding.PEM,
-        format=serialization.PrivateFormat.PKCS8,
-        encryption_algorithm=serialization.NoEncryption()  
-    )
+    with open(path, "wb") as private_file:
+        private_file.write(private_key.private_bytes(
+            encoding=serialization.Encoding.PEM,
+            format=serialization.PrivateFormat.PKCS8,
+            encryption_algorithm=serialization.NoEncryption()
+        ))
 
-    pem_public_key = public_key.public_bytes(
+    # Save public key as Base64-encoded text
+    public_key_pem = public_key.public_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PublicFormat.SubjectPublicKeyInfo
     )
+    public_key_base64 = base64.b64encode(public_key_pem).decode()
 
-    with open(f"./crypto/keys/{name}","w") as file:
-        file.write(pem_private_key.decode())
+    with open(path + ".pub", "w") as public_file:
+        public_file.write(public_key_base64)
 
-    with open(f"./crypto/keys/{name}.pub","w") as file:
-        pub_key = base64.b64encode(pem_public_key).decode()
-        file.write(pub_key)
-
-    return {"key_id": name, "public_key_base64": pub_key}
+    return {"key_id": name, "public_key_base64": public_key_base64}
         
 keys = []
 for i in range(20):

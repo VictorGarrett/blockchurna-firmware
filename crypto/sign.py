@@ -10,20 +10,14 @@ VOTE_DATA = {
     "votes": [],
 }
 
-def sign_data(key_path: str, data: str):
-    private_key = rsa.generate_private_key(
-        public_exponent=65537,
-        key_size=2048
-    )
+def sign_data(private_key_path: str, data: str) -> str:
+    with open(private_key_path, "rb") as key_file:
+        private_key = serialization.load_pem_private_key(
+            key_file.read(),
+            password=None
+        )
 
-    with open(key_path, "wb") as pem_out:
-        pem_out.write(private_key.private_bytes(
-            encoding=serialization.Encoding.PEM,
-            format=serialization.PrivateFormat.PKCS8,
-            encryption_algorithm=serialization.NoEncryption()  
-        ))
-    
-    return private_key.sign(
+    signature = private_key.sign(
         data,
         padding.PSS(
             mgf=padding.MGF1(hashes.SHA256()),
@@ -31,6 +25,7 @@ def sign_data(key_path: str, data: str):
         ),
         hashes.SHA256()
     )
+    return signature
 
     
 def register_vote(user_id: str, vereador_number: str, prefeito_number: str):
@@ -38,8 +33,7 @@ def register_vote(user_id: str, vereador_number: str, prefeito_number: str):
         "user_id": user_id,
         "timestamp": datetime.datetime.now().isoformat()  
     }
-    data_to_sign = json.dumps(presence_data).encode()
-
+    data_to_sign = (presence_data['user_id'] + presence_data['timestamp']).encode()
     presence_data["signature"] = sign_data(f"./crypto/keys/{user_id}", data_to_sign).hex()
 
     vote_vereador, v_user_pin, v_tse_pin = generate_vote_obj(user_id, "vereador", vereador_number)
@@ -84,17 +78,17 @@ def generate_random_hash():
     return random_hash[:20]
 
 def end_voting(): 
-    data_to_sign = json.dumps(VOTE_DATA).encode()
     VOTE_DATA["presences"].sort(key=lambda x: x["timestamp"])
     VOTE_DATA["votes"].sort(key=lambda x: x["hash"])
-
-    VOTE_DATA["signature"] = sign_data(f"./crypto/keys/ballot", data_to_sign).hex()
+    data_to_sign = json.dumps(VOTE_DATA).replace(" ", "")
+    print(data_to_sign)
+    VOTE_DATA["signature"] = sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
     with open("signed_presence.json", "w") as json_file:
         json.dump(VOTE_DATA, json_file, indent=4)
 
 def simulate_voting():
-    register_vote("0bea05cf004534d9cc8c", "12345", "12")
-    register_vote("7b3470be2b9cf73957e8", "54321", "21")
+    register_vote("fd7de658119bf6541d49", "12345", "12")
+    register_vote("f6b518b2ecd9f47761ed", "54321", "21")
     end_voting()
     
 simulate_voting()
