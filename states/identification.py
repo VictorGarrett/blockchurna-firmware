@@ -3,7 +3,26 @@ import states.config as config
 from datetime import datetime
 import sys
 import pygame
-
+keys = [
+    "2ab9701cc00c33993ac0",
+    "6bdd705a76a16b34bdbf",
+    "07b8e21175c2e1b733b4",
+    "7fda43f45060db9f3d7d",
+    "8cba4d7c64f0c1c52519",
+    "57ca2eda39d9f560133b",
+    "61c69ed4d53b08b4ba44",
+    "78f8959451146bfbb771",
+    "88f73783487b326c035f",
+    "514eb8dbe1339bbc2ec5",
+    "648477f3600689714007",
+    "919363b1d8846f0037ed",
+    "a622942949441e508eaf",
+    "b24bdb1813dc5cb6e119",
+    "b4024aa146301c0073b6",
+    "debc4efe43dbd3847f20",
+    "fb4623e58bf05a2325ee",
+    "fd8ab23f1d9ba1e7e100"
+]
 class IdentificationState(State):
     def __init__(self):
         super().__init__()
