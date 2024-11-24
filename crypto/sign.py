@@ -105,11 +105,11 @@ def simulate_session(city, state, session, zone):
 
 def simulate_voting():
     simulate_session("Curitiba", "PR", "077", "UTFPR")
-    simulate_session("São Paulo", "SP", "078", "USP")
+    simulate_session("Sao Paulo", "SP", "078", "USP")
     simulate_session("Votuporanga", "SP", "001", "Faculdade Futura")
     simulate_session("Curitiba", "PR", "005", "UFPR")
     simulate_session("Rio de Janeiro", "RJ", "101", "UFRJ")
-    simulate_session("Florianópolis", "SC", "023", "UFSC")
+    simulate_session("Florianopolis", "SC", "023", "UFSC")
     simulate_session("Porto Alegre", "RS", "045", "UFRGS")
     simulate_session("Belo Horizonte", "MG", "056", "UFMG")
     simulate_session("Campinas", "SP", "090", "UNICAMP")
@@ -117,30 +117,30 @@ def simulate_voting():
     simulate_session("Fortaleza", "CE", "112", "UFC")
     simulate_session("Curitiba", "PR", "014", "PUCPR")
     simulate_session("Londrina", "PR", "033", "UEL")
-    simulate_session("Foz do Iguaçu", "PR", "088", "UNILA")
-    simulate_session("São Carlos", "SP", "043", "UFSCar")
-    simulate_session("Vitória", "ES", "065", "UFES")
-    simulate_session("João Pessoa", "PB", "086", "UFPB")
+    simulate_session("Foz do Iguacu", "PR", "088", "UNILA")
+    simulate_session("Sao Carlos", "SP", "043", "UFSCar")
+    simulate_session("Vitoria", "ES", "065", "UFES")
+    simulate_session("Joao Pessoa", "PB", "086", "UFPB")
     simulate_session("Natal", "RN", "087", "UFRN")
-    simulate_session("Belém", "PA", "076", "UFPA")
+    simulate_session("Belem", "PA", "076", "UFPA")
     simulate_session("Manaus", "AM", "092", "UFAM")
-    simulate_session("Brasília", "DF", "121", "UnB")
+    simulate_session("Brasilia", "DF", "121", "UnB")
     simulate_session("Aracaju", "SE", "031", "UFS")
     simulate_session("Recife", "PE", "060", "UFPE")
-    simulate_session("Maceió", "AL", "053", "UFAL")
+    simulate_session("Maceio", "AL", "053", "UFAL")
     simulate_session("Teresina", "PI", "042", "UFPI")
     simulate_session("Campo Grande", "MS", "039", "UFMS")
-    simulate_session("Cuiabá", "MT", "032", "UFMT")
+    simulate_session("Cuiaba", "MT", "032", "UFMT")
     simulate_session("Goiânia", "GO", "057", "UFG")
     simulate_session("Palmas", "TO", "058", "UFT")
-    simulate_session("São Luís", "MA", "064", "UFMA")
-    simulate_session("Macapá", "AP", "020", "UNIFAP")
+    simulate_session("Sao Luis", "MA", "064", "UFMA")
+    simulate_session("Macapa", "AP", "020", "UNIFAP")
     simulate_session("Boa Vista", "RR", "019", "UFRR")
     simulate_session("Rio Branco", "AC", "009", "UFAC")
     simulate_session("Porto Velho", "RO", "022", "UNIR")
-    simulate_session("São Paulo", "SP", "054", "Mackenzie")
+    simulate_session("Sao Paulo", "SP", "054", "Mackenzie")
     simulate_session("Curitiba", "PR", "013", "Unicuritiba")
-    simulate_session("Florianópolis", "SC", "034", "UNISUL")
+    simulate_session("Florianopolis", "SC", "034", "UNISUL")
     simulate_session("Porto Alegre", "RS", "027", "PUCRS")
     simulate_session("Belo Horizonte", "MG", "038", "PUCMG")
     simulate_session("Campinas", "SP", "099", "PUC Campinas")
@@ -148,12 +148,12 @@ def simulate_voting():
     simulate_session("Fortaleza", "CE", "105", "UNIFOR")
     simulate_session("Curitiba", "PR", "011", "UTFPR")
     simulate_session("Londrina", "PR", "030", "Unopar")
-    simulate_session("Foz do Iguaçu", "PR", "091", "UNILA")
-    simulate_session("São Carlos", "SP", "050", "USP São Carlos")
-    simulate_session("Vitória", "ES", "070", "FAESA")
-    simulate_session("João Pessoa", "PB", "080", "IESP")
+    simulate_session("Foz do Iguacu", "PR", "091", "UNILA")
+    simulate_session("Sao Carlos", "SP", "050", "USP Sao Carlos")
+    simulate_session("Vitoria", "ES", "070", "FAESA")
+    simulate_session("Joao Pessoa", "PB", "080", "IESP")
     simulate_session("Natal", "RN", "083", "UNP")
-    simulate_session("Belém", "PA", "068", "CESUPA")
+    simulate_session("Belem", "PA", "068", "CESUPA")
 
     
 
@@ -192,7 +192,7 @@ candidates = {
       790
     ]
   },
-  "Belém": {
+  "Belem": {
     "prefeito": [
       592895,
       295429
@@ -222,7 +222,7 @@ candidates = {
       708
     ]
   },
-  "Brasília": {
+  "Brasilia": {
     "prefeito": [
       365860,
       680051
@@ -252,7 +252,7 @@ candidates = {
       572
     ]
   },
-  "Cuiabá": {
+  "Cuiaba": {
     "prefeito": [
       471307,
       123361
@@ -272,7 +272,7 @@ candidates = {
       457
     ]
   },
-  "Florianópolis": {
+  "Florianopolis": {
     "prefeito": [
       873519,
       329163
@@ -292,7 +292,7 @@ candidates = {
       472
     ]
   },
-  "Foz do Iguaçu": {
+  "Foz do Iguacu": {
     "prefeito": [
       625147,
       230747
@@ -312,7 +312,7 @@ candidates = {
       670
     ]
   },
-  "João Pessoa": {
+  "Joao Pessoa": {
     "prefeito": [
       750777,
       646142
@@ -332,7 +332,7 @@ candidates = {
       640
     ]
   },
-  "Macapá": {
+  "Macapa": {
     "prefeito": [
       946879,
       718694
@@ -342,7 +342,7 @@ candidates = {
       584
     ]
   },
-  "Maceió": {
+  "Maceio": {
     "prefeito": [
       896319,
       955168
@@ -442,7 +442,7 @@ candidates = {
       394
     ]
   },
-  "São Carlos": {
+  "Sao Carlos": {
     "prefeito": [
       680112,
       443292
@@ -452,7 +452,7 @@ candidates = {
       441
     ]
   },
-  "São Luís": {
+  "Sao Luis": {
     "prefeito": [
       409765,
       767606
@@ -462,7 +462,7 @@ candidates = {
       500
     ]
   },
-  "São Paulo": {
+  "Sao Paulo": {
     "prefeito": [
       788307,
       320464
@@ -482,7 +482,7 @@ candidates = {
       941
     ]
   },
-  "Vitória": {
+  "Vitoria": {
     "prefeito": [
       444217,
       952364
