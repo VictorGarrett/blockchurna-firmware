@@ -3,6 +3,8 @@ import states.config as config
 from datetime import datetime
 import sys
 import pygame
+import random
+from flash_memory.flash_memory import FlashMemory
 keys = [
     "2ab9701cc00c33993ac0",
     "6bdd705a76a16b34bdbf",
@@ -32,6 +34,7 @@ class IdentificationState(State):
         self.title_text = "INÍCIO DA VOTAÇÃO"
         self.instruction_text = "Por favor se identifique através da digital"
         self.footer_text = "Município - Zona - Seção"
+        self.password = ""
 
 
     def handle_events(self, events):
@@ -40,7 +43,19 @@ class IdentificationState(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+                # registrar presença na flash memory
+                random_key = random.choice(keys)
+                FlashMemory.register_presence(random_key)
                 self.next_state = "Vote Vereador" 
+            elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
+                self.password += str(event.key - pygame.K_0) 
+                with open("flash_memory/password.txt", "r") as pw:
+                    ballot_pw = pw.read()
+                if self.password == ballot_pw:
+                    self.next_state = "Finalize Section"
+                    FlashMemory.sign_ballot()
+                    pass
+
                 
     def render(self, screen):
          # Clear screen
