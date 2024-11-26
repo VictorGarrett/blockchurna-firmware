@@ -1,0 +1,37 @@
+{
+    "presences": [
+        {
+            "user_id": "debc4efe43dbd3847f20",
+            "timestamp": "2024-11-23T15:29:02.108957",
+            "signature": "a35bc4af678a57b2237ba69ca39d237b095db7acf81b64a4d58d460f221234ee8c540f765ff8ce406e1e7dda1ef8ad2058c599c20cfb500f9612437f742fc48ae634e7f74ff25041f854cc5f795c7866884d8f7b80a13fd8b74a71f4b9a0d332bb31b5fbe03fc66fbbd81b464df24a90af9550f91f9b4007441bffe249133ebae532485742c911c293e29471513c524815b1558e454c65d70d81940b212c36e3c70f20a30ba800c43c326a58633335cfc3c537f4a7c23c9b6c2472e77ebc91eff35f10427ad02eafc2f6982a78e09a299ddebc2babcd19e0258fab8621cfdebc0f00b9c071a9a0b2791a39f6f7b0177e6987ba50183456c443764c9cca297a00"
+        },
+        {
+            "user_id": "07b8e21175c2e1b733b4",
+            "timestamp": "2024-11-23T15:29:11.098126",
+            "signature": "a23670c051261e0fddacca1f6a30a6e7a01b4046a978f495401155be5d68c02ebfb15d9dd252cd7de748d5825f39e7fdbabb6ba741c92929e07b17bcebdf6ca80e6a8e1902ce8d44dc53d34421b18ffbdeb84540fc501060ee5b58f72c19c80b86f9b63abf3395167cc11b5dfb81e9af779bd4877823d2024762b5eeee10e646b56e8bc1af54598eea7c8790fd3c18bbd819af5bd5711c80e8c30d66d6dace9644b6eedec3eff9b766469fd27351acff910df00356bf818d64d9fa3623ac65ded5b07734529a75f4d7dc3b91658d897c654695d82ca25277c403eea8f3dbe532e232bf53eaeb0a31c5e9af2fbadd14dd880d72ff4cffddbb9ebb218cd09c2d4d"
+        }
+    ],
+    "votes": [
+        {
+            "position": "vereador",
+            "candidate": "36500",
+            "hash": "517a07aa9c23850209d30d7fc0b3b585ebe14287e4233ea15e93f4d09e59df00"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "36",
+            "hash": "bf754aaf02dc8c1309f4c44e4ab37c89d6b03028f8de9da9840e27546f0eaf7b"
+        },
+        {
+            "position": "vereador",
+            "candidate": "branco",
+            "hash": "5f8592f412ce1b351461b7cf1eb849a49c1c19d50fd06732f7313957a5648ce6"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "nulo",
+            "hash": "586f1c1a866587ba6ee9f207df9ac4ff6cbf30bed4d5b88250ee3bdb35f1999c"
+        }
+    ],
+    "signature": "5cc5d3863c894e44efe7fb937e076327bbcc9c7adb2d512d17993403d02bd8c86728c19fdd5672fc9eda696072a2de258d12fadca83f6b83be34c5b7b46b8a927fc4a114dbf949929858231bb0c10327610e6cc1419e611b552806aeb5874e6457894660cf041241e8669deb967250931b3cced989b3607a3f59a2775de3ff3e3b95313db21c3a27308f2b59795edae4b85aceaff4091414a6e3ea4cff28ebcbc9c4e5b3e714617614138591b914fddfe7991ea62b51bafb3b91ca92cdd080f4f26e960dcad22b126dd0598adbefbf052d2edc20983284d82b967a95e3488a282a6e68b2a1a518074596429bedf5ab6d395a0430eb33dd25252294d5d423bc81"
+}

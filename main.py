@@ -6,11 +6,14 @@ from states.end_state import EndState
 
 from states.confirming_vote import ConfirmingVote
 
+from states.finalize_section import FinalizeSection
+
 from states.config import screen, clock
 
 
 states = {
     "Identification": IdentificationState(), 
+    "Finalize Section": FinalizeSection(),
     "Vote Vereador": VoteState(candidate_number_size=5, position="Vereador", next_state="Vote Prefeito"),
     "Vote Prefeito": VoteState(candidate_number_size=2, position="Prefeito", next_state="Confirming Vote"), 
     "Confirming Vote": ConfirmingVote(),
