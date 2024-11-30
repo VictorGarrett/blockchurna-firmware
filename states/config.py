@@ -2,7 +2,7 @@ import pygame
 
 # Initialize Pygame
 pygame.init()
-screen = pygame.display.set_mode((800, 480))
+screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
 pygame.display.set_caption("BLCKSHRN")
 clock = pygame.time.Clock()
 pygame.mixer.init()

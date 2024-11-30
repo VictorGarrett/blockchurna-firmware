@@ -16,7 +16,6 @@ import pygame
 def load_candidates_from_json(json_file: str) -> dict:
     with open(json_file, 'r', encoding='utf-8') as file:
         raw_data = json.load(file)
-
     # Adiciona as imagens ao dicionário dos candidatos
     for position, candidates in raw_data.items():
         for candidate_id, candidate_info in candidates.items():
@@ -43,6 +42,18 @@ class VoteState(State):
         self.first_render = True
         self.should_play_audio = False 
         self.audio_text = ""
+        self.keyboard_mapping = {
+            1073741913: "7",
+            1073741914: "8",
+            1073741915: "9",
+            1073741916: "4",
+            1073741917: "5",
+            1073741918: "6",
+            1073741919: "1",
+            1073741920: "2",
+            1073741921: "3",
+            1073741922: "0",
+        }
 
 
     def handle_events(self, events):
@@ -51,6 +62,7 @@ class VoteState(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
+                print(event.key)
                 if event.key == pygame.K_ESCAPE:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
@@ -59,11 +71,11 @@ class VoteState(State):
                     self.candidate_number = " " * self.candidate_number_size
                     self.white_vote = False
                     self.current_digit = 0
-                elif event.key in range(pygame.K_0, pygame.K_9 + 1):  # Number keys 0-9
+                elif event.key in self.keyboard_mapping.keys():  # Number keys 0-9
                     candidate_number = list(self.candidate_number)
                     if self.current_digit < self.candidate_number_size:
-                        candidate_number[self.current_digit] = str(event.key - pygame.K_0)  # Convert key to char
-                        text_to_speech(str(event.key - pygame.K_0))
+                        candidate_number[self.current_digit] = self.keyboard_mapping[event.key]  # Convert key to char
+                        text_to_speech(self.keyboard_mapping[event.key])
                         self.current_digit += 1
                     self.candidate_number = ''.join(candidate_number)
                     self.should_play_audio = True
