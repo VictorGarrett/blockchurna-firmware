@@ -4,9 +4,13 @@ import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
 
 # Create a serial connection
+print('initing uart')
 uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
 
 # Create an instance of the fingerprint sensor
+
+print('initing sensor')
+
 finger = Adafruit_Fingerprint(uart)
 
 def enroll_fingerprint(id_slot):
