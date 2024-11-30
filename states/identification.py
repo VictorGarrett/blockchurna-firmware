@@ -63,10 +63,10 @@ class IdentificationState(State):
 
     def update(self):
         pass
-        # key = FingerprintSensor().get_user_from_fingerprint()
-        # key = 'f6b518b2ecd9f47761ed'
-        # if key:
-        #     FM.register_presence(key)
+        key = FingerprintSensor().get_user_from_fingerprint()
+        #key = 'f6b518b2ecd9f47761ed'
+        if key:
+            FM.register_presence(keys[key])
 
                 
     def render(self, screen):
