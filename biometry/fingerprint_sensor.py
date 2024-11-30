@@ -26,4 +26,27 @@ class FingerprintSensor:
         self.finger = Adafruit_Fingerprint(uart)
 
     def get_user_from_fingerprint(self):
-        pass
+        print("Place your finger on the sensor...")
+
+        while self.finger.get_image() != Adafruit_Fingerprint.OK:
+            pass
+
+        print("Finger detected. Converting to template...")
+        self.finger.image2Tz()  # Convert image to template
+
+        print("Searching for a matching fingerprint...")
+        result = self.finger.finger_fast_search()  # Search for the fingerprint
+
+        if result == Adafruit_Fingerprint.OK:
+            print("Fingerprint matched!")
+            return self.finger.finger_id
+        elif result == Adafruit_Fingerprint.NOFINGER:
+            print("No finger detected.")
+            return None
+        elif result == Adafruit_Fingerprint.NOTFOUND:
+            print("No match found.")
+            return -1
+        else:
+            print(f"Error: {result}")
+
+
