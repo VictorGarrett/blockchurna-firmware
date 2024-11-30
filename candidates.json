@@ -1,0 +1,26 @@
+{
+    "Vereador": {
+        "91001": {
+            "image": "diogenes.png",
+            "name": "Diogenes Nascimento",
+            "party": "Partido Super Tchurus Cobol"
+        },
+        "36500": {
+            "image": "socrates.png",
+            "name": "Socrates Paqueta",
+            "party": "Partido da BET"
+        }
+    },
+    "Prefeito": {
+        "91": {
+            "image": "saci.png",
+            "name": "Saci Junior",
+            "party": "Partido Super Tchurus Cobol"
+        },
+        "36": {
+            "image": "medusa.png",
+            "name": "Medusa Cafusa",
+            "party": "Partido da BET"
+        }
+    }
+}
