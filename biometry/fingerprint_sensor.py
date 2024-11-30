@@ -20,7 +20,7 @@ class FingerprintSensor:
     def __init__(self):
         
         # Create a serial connection
-        uart = serial.Serial('/dev/ttyAMA0', 57600)  # Adjust based on your connection
+        uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
 
         # Create an instance of the fingerprint sensor
         self.finger = Adafruit_Fingerprint(uart)
@@ -48,5 +48,4 @@ class FingerprintSensor:
             return -1
         else:
             print(f"Error: {result}")
-
 

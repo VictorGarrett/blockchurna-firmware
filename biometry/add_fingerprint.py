@@ -1,10 +1,10 @@
 import time
 import board
-import busio
+import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
 
 # Create a serial connection
-uart = busio.UART(board.TX, board.RX, baudrate=57600)
+uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
 
 # Create an instance of the fingerprint sensor
 finger = Adafruit_Fingerprint(uart)
