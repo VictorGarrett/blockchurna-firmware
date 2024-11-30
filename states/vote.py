@@ -3,39 +3,28 @@ import states.config as config
 import pygame
 import sys
 from flash_memory.flash_memory import FlashMemory
+from gpio.gpio import GPIO 
 
 def get_candidate_image(filepath: str): 
     candidate_1_image = pygame.image.load(f"./assets/{filepath}")
     return pygame.transform.scale(candidate_1_image, (220, 250))
      
+import json
+import pygame
 
-candidates = {
-    "Vereador": {
-        "91001": {
-            "image": get_candidate_image("diogenes.png"),
-            "name": "Diogenes Nascimento",
-            "party": "Partido Super Tchurus Cobol"
-        },
-        "36500": {
-            "image": get_candidate_image("socrates.png"),
-            "name": "Socrates Paqueta",
-            "party": "Partido da BET"
-        }
-    },
-    "Prefeito": {
-        "91": {
-            "image": get_candidate_image("saci.png"),
-            "name": "Saci Junior",
-            "party": "Partido Super Tchurus Cobol"
-        },
-        "36": {
-            "image": get_candidate_image("medusa.png"),
-            "name": "Medusa Cafusa",
-            "party": "Partido da BET"
-        }
-    }
-    
-}
+def load_candidates_from_json(json_file: str) -> dict:
+    with open(json_file, 'r', encoding='utf-8') as file:
+        raw_data = json.load(file)
+
+    # Adiciona as imagens ao dicionário dos candidatos
+    for position, candidates in raw_data.items():
+        for candidate_id, candidate_info in candidates.items():
+            candidate_info["image"] = get_candidate_image(candidate_info["image"])
+
+    return raw_data
+
+
+candidates = load_candidates_from_json("./candidates.json")
 
 
 class VoteState(State):
@@ -86,6 +75,33 @@ class VoteState(State):
                     self.candidate_number = " " * self.candidate_number_size
                     config.pirilim_candidate.play()
                     self.current_digit = 0
+
+    def update(self):
+        if GPIO.gpio_check(GPIO.GPIO_CORREGE):
+            self.candidate_number = " " * self.candidate_number_size
+            self.white_vote = False
+            self.current_digit = 0
+
+        elif GPIO.gpio_check(GPIO.GPIO_CONFIRMA) and self.can_confirm:
+            # Salvar voto na memória flash
+            if self.candidate_number == " " * self.candidate_number_size:
+                self.candidate_number = "branco"
+            elif self.candidate_number not in candidates[self.position_text]:
+                self.candidate_number = "nulo"
+            FlashMemory.register_vote(self.position_text.lower(), self.candidate_number)
+
+            self.next_state = self.next_state_to_go
+            self.candidate_number = " " * self.candidate_number_size
+            config.pirilim_candidate.play()
+            self.current_digit = 0
+        elif GPIO.gpio_check(GPIO.GPIO_BRANCO):
+            self.candidate_number = "branco"
+            FlashMemory.register_vote(self.position_text.lower(), self.candidate_number)
+
+            self.next_state = self.next_state_to_go
+            self.candidate_number = " " * self.candidate_number_size
+            config.pirilim_candidate.play()
+            self.current_digit = 0
 
     def render(self, screen):
         self.candidate = None

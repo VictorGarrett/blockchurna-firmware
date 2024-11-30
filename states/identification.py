@@ -5,6 +5,7 @@ import sys
 import pygame
 import random
 from flash_memory.flash_memory import FlashMemory
+from biometry.fingerprint_sensor import FingerprintSensor
 keys = [
     "0bea05cf004534d9cc8c",
     "01b8b186a1d869910136",
@@ -55,6 +56,11 @@ class IdentificationState(State):
                     self.next_state = "Finalize Section"
                     FlashMemory.sign_ballot()
                     pass
+
+    def update(self):
+        key = FingerprintSensor.get_user_from_fingerprint()
+        if key:
+            FlashMemory.register_presence(key)
 
                 
     def render(self, screen):
