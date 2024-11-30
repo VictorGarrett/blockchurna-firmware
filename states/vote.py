@@ -25,7 +25,7 @@ def load_candidates_from_json(json_file: str) -> dict:
 
 
 candidates = load_candidates_from_json("./candidates.json")
-
+gpio = GPIO()
 
 class VoteState(State):
     def __init__(self, position: str, candidate_number_size: int, next_state: str):
@@ -95,12 +95,12 @@ class VoteState(State):
                     self.current_digit = 0
 
     def update(self):
-        if GPIO.gpio_check(GPIO.GPIO_CORREGE):
+        if gpio.gpio_check(gpio.GPIO_CORREGE):
             self.candidate_number = " " * self.candidate_number_size
             self.white_vote = False
             self.current_digit = 0
 
-        elif GPIO.gpio_check(GPIO.GPIO_CONFIRMA) and self.can_confirm:
+        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
             # Salvar voto na memória flash
             if self.candidate_number == " " * self.candidate_number_size:
                 self.candidate_number = "branco"
@@ -113,7 +113,7 @@ class VoteState(State):
             self.candidate_number = " " * self.candidate_number_size
             config.pirilim_candidate.play()
             self.current_digit = 0
-        elif GPIO.gpio_check(GPIO.GPIO_BRANCO):
+        elif gpio.gpio_check(gpio.GPIO_BRANCO):
             self.candidate_number = "branco"
             FM.register_vote(self.position_text.lower(), self.candidate_number)
 
