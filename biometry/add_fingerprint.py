@@ -33,7 +33,7 @@ def enroll_fingerprint(id_slot):
         pass
 
     print("Finger detected. Converting to template...")
-    finger.image2Tz(2)  # Convert second image to template
+    finger.image_2_tz(2)  # Convert second image to template
 
     print("Creating model...")
     if finger.create_model() == adafruit_fingerprint.OK:
