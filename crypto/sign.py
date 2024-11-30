@@ -26,7 +26,7 @@ def sign_data(private_key_path: str, data: str) -> str:
     return signature
 
     
-def register_vote(vote_data,user_id: str, vereador_number: str, prefeito_number: str):
+def register_vote(vote_data, tse_data, user_data, user_id: str, vereador_number: str, prefeito_number: str):
     presence_data = {
         "user_id": user_id,
         "timestamp": datetime.datetime.now().isoformat()  
@@ -35,20 +35,27 @@ def register_vote(vote_data,user_id: str, vereador_number: str, prefeito_number:
     presence_data["signature"] = sign_data(f"./crypto/keys/{user_id}", data_to_sign).hex()
 
     vote_vereador, v_user_pin, v_tse_pin = generate_vote_obj(user_id, "vereador", vereador_number)
-    vote_prefeito, p_user_pin, p_user_pin = generate_vote_obj(user_id, "prefeito", prefeito_number)
+    vote_prefeito, p_user_pin, p_tse_pin = generate_vote_obj(user_id, "prefeito", prefeito_number)
 
     vote_data["presences"].append(presence_data)
     vote_data["votes"].append(vote_vereador)
     vote_data["votes"].append(vote_prefeito)
 
+    tse_data.append({"user_id": user_id, "position": "vereador", "pin": v_tse_pin})
+    tse_data.append({"user_id": user_id, "position": "prefeito", "pin": p_tse_pin})
+
+    user_data.append({"user_id": user_id, "position": "vereador", "pin": v_user_pin})
+    tse_data.append({"user_id": user_id, "position": "prefeito", "pin": p_user_pin})
+
     return {
+        "user_id": user_id,
         "presence_data": presence_data,
         "vote_vereador": vote_vereador,
         "vote_prefeito": vote_prefeito,
         "user_pin_vereador": v_user_pin,
         "tse_pin_vereador": v_tse_pin,
         "user_pin_prefeito": p_user_pin,
-        "tse_pin_prefeito": p_user_pin,
+        "tse_pin_prefeito": p_tse_pin,
     }
 
 def generate_hash(data: str):
@@ -75,13 +82,18 @@ def generate_random_hash():
     random_hash = hash_object.hexdigest()
     return random_hash[:20]
 
-def end_voting(vote_data): 
+def end_voting(vote_data, tse_data,user_data): 
     vote_data["presences"].sort(key=lambda x: x["timestamp"])
     vote_data["votes"].sort(key=lambda x: x["hash"])
     data_to_sign = json.dumps(vote_data).replace(" ", "")
     vote_data["signature"] = sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
-    with open(f"./session_data/{vote_data['session']}_{vote_data['zone']}.sess", "w") as json_file:
+    session_path = f"./session_data/{vote_data['session']}_{vote_data['zone']}"
+    with open(f"{session_path}.sess", "w") as json_file:
         json.dump(vote_data, json_file, indent=4)
+    with open(f"{session_path}.tse", "w") as json_file:
+        json.dump(tse_data, json_file, indent=4)
+    with open(f"{session_path}.user", "w") as json_file:
+        json.dump(user_data, json_file, indent=4)
 
 
 def simulate_session(city, state, session, zone):
@@ -94,14 +106,16 @@ def simulate_session(city, state, session, zone):
         "session": session,
         "zone": zone.replace(" ", "_")
     }
+    tse_data = []
+    user_data = []
     city_candidates = candidates[city]
     
     for voter in voters:
         vereador = str(city_candidates["vereador"][random.randint(0, 1)])
         prefeito = str(city_candidates["prefeito"][random.randint(0, 1)])
-        register_vote(vote_data, voter, vereador, prefeito)
+        register_vote(vote_data, tse_data, user_data, voter, vereador, prefeito)
 
-    end_voting(vote_data)
+    end_voting(vote_data, tse_data, user_data)
 
 def simulate_voting():
     simulate_session("Curitiba", "PR", "077", "UTFPR")
@@ -182,327 +196,40 @@ voters = [
 ]
 
 candidates = {
-  "Aracaju": {
-    "prefeito": [
-      961993,
-      599906
-    ],
-    "vereador": [
-      514,
-      790
-    ]
-  },
-  "Belem": {
-    "prefeito": [
-      592895,
-      295429
-    ],
-    "vereador": [
-      786,
-      792
-    ]
-  },
-  "Belo Horizonte": {
-    "prefeito": [
-      701600,
-      559964
-    ],
-    "vereador": [
-      106,
-      293
-    ]
-  },
-  "Boa Vista": {
-    "prefeito": [
-      193106,
-      720445
-    ],
-    "vereador": [
-      897,
-      708
-    ]
-  },
-  "Brasilia": {
-    "prefeito": [
-      365860,
-      680051
-    ],
-    "vereador": [
-      768,
-      256
-    ]
-  },
-  "Campinas": {
-    "prefeito": [
-      480985,
-      812107
-    ],
-    "vereador": [
-      870,
-      262
-    ]
-  },
-  "Campo Grande": {
-    "prefeito": [
-      255213,
-      799459
-    ],
-    "vereador": [
-      928,
-      572
-    ]
-  },
-  "Cuiaba": {
-    "prefeito": [
-      471307,
-      123361
-    ],
-    "vereador": [
-      158,
-      344
-    ]
-  },
-  "Curitiba": {
-    "prefeito": [
-      201346,
-      898999
-    ],
-    "vereador": [
-      537,
-      457
-    ]
-  },
-  "Florianopolis": {
-    "prefeito": [
-      873519,
-      329163
-    ],
-    "vereador": [
-      530,
-      863
-    ]
-  },
-  "Fortaleza": {
-    "prefeito": [
-      162390,
-      953989
-    ],
-    "vereador": [
-      484,
-      472
-    ]
-  },
-  "Foz do Iguacu": {
-    "prefeito": [
-      625147,
-      230747
-    ],
-    "vereador": [
-      358,
-      404
-    ]
-  },
-  "Goiânia": {
-    "prefeito": [
-      974365,
-      287176
-    ],
-    "vereador": [
-      736,
-      670
-    ]
-  },
-  "Joao Pessoa": {
-    "prefeito": [
-      750777,
-      646142
-    ],
-    "vereador": [
-      889,
-      168
-    ]
-  },
-  "Londrina": {
-    "prefeito": [
-      461698,
-      483504
-    ],
-    "vereador": [
-      250,
-      640
-    ]
-  },
-  "Macapa": {
-    "prefeito": [
-      946879,
-      718694
-    ],
-    "vereador": [
-      334,
-      584
-    ]
-  },
-  "Maceio": {
-    "prefeito": [
-      896319,
-      955168
-    ],
-    "vereador": [
-      354,
-      496
-    ]
-  },
-  "Manaus": {
-    "prefeito": [
-      706316,
-      115189
-    ],
-    "vereador": [
-      929,
-      490
-    ]
-  },
-  "Natal": {
-    "prefeito": [
-      962805,
-      341694
-    ],
-    "vereador": [
-      779,
-      432
-    ]
-  },
-  "Palmas": {
-    "prefeito": [
-      928139,
-      708183
-    ],
-    "vereador": [
-      990,
-      817
-    ]
-  },
-  "Porto Alegre": {
-    "prefeito": [
-      448819,
-      610495
-    ],
-    "vereador": [
-      500,
-      796
-    ]
-  },
-  "Porto Velho": {
-    "prefeito": [
-      221060,
-      950434
-    ],
-    "vereador": [
-      584,
-      453
-    ]
-  },
-  "Recife": {
-    "prefeito": [
-      419359,
-      456149
-    ],
-    "vereador": [
-      627,
-      665
-    ]
-  },
-  "Rio Branco": {
-    "prefeito": [
-      887992,
-      908956
-    ],
-    "vereador": [
-      949,
-      586
-    ]
-  },
-  "Rio de Janeiro": {
-    "prefeito": [
-      127101,
-      853900
-    ],
-    "vereador": [
-      371,
-      960
-    ]
-  },
-  "Salvador": {
-    "prefeito": [
-      483004,
-      275305
-    ],
-    "vereador": [
-      285,
-      394
-    ]
-  },
-  "Sao Carlos": {
-    "prefeito": [
-      680112,
-      443292
-    ],
-    "vereador": [
-      437,
-      441
-    ]
-  },
-  "Sao Luis": {
-    "prefeito": [
-      409765,
-      767606
-    ],
-    "vereador": [
-      828,
-      500
-    ]
-  },
-  "Sao Paulo": {
-    "prefeito": [
-      788307,
-      320464
-    ],
-    "vereador": [
-      505,
-      856
-    ]
-  },
-  "Teresina": {
-    "prefeito": [
-      271342,
-      629451
-    ],
-    "vereador": [
-      499,
-      941
-    ]
-  },
-  "Vitoria": {
-    "prefeito": [
-      444217,
-      952364
-    ],
-    "vereador": [
-      363,
-      152
-    ]
-  },
-  "Votuporanga": {
-    "prefeito": [
-      121447,
-      759948
-    ],
-    "vereador": [
-      427,
-      792
-    ]
-  }
-} 
+  "Aracaju": { "prefeito": [96199, 59990], "vereador": [51, 79] },
+  "Belem": { "prefeito": [59289, 29542], "vereador": [78, 79] },
+  "Belo Horizonte": { "prefeito": [70160, 55996], "vereador": [10, 29] },
+  "Boa Vista": { "prefeito": [19310, 72044], "vereador": [89, 70] },
+  "Brasilia": { "prefeito": [36586, 68005], "vereador": [76, 25] },
+  "Campinas": { "prefeito": [48098, 81210], "vereador": [87, 26] },
+  "Campo Grande": { "prefeito": [25521, 79945], "vereador": [92, 57] },
+  "Cuiaba": { "prefeito": [47130, 12336], "vereador": [15, 34] },
+  "Curitiba": { "prefeito": [20134, 89899], "vereador": [53, 45] },
+  "Florianopolis": { "prefeito": [87351, 32916], "vereador": [53, 86] },
+  "Fortaleza": { "prefeito": [16239, 95398], "vereador": [48, 47] },
+  "Foz do Iguacu": { "prefeito": [62514, 23074], "vereador": [35, 40] },
+  "Goiânia": { "prefeito": [97436, 28717], "vereador": [73, 67] },
+  "Joao Pessoa": { "prefeito": [75077, 64614], "vereador": [88, 16] },
+  "Londrina": { "prefeito": [46169, 48350], "vereador": [25, 64] },
+  "Macapa": { "prefeito": [94687, 71869], "vereador": [33, 58] },
+  "Maceio": { "prefeito": [89631, 95516], "vereador": [35, 49] },
+  "Manaus": { "prefeito": [70631, 11518], "vereador": [92, 49] },
+  "Natal": { "prefeito": [96280, 34169], "vereador": [77, 43] },
+  "Palmas": { "prefeito": [92813, 70818], "vereador": [99, 81] },
+  "Porto Alegre": { "prefeito": [44881, 61049], "vereador": [50, 79] },
+  "Porto Velho": { "prefeito": [22106, 95043], "vereador": [58, 45] },
+  "Recife": { "prefeito": [41935, 45614], "vereador": [62, 66] },
+  "Rio Branco": { "prefeito": [88799, 90895], "vereador": [94, 58] },
+  "Rio de Janeiro": { "prefeito": [12710, 85390], "vereador": [37, 96] },
+  "Salvador": { "prefeito": [48300, 27530], "vereador": [28, 39] },
+  "Sao Carlos": { "prefeito": [68011, 44329], "vereador": [43, 44] },
+  "Sao Luis": { "prefeito": [40976, 76760], "vereador": [82, 50] },
+  "Sao Paulo": { "prefeito": [78830, 32046], "vereador": [50, 85] },
+  "Teresina": { "prefeito": [27134, 62945], "vereador": [49, 94] },
+  "Vitoria": { "prefeito": [44421, 95236], "vereador": [36, 15] },
+  "Votuporanga": { "prefeito": [12144, 75994], "vereador": [42, 79] }
+}
+
 
 if __name__ == "__main__":
     simulate_voting()

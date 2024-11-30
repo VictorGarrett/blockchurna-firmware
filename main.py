@@ -10,7 +10,6 @@ from states.finalize_section import FinalizeSection
 
 from states.config import screen, clock
 
-
 states = {
     "Identification": IdentificationState(), 
     "Finalize Section": FinalizeSection(),
@@ -20,7 +19,6 @@ states = {
     "End": EndState()
 }
 current_state = states["Identification"]
-current_voter = None
 
 while True:
     events = pygame.event.get()

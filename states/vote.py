@@ -2,7 +2,7 @@ from states.state import State
 import states.config as config
 import pygame
 import sys
-from flash_memory.flash_memory import FlashMemory
+from flash_memory.flash_memory import FM
 
 def get_candidate_image(filepath: str): 
     candidate_1_image = pygame.image.load(f"./assets/{filepath}")
@@ -80,7 +80,7 @@ class VoteState(State):
                         self.candidate_number = "branco"
                     elif self.candidate_number not in candidates[self.position_text]:
                         self.candidate_number = "nulo"
-                    FlashMemory.register_vote(self.position_text.lower(), self.candidate_number)
+                    FM.register_vote(self.position_text.lower(), self.candidate_number)
 
                     self.next_state = self.next_state_to_go
                     self.candidate_number = " " * self.candidate_number_size

@@ -4,26 +4,28 @@ from datetime import datetime
 import sys
 import pygame
 import random
-from flash_memory.flash_memory import FlashMemory
+from flash_memory.flash_memory import FM
 keys = [
-    "0bea05cf004534d9cc8c",
-    "01b8b186a1d869910136",
     "5b5a6ffb5ddb48097f1f",
-    "7b3470be2b9cf73957e8",
-    "9f2e4b1356c648e1a2aa",
-    "10b82744669347897ab5",
-    "14f4e0a1a724842873e2",
-    "50a4be92c301dc113063",
+    "ce805f56ff64ce9f1bf8",
     "56f326b0e23fb765963f",
-    "71df18ad8337037d720a",
-    "090adfab610ac04c63ab",
-    "708e6f27e52e476cfe1d",
-    "781ae0d88daa1bbd7b4a",
     "5887c27b14664077e318",
-    "8788f46a439f4f718757",
-    "a5ec5c49eef382efcc1e",
     "b46338b9eb513bfaafc5",
-    "c6f07accdb016a24396e"
+    "8788f46a439f4f718757",
+    "d7b977712bc0aa6acdf1",
+    "c6f07accdb016a24396e",
+    "10b82744669347897ab5",
+    "a5ec5c49eef382efcc1e",
+    "50a4be92c301dc113063",
+    "708e6f27e52e476cfe1d",
+    "090adfab610ac04c63ab",
+    "01b8b186a1d869910136",
+    "781ae0d88daa1bbd7b4a",
+    "14f4e0a1a724842873e2",
+    "71df18ad8337037d720a",
+    "9f2e4b1356c648e1a2aa",
+    "f6b518b2ecd9f47761ed",
+    "fd7de658119bf6541d49"
 ]
 class IdentificationState(State):
     def __init__(self):
@@ -44,16 +46,19 @@ class IdentificationState(State):
                 sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 # registrar presença na flash memory
-                random_key = random.choice(keys)
-                FlashMemory.register_presence(random_key)
+                current_voter = random.choice(keys)
+                FM.register_presence(current_voter)
                 self.next_state = "Vote Vereador" 
             elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
-                self.password += str(event.key - pygame.K_0) 
+                self.password += str(event.key - pygame.K_0)
+                if not self.password.startswith("7"):
+                    self.password = "" 
                 with open("flash_memory/password.txt", "r") as pw:
                     ballot_pw = pw.read()
+                print(self.password, ballot_pw)
                 if self.password == ballot_pw:
                     self.next_state = "Finalize Section"
-                    FlashMemory.sign_ballot()
+                    FM.sign_ballot()
                     pass
 
                 
