@@ -2,6 +2,8 @@ import datetime
 import json
 import os
 import crypto.sign
+import shutil
+
 block = {
     "presences": [
        
@@ -18,7 +20,7 @@ block = {
 user_data = []
 tse_data = []
 
-
+usb_drive_path = 'D:\\'  
 class FlashMemory:
     current_voter = None
     def register_presence(self, userid):
@@ -50,14 +52,30 @@ class FlashMemory:
         data_to_sign = json.dumps(block).replace(" ", "")
         block["signature"] = crypto.sign.sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
         
-        file_path = 'finalized_section.json'
+        file_path = 'finalized_section.section'
         with open(file_path, 'w') as file:
             json.dump(block, file, indent=4)
+            self.send_data_to_flash(file_path)
         file_path = 'finalized_section.tse'
         with open(file_path, 'w') as file:
             json.dump(tse_data, file, indent=4)
+            self.send_data_to_flash(file_path)
+
         file_path = 'finalized_section.user'
         with open(file_path, 'w') as file:
             json.dump(user_data, file, indent=4)
+            self.send_data_to_flash(file_path)
+
+    def send_data_to_flash(self, source_file):
+        if os.path.exists(usb_drive_path):
+            try:
+                destination_file = os.path.join(usb_drive_path, source_file)
+                shutil.copy(source_file, destination_file)
+                print(f"File successfully copied to {usb_drive_path}")
+            except Exception as e:
+                print(f"Error occurred: {e}")
+        else:
+            print(f"USB drive not found at {usb_drive_path}")
+
 
 FM = FlashMemory()
