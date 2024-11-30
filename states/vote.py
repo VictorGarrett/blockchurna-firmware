@@ -4,6 +4,7 @@ import pygame
 import sys
 from flash_memory.flash_memory import FM
 from gpio.gpio import GPIO 
+from text_to_speech.text_to_speech import text_to_speech
 
 def get_candidate_image(filepath: str): 
     candidate_1_image = pygame.image.load(f"./assets/{filepath}")
@@ -39,6 +40,9 @@ class VoteState(State):
         self.white_vote = False
         self.can_confirm = False
         self.next_state_to_go = next_state
+        self.first_render = True
+        self.should_play_audio = False 
+        self.audio_text = ""
 
 
     def handle_events(self, events):
@@ -59,8 +63,10 @@ class VoteState(State):
                     candidate_number = list(self.candidate_number)
                     if self.current_digit < self.candidate_number_size:
                         candidate_number[self.current_digit] = str(event.key - pygame.K_0)  # Convert key to char
+                        text_to_speech(str(event.key - pygame.K_0))
                         self.current_digit += 1
                     self.candidate_number = ''.join(candidate_number)
+                    self.should_play_audio = True
                 elif event.key == pygame.K_SPACE:
                     self.white_vote = True
                 elif event.key == pygame.K_RETURN and self.can_confirm:
@@ -69,6 +75,7 @@ class VoteState(State):
                         self.candidate_number = "branco"
                     elif self.candidate_number not in candidates[self.position_text]:
                         self.candidate_number = "nulo"
+                    text_to_speech(f"Voto confirmado")
                     FM.register_vote(self.position_text.lower(), self.candidate_number)
 
                     self.next_state = self.next_state_to_go
@@ -105,6 +112,16 @@ class VoteState(State):
         #     self.current_digit = 0
 
     def render(self, screen):
+        if self.first_render:
+            self.first_render=False
+            text_to_speech(f"Você está votando para {self.position_text}")
+
+        if self.should_play_audio == True and self.audio_text:
+            print("text")
+            self.should_play_audio = False 
+            text_to_speech(self.audio_text)
+            self.audio_text = ""
+
         self.candidate = None
         # print(f"({self.candidate_number})")
         if self.candidate_number in candidates[self.position_text]:
@@ -146,10 +163,13 @@ class VoteState(State):
         else:
             self.can_confirm = True
             if self.white_vote:
+                self.audio_text = "Voto branco, clique em confirmar"
                 white_vote_surface = config.font_very_large.render("VOTO EM BRANCO", True, config.BLACK)
                 text_rect = white_vote_surface.get_rect(center=(screen.get_width() // 2, screen.get_height() // 2 - 20))
                 screen.blit(white_vote_surface, text_rect)
             elif self.candidate:
+                self.audio_text = f"{self.candidate_number}, candidato {self.candidate['name']}, do {self.candidate['party']}, clique em confirma para votar, ou corrége para alterar."
+
                 party_surface = config.font_medium.render("Nome: " + self.candidate["name"], True, config.BLACK)
                 screen.blit(party_surface, (50, 260))
 
@@ -158,6 +178,8 @@ class VoteState(State):
 
                 config.screen.blit(self.candidate["image"], (530, 50))
             else:
+                self.audio_text = "Candidato não encontrado, clique em confirmar para votar nulo, ou aperte corrige para alterar."
+
                 null_surface = config.font_very_large.render("X", True, config.BLACK)
                 screen.blit(null_surface, (rect_left + rect_width // 2 - 22, rect_top + rect_height // 2- 22))
                 wrong_number_surface = config.font_medium.render("NÚMERO ERRADO", True, config.BLACK)
@@ -181,3 +203,4 @@ class VoteState(State):
 
         # Update display
         pygame.display.flip()
+
