@@ -49,4 +49,4 @@ def enroll_fingerprint(id_slot):
 
 print('type id')
 
-enroll_fingerprint(input())
+enroll_fingerprint(int(input()))
