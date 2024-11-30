@@ -18,13 +18,11 @@ block = {
 user_data = []
 tse_data = []
 
-userid_tmp = ""
 
 class FlashMemory:
     current_voter = None
     def register_presence(self, userid):
         self.current_voter = userid
-        userid_tmp = userid
         timestamp = datetime.datetime.now().isoformat() 
         presence_data = {
             "user_id": userid,
@@ -38,7 +36,7 @@ class FlashMemory:
         
 
     def register_vote(self, position, candidate):
-        vote, user_pin, tse_pin = crypto.sign.generate_vote_obj(userid_tmp, position, candidate)
+        vote, user_pin, tse_pin = crypto.sign.generate_vote_obj(self.current_voter, position, candidate)
         block["votes"].append({"position": vote["position"],
                                "candidate": vote["candidate"],
                                "hash": vote["hash"]})

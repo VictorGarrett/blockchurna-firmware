@@ -56,16 +56,17 @@ class IdentificationState(State):
                     self.password = "" 
                 with open("flash_memory/password.txt", "r") as pw:
                     ballot_pw = pw.read()
-                print(self.password, ballot_pw)
                 if self.password == ballot_pw:
                     self.next_state = "Finalize Section"
                     FM.sign_ballot()
                     pass
 
     def update(self):
-        key = FingerprintSensor.get_user_from_fingerprint()
-        if key:
-            FM.register_presence(key)
+        pass
+        # key = FingerprintSensor().get_user_from_fingerprint()
+        # key = 'f6b518b2ecd9f47761ed'
+        # if key:
+        #     FM.register_presence(key)
 
                 
     def render(self, screen):

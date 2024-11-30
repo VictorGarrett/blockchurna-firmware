@@ -71,9 +71,9 @@ def generate_vote_obj(user_id: str, position: str, candidate_number: str):
 
     user_pin = generate_random_hash()
     tse_pin = generate_random_hash()
-
+    print(user_id, user_pin, tse_pin)
     vote["hash"] = generate_hash(user_id + user_pin + tse_pin)
-
+    print(vote["hash"])
     return vote, user_pin, tse_pin
 
 def generate_random_hash():
