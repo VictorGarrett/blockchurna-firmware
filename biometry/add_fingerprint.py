@@ -2,6 +2,7 @@ import time
 import board
 import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
+import adafruit_fingerprint
 
 # Create a serial connection
 print('initing uart')
@@ -17,7 +18,7 @@ def enroll_fingerprint(id_slot):
     print("Place your finger on the sensor...")
     
     # Wait for a finger to be placed on the sensor
-    while finger.get_image() != Adafruit_Fingerprint.OK:
+    while finger.get_image() != adafruit_fingerprint.OK:
         pass
 
     print("Finger detected. Converting to template...")
@@ -28,16 +29,16 @@ def enroll_fingerprint(id_slot):
 
     print("Place the same finger again...")
     
-    while finger.get_image() != Adafruit_Fingerprint.OK:
+    while finger.get_image() != adafruit_fingerprint.OK:
         pass
 
     print("Finger detected. Converting to template...")
     finger.image2Tz(2)  # Convert second image to template
 
     print("Creating model...")
-    if finger.create_model() == Adafruit_Fingerprint.OK:
+    if finger.create_model() == adafruit_fingerprint.OK:
         print(f"Storing model in slot {id_slot}...")
-        if finger.store_model(id_slot) == Adafruit_Fingerprint.OK:
+        if finger.store_model(id_slot) == adafruit_fingerprint.OK:
             print(f"Fingerprint successfully enrolled in slot {id_slot}!")
         else:
             print("Failed to store fingerprint.")
