@@ -22,7 +22,7 @@ def enroll_fingerprint(id_slot):
         pass
 
     print("Finger detected. Converting to template...")
-    finger.image2Tz(1)  # Convert image to template
+    finger.image_2_tz(1)  # Convert image to template
 
     print("Remove your finger.")
     time.sleep(2)
