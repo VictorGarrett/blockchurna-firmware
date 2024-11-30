@@ -75,7 +75,6 @@ class VoteState(State):
                         self.candidate_number = "branco"
                     elif self.candidate_number not in candidates[self.position_text]:
                         self.candidate_number = "nulo"
-                    text_to_speech(f"Voto confirmado")
                     FM.register_vote(self.position_text.lower(), self.candidate_number)
 
                     self.next_state = self.next_state_to_go
@@ -84,32 +83,32 @@ class VoteState(State):
                     self.current_digit = 0
 
     def update(self):
-        pass
-        # if GPIO.gpio_check(GPIO.GPIO_CORREGE):
-        #     self.candidate_number = " " * self.candidate_number_size
-        #     self.white_vote = False
-        #     self.current_digit = 0
+        if GPIO.gpio_check(GPIO.GPIO_CORREGE):
+            self.candidate_number = " " * self.candidate_number_size
+            self.white_vote = False
+            self.current_digit = 0
 
-        # elif GPIO.gpio_check(GPIO.GPIO_CONFIRMA) and self.can_confirm:
-        #     # Salvar voto na memória flash
-        #     if self.candidate_number == " " * self.candidate_number_size:
-        #         self.candidate_number = "branco"
-        #     elif self.candidate_number not in candidates[self.position_text]:
-        #         self.candidate_number = "nulo"
-        #     FM.register_vote(self.position_text.lower(), self.candidate_number)
+        elif GPIO.gpio_check(GPIO.GPIO_CONFIRMA) and self.can_confirm:
+            # Salvar voto na memória flash
+            if self.candidate_number == " " * self.candidate_number_size:
+                self.candidate_number = "branco"
+            elif self.candidate_number not in candidates[self.position_text]:
+                self.candidate_number = "nulo"
+            FM.register_vote(self.position_text.lower(), self.candidate_number)
+            text_to_speech(f"Voto confirmado")
 
-        #     self.next_state = self.next_state_to_go
-        #     self.candidate_number = " " * self.candidate_number_size
-        #     config.pirilim_candidate.play()
-        #     self.current_digit = 0
-        # elif GPIO.gpio_check(GPIO.GPIO_BRANCO):
-        #     self.candidate_number = "branco"
-        #     FM.register_vote(self.position_text.lower(), self.candidate_number)
+            self.next_state = self.next_state_to_go
+            self.candidate_number = " " * self.candidate_number_size
+            config.pirilim_candidate.play()
+            self.current_digit = 0
+        elif GPIO.gpio_check(GPIO.GPIO_BRANCO):
+            self.candidate_number = "branco"
+            FM.register_vote(self.position_text.lower(), self.candidate_number)
 
-        #     self.next_state = self.next_state_to_go
-        #     self.candidate_number = " " * self.candidate_number_size
-        #     config.pirilim_candidate.play()
-        #     self.current_digit = 0
+            self.next_state = self.next_state_to_go
+            self.candidate_number = " " * self.candidate_number_size
+            config.pirilim_candidate.play()
+            self.current_digit = 0
 
     def render(self, screen):
         if self.first_render:
