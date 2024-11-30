@@ -1,4 +1,4 @@
-import RPi.GPIO as GPIO
+import RPi.GPIO as rpGPIO
 
 
 
@@ -6,8 +6,8 @@ class GPIO:
     
     def __init__(self):
         # Configuração inicial dos GPIOs
-        GPIO.setmode(GPIO.BCM)  # Usar a numeração BCM
-        GPIO.setwarnings(False)  # Desativar avisos
+        rpGPIO.setmode(rpGPIO.BCM)  # Usar a numeração BCM
+        rpGPIO.setwarnings(False)  # Desativar avisos
 
         # Definir os pinos usados
         self.GPIO_BRANCO = 17  
@@ -16,10 +16,10 @@ class GPIO:
 
 
         # Configurar os pinos como entrada com pull-up
-        GPIO.setup(self.GPIO_BRANCO, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.GPIO_CONFIRMA, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-        GPIO.setup(self.GPIO_CORREGE, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        rpGPIO.setup(self.GPIO_BRANCO, rpGPIO.IN, pull_up_down=rpGPIO.PUD_UP)
+        rpGPIO.setup(self.GPIO_CONFIRMA, rpGPIO.IN, pull_up_down=rpGPIO.PUD_UP)
+        rpGPIO.setup(self.GPIO_CORREGE, rpGPIO.IN, pull_up_down=rpGPIO.PUD_UP)
 
 
     def gpio_check(self, pin):
-        return GPIO.input(pin) == GPIO.LOW
+        return rpGPIO.input(pin) == rpGPIO.LOW
