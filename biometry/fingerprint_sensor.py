@@ -27,9 +27,9 @@ class FingerprintSensor:
         self.finger = Adafruit_Fingerprint(uart)
 
     def get_user_from_fingerprint(self):
-        print("Place your finger on the sensor...")
+        print("Tryong to get image from sensor")
 
-        while self.finger.get_image() != adafruit_fingerprint.OK:
+        if self.finger.get_image() != adafruit_fingerprint.OK:
             return None
 
         print("Finger detected. Converting to template...")

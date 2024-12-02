@@ -70,6 +70,7 @@ class IdentificationState(State):
         if key:
             if key >= 0:
                 FM.register_presence(keys[key])
+                self.next_state = "Vote Vereador" 
             else:
                  self.next_state = "IdentificationFailure"
                 
