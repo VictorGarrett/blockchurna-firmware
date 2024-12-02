@@ -5,9 +5,6 @@ import sys
 import pygame
 import random
 from flash_memory.flash_memory import FM
-import threading
-import queue
-
 keys = [
     "5b5a6ffb5ddb48097f1f",
     "ce805f56ff64ce9f1bf8",
@@ -41,22 +38,7 @@ class IdentificationState(State):
         self.instruction_text = "Por favor se identifique através da digital"
         self.footer_text = "Município - Zona - Seção"
         self.password = ""
-        # Start fingerprint detection thread
-        self.key_queue = queue.Queue() 
-        self.fingerprint_thread = threading.Thread(target=self.get_user_in_thread, daemon=True)
-        self.fingerprint_thread.start()
-        self.running = True
 
-
-    def get_user_in_thread(self):
-        """
-        Continuously run get_user_from_fingerprint in a loop
-        and place the result in a thread-safe queue.
-        """
-        while self.running:
-            key = self.finger.get_user_from_fingerprint()
-            if key is not None:
-                self.key_queue.put(key)
 
     def handle_events(self, events):
         for event in events:
@@ -85,26 +67,17 @@ class IdentificationState(State):
                     pass
 
     def update(self):
-        if not self.key_queue.empty():
-            key = self.key_queue.get_nowait()
-            print(f'Returned key {key}')
-            if key >= 0:
-                FM.register_presence(keys[key])
-                self.next_state = "Vote Vereador"
-            else:
-                self.next_state = "IdentificationFailure"
-        
         #pass
         print(self.password)
-        #key = self.finger.get_user_from_fingerprint()
-        #print(f'returned key {key}')
+        key = self.finger.get_user_from_fingerprint()
+        print(f'returned key {key}')
         #key = 'f6b518b2ecd9f47761ed'
-        #if key:
-        #    if key >= 0:
-        #        FM.register_presence(keys[key])
-        #        self.next_state = "Vote Vereador" 
-        #    else:
-        #         self.next_state = "IdentificationFailure"
+        if key:
+            if key >= 0:
+                FM.register_presence(keys[key])
+                self.next_state = "Vote Vereador" 
+            else:
+                 self.next_state = "IdentificationFailure"
                 
     def render(self, screen):
          # Clear screen
@@ -133,9 +106,3 @@ class IdentificationState(State):
         footer_surface = config.font_small.render(self.footer_text, True, config.BLACK)
         footer_rect = footer_surface.get_rect(center=(screen.get_width() // 2, screen.get_height() - 30))
         screen.blit(footer_surface, footer_rect)
-
-    def __del__(self):
-        # Ensure the thread stops gracefully
-        self.running = False
-        if self.fingerprint_thread.is_alive():
-            self.fingerprint_thread.join()
