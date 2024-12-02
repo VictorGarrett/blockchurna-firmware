@@ -16,11 +16,12 @@ def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
     print("Place your finger on the sensor...")
     
     # Wait for a finger to be placed on the sensor
-    try:
-        while finger.get_image() != adafruit_fingerprint.OK:
-            pass
-    except:
-        return -1
+    res = -1
+    while res != adafruit_fingerprint.OK:
+        try:
+            res = finger.get_image()
+        except:
+            print('timeout')
     print("Finger detected. Converting to template...")
     finger.image_2_tz(1)  # Convert image to template
 
@@ -30,11 +31,12 @@ def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
 
     print("Place the same finger again...")
     
-    try:
-        while finger.get_image() != adafruit_fingerprint.OK:
-            pass
-    except:
-        return -1
+    res = -1
+    while res != adafruit_fingerprint.OK:
+        try:
+            res = finger.get_image()
+        except:
+            print('timeout')
     print("Finger detected. Converting to template...")
     finger.image_2_tz(2)  # Convert second image to template
 
