@@ -5,7 +5,7 @@ import sys
 from flash_memory.flash_memory import FM
 from gpio.gpio import GPIO 
 from text_to_speech.text_to_speech import text_to_speech
-from biometry.add_fingerprint import enroll_fingerprint
+from biometry.add_fingerprint import enroll_fingerprint_with_sensor
 
 gpio = GPIO()
 
@@ -63,7 +63,7 @@ class EnrollFinger(State):
             self.current_digit = 0
 
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
-            if enroll_fingerprint_with_sensor(self.candidate_number, finger_sensor) < 0:
+            if enroll_fingerprint_with_sensor(self.candidate_number, self.finger_sensor) < 0:
                 self.next_state = 'Identification'
             else:
                 self.next_state = 'IdentificationFailure'
@@ -90,9 +90,6 @@ class EnrollFinger(State):
         title_surface = config.font_small.render(self.title_text, True, config.BLACK)
         screen.blit(title_surface, (20, 20))
 
-        # Render "Cargo" label
-        position_surface = config.font_medium.render(self.position_text, True, config.BLACK)
-        screen.blit(position_surface, (50, 70))
 
         # Draw the input boxes for the candidate number
         box_x = 50
