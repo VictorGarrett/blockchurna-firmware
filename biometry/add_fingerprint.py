@@ -3,6 +3,8 @@ import board
 import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
 import adafruit_fingerprint
+import states.config as config
+
 
 
 
@@ -20,6 +22,7 @@ def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
     print("Finger detected. Converting to template...")
     finger.image_2_tz(1)  # Convert image to template
 
+    config.pirilim_candidate.play()
     print("Remove your finger.")
     time.sleep(2)
 
