@@ -38,7 +38,18 @@ class IdentificationState(State):
         self.instruction_text = "Por favor se identifique através da digital"
         self.footer_text = "Município - Zona - Seção"
         self.password = ""
-
+        self.keyboard_mapping = {
+            1073741913: "7",
+            1073741914: "8",
+            1073741915: "9",
+            1073741916: "4",
+            1073741917: "5",
+            1073741918: "6",
+            1073741919: "1",
+            1073741920: "2",
+            1073741921: "3",
+            1073741922: "0",
+        }
 
     def handle_events(self, events):
         for event in events:
@@ -50,7 +61,7 @@ class IdentificationState(State):
                 current_voter = random.choice(keys)
                 FM.register_presence(current_voter)
                 self.next_state = "Vote Vereador" 
-            elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
+            elif event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
                 self.password += self.keyboard_mapping[event.key]
                 
                 if not self.password.startswith("7"):
