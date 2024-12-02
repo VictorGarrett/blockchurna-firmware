@@ -52,7 +52,7 @@ class IdentificationState(State):
                 self.next_state = "Vote Vereador" 
             elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
                 self.password += str(event.key - pygame.K_0)
-                print(self.password)
+                
                 if not self.password.startswith("7"):
 
                     self.password = "" 
@@ -68,6 +68,7 @@ class IdentificationState(State):
 
     def update(self):
         #pass
+        print(self.password)
         key = self.finger.get_user_from_fingerprint()
         print(f'returned key {key}')
         #key = 'f6b518b2ecd9f47761ed'
