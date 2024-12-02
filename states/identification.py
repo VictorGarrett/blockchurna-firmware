@@ -5,7 +5,6 @@ import sys
 import pygame
 import random
 from flash_memory.flash_memory import FM
-from biometry.fingerprint_sensor import FingerprintSensor
 keys = [
     "5b5a6ffb5ddb48097f1f",
     "ce805f56ff64ce9f1bf8",
@@ -29,9 +28,9 @@ keys = [
     "fd7de658119bf6541d49"
 ]
 class IdentificationState(State):
-    def __init__(self):
+    def __init__(self, finger_sensor):
         super().__init__()
-        self.finger = FingerprintSensor()
+        self.finger = finger_sensor
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
 

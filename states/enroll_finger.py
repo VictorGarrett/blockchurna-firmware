@@ -10,17 +10,16 @@ from biometry.add_fingerprint import enroll_fingerprint
 gpio = GPIO()
 
 class EnrollFinger(State):
-    def __init__(self, position: str, candidate_number_size: int, next_state: str):
+    def __init__(self, finger_sensor):
         super().__init__()
+        self.finger_sensor = finger_sensor
         self.title_text = "id da digital"
-        self.position_text = position
-        self.candidate_number = " " * candidate_number_size
-        self.candidate_number_size = candidate_number_size
+        self.candidate_number = " " * 2
+        self.candidate_number_size = 2
         self.current_digit = 0
         self.candidate_photo_text = "QUADRADO"
         self.white_vote = False
         self.can_confirm = False
-        self.next_state_to_go = next_state
         self.first_render = True
         self.should_play_audio = False 
         self.audio_text = ""
@@ -64,7 +63,7 @@ class EnrollFinger(State):
             self.current_digit = 0
 
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
-            if enroll_fingerprint(self.candidate_number) < 0:
+            if enroll_fingerprint_with_sensor(self.candidate_number, finger_sensor) < 0:
                 self.next_state = 'Identification'
             else:
                 self.next_state = 'IdentificationFailure'

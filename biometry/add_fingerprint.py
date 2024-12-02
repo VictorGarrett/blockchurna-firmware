@@ -6,6 +6,44 @@ import adafruit_fingerprint
 
 
 
+def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
+
+
+    finger = finger_sensor.finger
+
+    print("Place your finger on the sensor...")
+    
+    # Wait for a finger to be placed on the sensor
+    while finger.get_image() != adafruit_fingerprint.OK:
+        pass
+
+    print("Finger detected. Converting to template...")
+    finger.image_2_tz(1)  # Convert image to template
+
+    print("Remove your finger.")
+    time.sleep(2)
+
+    print("Place the same finger again...")
+    
+    while finger.get_image() != adafruit_fingerprint.OK:
+        pass
+
+    print("Finger detected. Converting to template...")
+    finger.image_2_tz(2)  # Convert second image to template
+
+    print("Creating model...")
+    if finger.create_model() == adafruit_fingerprint.OK:
+        print(f"Storing model in slot {id_slot}...")
+        if finger.store_model(id_slot) == adafruit_fingerprint.OK:
+            print(f"Fingerprint successfully enrolled in slot {id_slot}!")
+        else:
+            print("Failed to store fingerprint.")
+            return -1
+    else:
+        print("Failed to create model.")
+        return -1
+    return 0
+
 
 def enroll_fingerprint(id_slot):
 

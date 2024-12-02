@@ -11,16 +11,20 @@ from states.confirming_vote import ConfirmingVote
 from states.finalize_section import FinalizeSection
 
 from states.config import screen, clock
+from biometry.fingerprint_sensor import FingerprintSensor
+
+
+finger_sensor = FingerprintSensor()
 
 states = {
-    "Identification": IdentificationState(),
+    "Identification": IdentificationState(finger_sensor),
     "IdentificationFailure": IdentificationFailureState(), 
     "Finalize Section": FinalizeSection(),
     "Vote Vereador": VoteState(candidate_number_size=5, position="Vereador", next_state="Vote Prefeito"),
     "Vote Prefeito": VoteState(candidate_number_size=2, position="Prefeito", next_state="Confirming Vote"), 
     "Confirming Vote": ConfirmingVote(),
     "End": EndState(),
-    "EnrollFinger": EnrollFinger()
+    "EnrollFinger": EnrollFinger(finger_sensor)
 }
 current_state = states["Identification"]
 
