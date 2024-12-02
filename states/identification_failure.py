@@ -5,7 +5,7 @@ import pygame
 from threading import Timer
 
 
-class IdentificationFailure(State):
+class IdentificationFailureState(State):
     def __init__(self):
         super().__init__()
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)

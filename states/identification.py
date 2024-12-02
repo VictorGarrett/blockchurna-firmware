@@ -31,6 +31,7 @@ keys = [
 class IdentificationState(State):
     def __init__(self):
         super().__init__()
+        self.finger = FingerprintSensor()
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
 
@@ -62,12 +63,15 @@ class IdentificationState(State):
                     pass
 
     def update(self):
-        pass
-        key = FingerprintSensor().get_user_from_fingerprint()
+        #pass
+        key = self.finger.get_user_from_fingerprint()
+        print(f'returned key {key}')
         #key = 'f6b518b2ecd9f47761ed'
         if key:
-            FM.register_presence(keys[key])
-
+            if key >= 0:
+                FM.register_presence(keys[key])
+            else:
+                 self.next_state = "IdentificationFailure"
                 
     def render(self, screen):
          # Clear screen

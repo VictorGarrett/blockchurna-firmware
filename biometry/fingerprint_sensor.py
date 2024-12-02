@@ -29,7 +29,7 @@ class FingerprintSensor:
         print("Place your finger on the sensor...")
 
         while self.finger.get_image() != adafruit_fingerprint.OK:
-            pass
+            return None
 
         print("Finger detected. Converting to template...")
         self.finger.image_2_tz()  # Convert image to template
