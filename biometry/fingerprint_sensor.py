@@ -20,7 +20,7 @@ class FingerprintSensor:
     def __init__(self):
         
         # Create a serial connection
-        uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
+        uart = serial.Serial('/dev/serial0', 57600, timeout=2)  # Adjust based on your connection
 
         time.sleep(1)
         # Create an instance of the fingerprint sensor
