@@ -25,6 +25,7 @@ class FingerprintSensor:
         time.sleep(1)
         # Create an instance of the fingerprint sensor
         
+        success = False
         while success == False:
             try:
                 self.finger = Adafruit_Fingerprint(uart)
