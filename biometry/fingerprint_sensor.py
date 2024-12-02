@@ -42,8 +42,10 @@ class FingerprintSensor:
         except:
             return None
         print("Finger detected. Converting to template...")
-        self.finger.image_2_tz()  # Convert image to template
-
+        try:
+            self.finger.image_2_tz()  # Convert image to template
+        except:
+            return None
         print("Searching for a matching fingerprint...")
         result = self.finger.finger_fast_search()  # Search for the fingerprint
 
