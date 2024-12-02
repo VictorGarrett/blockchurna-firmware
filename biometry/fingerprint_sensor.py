@@ -22,6 +22,7 @@ class FingerprintSensor:
         # Create a serial connection
         uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
 
+        time.sleep(1)
         # Create an instance of the fingerprint sensor
         self.finger = Adafruit_Fingerprint(uart)
 
