@@ -51,7 +51,7 @@ class IdentificationState(State):
                 FM.register_presence(current_voter)
                 self.next_state = "Vote Vereador" 
             elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
-                self.password += str(event.key - pygame.K_0)
+                self.password += self.keyboard_mapping[event.key]
                 
                 if not self.password.startswith("7"):
 
