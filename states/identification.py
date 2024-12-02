@@ -61,6 +61,9 @@ class IdentificationState(State):
                     self.next_state = "Finalize Section"
                     FM.sign_ballot()
                     pass
+                if self.password == '12345':
+                    self.next_state = "EnrollFinger"
+                    pass
 
     def update(self):
         #pass

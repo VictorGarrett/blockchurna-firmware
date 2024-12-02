@@ -4,6 +4,7 @@ from states.identification import IdentificationState
 from states.identification_failure import IdentificationFailureState
 from states.vote import VoteState
 from states.end_state import EndState
+from states.enroll_finger import EnrollFinger
 
 from states.confirming_vote import ConfirmingVote
 
@@ -18,7 +19,8 @@ states = {
     "Vote Vereador": VoteState(candidate_number_size=5, position="Vereador", next_state="Vote Prefeito"),
     "Vote Prefeito": VoteState(candidate_number_size=2, position="Prefeito", next_state="Confirming Vote"), 
     "Confirming Vote": ConfirmingVote(),
-    "End": EndState()
+    "End": EndState(),
+    "EnrollFinger": EnrollFinger()
 }
 current_state = states["Identification"]
 

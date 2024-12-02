@@ -4,17 +4,19 @@ import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
 import adafruit_fingerprint
 
-# Create a serial connection
-print('initing uart')
-uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
 
-# Create an instance of the fingerprint sensor
 
-print('initing sensor')
-
-finger = Adafruit_Fingerprint(uart)
 
 def enroll_fingerprint(id_slot):
+
+        # Create a serial connection
+    print('initing uart')
+    uart = serial.Serial('/dev/serial0', 57600)  # Adjust based on your connection
+    # Create an instance of the fingerprint sensor
+    finger = Adafruit_Fingerprint(uart)
+
+    print('initing sensor')
+
     print("Place your finger on the sensor...")
     
     # Wait for a finger to be placed on the sensor
@@ -42,11 +44,19 @@ def enroll_fingerprint(id_slot):
             print(f"Fingerprint successfully enrolled in slot {id_slot}!")
         else:
             print("Failed to store fingerprint.")
+            uart.close()
+            return -1
     else:
         print("Failed to create model.")
+        uart.close()
+        return -1
+    uart.close()
+    return 0
 
-# Enroll a fingerprint to slot 1
 
-print('type id')
+if __name__ == '__main__':
+    # Enroll a fingerprint to slot 1
 
-enroll_fingerprint(int(input()))
+    print('type id')
+
+    enroll_fingerprint(int(input()))
