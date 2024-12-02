@@ -114,6 +114,7 @@ class VoteState(State):
             config.pirilim_candidate.play()
             self.current_digit = 0
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
+            print('BRAnCAO')
             self.white_vote = True
 
     def render(self, screen):
