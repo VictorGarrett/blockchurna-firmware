@@ -64,9 +64,9 @@ class EnrollFinger(State):
 
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
             if enroll_fingerprint_with_sensor(self.candidate_number, self.finger_sensor) < 0:
-                self.next_state = 'Identification'
-            else:
                 self.next_state = 'IdentificationFailure'
+            else:
+                self.next_state = 'Identification'
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
             self.white_vote = True
 
