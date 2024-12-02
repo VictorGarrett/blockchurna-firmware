@@ -8,7 +8,7 @@ import adafruit_fingerprint
 
 def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
 
-
+    id_slot = int(id_slot)
     finger = finger_sensor.finger
 
     print("Place your finger on the sensor...")

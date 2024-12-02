@@ -63,6 +63,7 @@ class IdentificationState(State):
                     FM.sign_ballot()
                     pass
                 if self.password == '72345':
+                    self.password = "" 
                     self.next_state = "EnrollFinger"
                     pass
 
