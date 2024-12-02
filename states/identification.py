@@ -52,7 +52,9 @@ class IdentificationState(State):
                 self.next_state = "Vote Vereador" 
             elif event.type == pygame.KEYDOWN and (event.key in range(pygame.K_0, pygame.K_9 + 1)):
                 self.password += str(event.key - pygame.K_0)
+                print(self.password)
                 if not self.password.startswith("7"):
+
                     self.password = "" 
                 with open("flash_memory/password.txt", "r") as pw:
                     ballot_pw = pw.read()
