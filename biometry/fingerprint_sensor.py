@@ -29,9 +29,11 @@ class FingerprintSensor:
     def get_user_from_fingerprint(self):
         print("Tryong to get image from sensor")
 
-        if self.finger.get_image() != adafruit_fingerprint.OK:
+        try:
+            if self.finger.get_image() != adafruit_fingerprint.OK:
+                return None
+        except:
             return None
-
         print("Finger detected. Converting to template...")
         self.finger.image_2_tz()  # Convert image to template
 
