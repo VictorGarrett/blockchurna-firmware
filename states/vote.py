@@ -3,7 +3,8 @@ import states.config as config
 import pygame
 import sys
 from flash_memory.flash_memory import FM
-from gpio.gpio import GPIO 
+from threading import Timer
+# from gpio.gpio import GPIO 
 from text_to_speech.text_to_speech import text_to_speech
 
 def get_candidate_image(filepath: str): 
@@ -25,8 +26,9 @@ def load_candidates_from_json(json_file: str) -> dict:
 
 
 candidates = load_candidates_from_json("./candidates.json")
-gpio = GPIO()
+# gpio = GPIO()
 
+TIMEOUT = 50
 class VoteState(State):
     def __init__(self, position: str, candidate_number_size: int, next_state: str):
         super().__init__()
@@ -42,6 +44,7 @@ class VoteState(State):
         self.first_render = True
         self.should_play_audio = False 
         self.audio_text = ""
+        self.timeout = TIMEOUT
         self.keyboard_mapping = {
             1073741913: "7",
             1073741914: "8",
@@ -94,32 +97,45 @@ class VoteState(State):
                     config.pirilim_candidate.play()
                     self.current_digit = 0
 
-    def update(self):
-        if gpio.gpio_check(gpio.GPIO_CORREGE):
-            self.candidate_number = " " * self.candidate_number_size
-            self.white_vote = False
-            self.current_digit = 0
+    # def update(self):
+    #     if gpio.gpio_check(gpio.GPIO_CORREGE):
+    #         self.candidate_number = " " * self.candidate_number_size
+    #         self.white_vote = False
+    #         self.current_digit = 0
 
-        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
-            # Salvar voto na memória flash
-            if self.candidate_number == " " * self.candidate_number_size:
-                self.candidate_number = "branco"
-            elif self.candidate_number not in candidates[self.position_text]:
-                self.candidate_number = "nulo"
-            FM.register_vote(self.position_text.lower(), self.candidate_number)
-            text_to_speech(f"Voto confirmado")
+    #     elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
+    #         # Salvar voto na memória flash
+    #         if self.candidate_number == " " * self.candidate_number_size:
+    #             self.candidate_number = "branco"
+    #         elif self.candidate_number not in candidates[self.position_text]:
+    #             self.candidate_number = "nulo"
+    #         FM.register_vote(self.position_text.lower(), self.candidate_number)
+    #         text_to_speech(f"Voto confirmado")
 
-            self.next_state = self.next_state_to_go
-            self.candidate_number = " " * self.candidate_number_size
-            config.pirilim_candidate.play()
-            self.current_digit = 0
-        elif gpio.gpio_check(gpio.GPIO_BRANCO):
-            print('BRAnCAO')
-            self.white_vote = True
+    #         self.next_state = self.next_state_to_go
+    #         self.candidate_number = " " * self.candidate_number_size
+    #         config.pirilim_candidate.play()
+    #         self.current_digit = 0
+    #     elif gpio.gpio_check(gpio.GPIO_BRANCO):
+    #         print('BRAnCAO')
+    #         self.white_vote = True
+
+    def reset_state(self):    
+        print(self.timeout)
+        if self.timeout == 0:
+            self.next_state = "Identification"
+            self.timeout = TIMEOUT
+            self.first_render = True
+        else: 
+            self.timer = Timer(1.0, self.reset_state)
+            self.timeout -= 1
+            self.timer.start()
 
     def render(self, screen):
         if self.first_render:
             self.first_render=False
+            self.timer = Timer(1.0, self.reset_state)
+            self.timer.start()
             text_to_speech(f"Você está votando para {self.position_text}")
 
         if self.should_play_audio == True and self.audio_text:
@@ -135,6 +151,13 @@ class VoteState(State):
         
         screen.fill(config.WHITE)
 
+        # Render timeout time 
+        datetime_text = f"{self.timeout} segundos"
+        config.render_multiline_text(datetime_text, config.font_medium, config.BLACK, (50,screen.get_height() - 50), line_spacing=5)
+
+        if self.timeout < 0.5 * TIMEOUT:
+            celera_irmao_text = f"VAI VOTAR IRMÃO?"
+            config.render_multiline_text(celera_irmao_text, config.font_medium, config.BLACK, (screen.get_width() // 2,screen.get_height() - 50), line_spacing=5)
         # Render title text
         title_surface = config.font_small.render(self.title_text, True, config.BLACK)
         screen.blit(title_surface, (20, 20))

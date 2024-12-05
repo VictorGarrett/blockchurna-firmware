@@ -18,20 +18,20 @@ def load_number_key_mapping(json_file):
 class FingerprintSensor:
 
     def __init__(self):
-        
+        pass
         # Create a serial connection
-        uart = serial.Serial('/dev/serial0', 57600, timeout=0.5)  # Adjust based on your connection
+        # uart = serial.Serial('/dev/serial0', 57600, timeout=0.5)  # Adjust based on your connection
 
-        time.sleep(1)
-        # Create an instance of the fingerprint sensor
+        # time.sleep(1)
+        # # Create an instance of the fingerprint sensor
         
-        success = False
-        while success == False:
-            try:
-                self.finger = Adafruit_Fingerprint(uart)
-                success = True
-            except:
-                success = False
+        # success = False
+        # while success == False:
+        #     try:
+        #         self.finger = Adafruit_Fingerprint(uart)
+        #         success = True
+        #     except:
+        #         success = False
 
     def get_user_from_fingerprint(self):
         print("Tryong to get image from sensor")

@@ -6,46 +6,48 @@ from threading import Timer
 from datetime import datetime
 
 
-class IdentificationFailureState(State):
+class TooManyAttemptsState(State):
     def __init__(self):
         super().__init__()
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
-        self.title_text = 'FALHA NA IDENTIFICAÇÃO'
-        self.instruction_text = 'Tente novamente'
+        self.title_text = 'MUITAS FALHAS CONSECUTIVAS'
+        self.instruction_text = 'Comunique o mesário da seção'
         self.footer_text = "Município - Zona - Seção"
         self.first_render = True
-        self.error_count = 0
-        
-        
-    def reset_state(self):   
-        print(self.counter)  
-        if self.error_count == 2:
-            self.next_state = 'TooManyAttempts' 
-            self.error_count = 0
-            self.first_render = True
-        if self.counter == 1:
-            self.next_state = "Identification"
-            self.counter = 0
-            self.first_render = True
-            self.error_count += 1
-        else: 
-            self.timer = Timer(1.0, self.reset_state)
-            self.counter += 1
-            self.timer.start()
+        self.password = ""
+        self.keyboard_mapping = {
+            1073741913: "7",
+            1073741914: "8",
+            1073741915: "9",
+            1073741916: "4",
+            1073741917: "5",
+            1073741918: "6",
+            1073741919: "1",
+            1073741920: "2",
+            1073741921: "3",
+            1073741922: "0",
+        }
 
     def handle_events(self, events):
         for event in events:
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+            elif event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
+                self.password += self.keyboard_mapping[event.key]
+                print(self.password)
+                if not self.password.startswith("7"):
+                    self.password = ""
+                if len(self.password) > 5:
+                    self.password = ""
+                if self.password == "77777":
+                    self.next_state = "Identification"
+
 
     def render(self, screen):
-        if self.first_render:
-            self.timer = Timer(1.0, self.reset_state)
-            self.timer.start()
-            self.first_render = False
+
          # Clear screen
         screen.fill(config.WHITE)
 

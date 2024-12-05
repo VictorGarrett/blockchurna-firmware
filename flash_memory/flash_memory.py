@@ -22,9 +22,16 @@ tse_data = []
 
 usb_drive_path = 'D:\\'  
 class FlashMemory:
-    current_voter = None
-    def register_presence(self, userid):
+    def __init__(self):
+        self.current_voter = None
+        self.already_voted = []
+
+    def set_current_voter(self, userid):
         self.current_voter = userid
+
+    def register_presence(self):
+        userid = self.current_voter
+        self.already_voted.append(userid)
         timestamp = datetime.datetime.now().isoformat() 
         presence_data = {
             "user_id": userid,

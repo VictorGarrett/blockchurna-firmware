@@ -58,9 +58,17 @@ class IdentificationState(State):
                 sys.exit()
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 # registrar presença na flash memory
-                current_voter = random.choice(keys)
-                FM.register_presence(current_voter)
-                self.next_state = "Vote Vereador" 
+                # current_voter = random.choice(keys)
+                current_voter = keys[0]
+                if current_voter in FM.already_voted:
+                    self.next_state = "AlreadyVoted"
+                else:
+                    FM.set_current_voter(current_voter)
+                    self.next_state = "SuccessfulAuth"
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
+                self.next_state = "IdentificationFailure" 
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
+                self.next_state = "AlreadyVoted" 
             elif event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
                 self.password += self.keyboard_mapping[event.key]
                 
@@ -86,8 +94,11 @@ class IdentificationState(State):
         #key = 'f6b518b2ecd9f47761ed'
         if key:
             if key >= 0:
-                FM.register_presence(keys[key])
-                self.next_state = "Vote Vereador" 
+                if key in FM.already_voted:
+                    self.next_state = "AlreadyVoted"
+                else:
+                    FM.set_current_voter(keys[key])
+                    self.next_state = "SuccessfulAuth" 
             else:
                  self.next_state = "IdentificationFailure"
                 
