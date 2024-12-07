@@ -4,7 +4,7 @@ import sys
 import pygame
 from threading import Timer
 from datetime import datetime
-
+from text_to_speech.text_to_speech import text_to_speech
 
 class TooManyAttemptsState(State):
     def __init__(self):
@@ -47,7 +47,9 @@ class TooManyAttemptsState(State):
 
 
     def render(self, screen):
-
+        if self.first_render:
+            text_to_speech("Muitas falhas consecutivas, comunique o mesário da seção")
+            self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)
 

@@ -4,6 +4,7 @@ import sys
 import pygame
 from threading import Timer
 from flash_memory.flash_memory import FM
+from text_to_speech.text_to_speech import text_to_speech
 
 class ConfirmingVote(State):
     def __init__(self):
@@ -35,7 +36,8 @@ class ConfirmingVote(State):
         if self.first_render:
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
-            # self.first_render = False
+            text_to_speech(f"Gravando voto e gerando comprovante")
+            self.first_render = False
         screen.fill(config.WHITE)
         # Text
         text1 = config.font_large.render("GRAVANDO O VOTO", True, config.BLACK)

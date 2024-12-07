@@ -5,6 +5,7 @@ import sys
 import pygame
 import random
 from flash_memory.flash_memory import FM
+from text_to_speech.text_to_speech import text_to_speech
 keys = [
     "5b5a6ffb5ddb48097f1f",
     "ce805f56ff64ce9f1bf8",

@@ -3,14 +3,18 @@ import pygame
 import os
 import threading
 
+output_number = 0
+
 def play(text, lang="pt-br"):
+    global output_number
     # Generate speech with gTTS
     tts = gTTS(text, lang=lang)
-    tts.save("output.mp3")
+    tts.save(f"text_to_speech/output/output{output_number}.mp3")
     
     # Play the audio using Pygame
     pygame.mixer.init()
-    pygame.mixer.music.load("output.mp3")
+    pygame.mixer.music.load(f"text_to_speech/output/output{output_number}.mp3")
+    output_number += 1
     pygame.mixer.music.play()
 
     while pygame.mixer.music.get_busy():
