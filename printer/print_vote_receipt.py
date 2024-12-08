@@ -1,4 +1,4 @@
-from printer import Printer
+from printer.printer import Printer
 from datetime import date
 
 printer = Printer("/dev/usb/lp1")
