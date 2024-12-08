@@ -4,12 +4,10 @@ from datetime import date
 printer = Printer()
 
 def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin):
-    def __init__(self):
-        return
 
     if printer.printer:
 		# Print header information
-
+        printer.open()
         printer.select_font('A')
         printer.set_bold(False)
         printer.set_text_size(1)
@@ -39,6 +37,7 @@ def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin)
         printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
         printer.print_line("")
         printer.print_line("")
+        printer.close()
 
 
 def _abbreviate_and_wrap(name, printer_columns, bold_adjustment=0.1, max_lines=3):
