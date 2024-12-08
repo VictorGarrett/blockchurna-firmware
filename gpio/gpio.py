@@ -21,3 +21,5 @@ class GPIO:
 
     def gpio_check(self, pin):
         return rpGPIO.input(pin) == rpGPIO.LOW
+    
+gpio = GPIO()
