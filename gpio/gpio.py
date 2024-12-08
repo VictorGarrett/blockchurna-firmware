@@ -9,9 +9,9 @@ class GPIO:
         rpGPIO.setwarnings(False)  # Desativar avisos
 
         # Definir os pinos usados
-        self.GPIO_BRANCO = 23  
-        self.GPIO_CONFIRMA = 18
-        self.GPIO_CORREGE = 24   
+        self.GPIO_BRANCO = 24  
+        self.GPIO_CONFIRMA = 23
+        self.GPIO_CORREGE = 18   
 
         # Configurar os pinos como entrada com pull-up
         rpGPIO.setup(self.GPIO_BRANCO, rpGPIO.IN, pull_up_down=rpGPIO.PUD_UP)
