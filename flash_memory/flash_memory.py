@@ -53,6 +53,7 @@ class FlashMemory:
         
         self.user_data.append({"user_id": self.current_voter["key_id"], "position": position, "pin": user_pin})
         self.tse_data.append({"user_id": self.current_voter["key_id"], "position": position, "pin": tse_pin})
+        self.sign_ballot()
 
     def sign_ballot(self):
         block["presences"].sort(key=lambda x: x["timestamp"])
