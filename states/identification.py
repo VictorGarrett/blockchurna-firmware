@@ -11,9 +11,7 @@ from text_to_speech.text_to_speech import text_to_speech
 def load_voter_keys_mapping(json_file):
 
     with open(json_file, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    keys = data.get("keys", [])
+        keys = json.load(file)
     
     return {i: keys[i] for i in len(keys)}
 
