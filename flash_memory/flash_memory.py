@@ -60,6 +60,7 @@ class FlashMemory:
         block["presences"].sort(key=lambda x: x["timestamp"])
         block["votes"].sort(key=lambda x: x["hash"])
         data_to_sign = json.dumps(block).replace(" ", "")
+        del block["signature"]
         block["signature"] = crypto.sign.sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
         
         file_path = os.path.join(usb_drive_path, 'finalized_section.section')
