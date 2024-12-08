@@ -129,7 +129,6 @@ class VoteState(State):
     #         self.white_vote = True
 
     def reset_state(self):    
-        print(self.timeout)
         if self.timeout == 0:
             self.next_state = "Identification"
             self.timeout = TIMEOUT
@@ -147,13 +146,11 @@ class VoteState(State):
             text_to_speech(f"Você está votando para {self.position_text}")
 
         if self.should_play_audio == True and self.audio_text:
-            print("text")
             self.should_play_audio = False 
             text_to_speech(self.audio_text)
             self.audio_text = ""
 
         self.candidate = None
-        # print(f"({self.candidate_number})")
         if self.candidate_number in candidates[self.position_text]:
             self.candidate = candidates[self.position_text][self.candidate_number]
         
