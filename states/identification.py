@@ -20,7 +20,7 @@ class IdentificationState(State):
     def __init__(self, finger_sensor):
         super().__init__()
         self.finger = finger_sensor
-        self.voter_info = load_voter_keys_mapping("../voter_keys.json")
+        self.voter_info = load_voter_keys_mapping("./keys.json")
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
 
