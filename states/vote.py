@@ -26,7 +26,6 @@ def load_candidates_from_json(json_file: str) -> dict:
 
 
 candidates = load_candidates_from_json("./candidates.json")
-# gpio = GPIO()
 
 TIMEOUT = 50
 class VoteState(State):
@@ -75,7 +74,6 @@ class VoteState(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                print(event.key)
                 if event.key == pygame.K_ESCAPE:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
