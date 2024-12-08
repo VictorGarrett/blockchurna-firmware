@@ -76,11 +76,7 @@ class IdentificationState(State):
                     pass
 
     def update(self):
-        #pass
-        print(self.password)
         key = self.finger.get_user_from_fingerprint()
-        print(f'returned key {key}')
-        #key = 'f6b518b2ecd9f47761ed'
         if key:
             if key >= 0:
                 if key in FM.already_voted:
@@ -92,7 +88,7 @@ class IdentificationState(State):
                  self.next_state = "IdentificationFailure"
                 
     def render(self, screen):
-         # Clear screen
+        # Clear screen
         screen.fill(config.WHITE)
 
         # Render date and time

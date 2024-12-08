@@ -20,8 +20,6 @@ class ConfirmingVote(State):
     def reset_state(self):     
         if self.counter == 3:
             self.next_state = "End"
-            FM.register_presence()
-            print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
             self.first_render = True
         else: 
             self.timer = Timer(1.0, self.reset_state)
@@ -39,7 +37,10 @@ class ConfirmingVote(State):
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
             text_to_speech(f"Gravando voto e gerando comprovante")
+            FM.register_presence()
+            print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
             self.first_render = False
+
         screen.fill(config.WHITE)
         # Text
         text1 = config.font_large.render("GRAVANDO O VOTO", True, config.BLACK)
