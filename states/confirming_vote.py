@@ -37,7 +37,6 @@ class ConfirmingVote(State):
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
             text_to_speech(f"Gravando voto e gerando comprovante")
-            FM.register_presence()
             print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
             self.first_render = False
 

@@ -6,7 +6,7 @@ import pygame
 from threading import Timer
 from datetime import datetime
 from text_to_speech.text_to_speech import text_to_speech
-
+from flash_memory.flash_memory import FM
 class SuccessfulAuthState(State):
     def __init__(self):
         super().__init__()
@@ -33,6 +33,7 @@ class SuccessfulAuthState(State):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN or gpio.gpio_check(gpio.GPIO_CONFIRMA):
                 # registrar presença na flash memory
                 self.next_state = 'Vote Vereador'
+                FM.register_presence()
             
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE or gpio.gpio_check(gpio.GPIO_CORREGE):
                 # registrar presença na flash memory
