@@ -13,7 +13,7 @@ def load_voter_keys_mapping(json_file):
     with open(json_file, 'r', encoding='utf-8') as file:
         keys = json.load(file)
     
-    return {i: keys[i] for i in len(keys)}
+    return keys
 
 class IdentificationState(State):
     def __init__(self, finger_sensor):
