@@ -5,39 +5,38 @@ printer = Printer()
 
 def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin):
 
-    if printer.printer:
-		# Print header information
-        printer.open()
-        printer.select_font('A')
-        printer.set_bold(False)
-        printer.set_text_size(1)
-        printer.print_line("COMPROVANTE DE VOTACAO")
-        printer.print_line("ELEICOES MUNICIPAIS 2024-1 TURNO")
-        printer.print_line("DATA: " + date.today().strftime('%d/%m/%Y'))
-        printer.print_line("")
+    # Print header information
+    printer.open()
+    printer.select_font('A')
+    printer.set_bold(False)
+    printer.set_text_size(1)
+    printer.print_line("COMPROVANTE DE VOTACAO")
+    printer.print_line("ELEICOES MUNICIPAIS 2024-1 TURNO")
+    printer.print_line("DATA: " + date.today().strftime('%d/%m/%Y'))
+    printer.print_line("")
 
-        # Print voter name
-        printer.set_bold(True)
-        printer.select_font('A')
-        printer.set_text_size(3)
-        wrapped_name = "\n".join(_abbreviate_and_wrap(voter_name, 32, 0.5))
-        printer.print_line(wrapped_name)
-        printer.print_line("")
+    # Print voter name
+    printer.set_bold(True)
+    printer.select_font('A')
+    printer.set_text_size(3)
+    wrapped_name = "\n".join(_abbreviate_and_wrap(voter_name, 32, 0.5))
+    printer.print_line(wrapped_name)
+    printer.print_line("")
 
-        # Print PIN codes
-        printer.select_font('A')
-        printer.set_bold(False)
-        printer.set_text_size(1)
-        printer.print_line(f"PIN VER: {counselor_vote_pin}")
-        printer.print_line(f"PIN PRE: {mayor_vote_pin}")
-        printer.print_line("")
+    # Print PIN codes
+    printer.select_font('A')
+    printer.set_bold(False)
+    printer.set_text_size(1)
+    printer.print_line(f"PIN VER: {counselor_vote_pin}")
+    printer.print_line(f"PIN PRE: {mayor_vote_pin}")
+    printer.print_line("")
 
-        # Print Titulo Eleitoral and location details
-        printer.print_line(f"ID do Eleitor: {voter_id}")
-        printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
-        printer.print_line("")
-        printer.print_line("")
-        printer.close()
+    # Print Titulo Eleitoral and location details
+    printer.print_line(f"ID do Eleitor: {voter_id}")
+    printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
+    printer.print_line("")
+    printer.print_line("")
+    printer.close()
 
 
 def _abbreviate_and_wrap(name, printer_columns, bold_adjustment=0.1, max_lines=3):
