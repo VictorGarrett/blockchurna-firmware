@@ -105,28 +105,27 @@ class VoteState(State):
                     config.pirilim_candidate.play()
                     self.current_digit = 0
 
-    # def update(self):
-    #     if gpio.gpio_check(gpio.GPIO_CORREGE):
-    #         self.candidate_number = " " * self.candidate_number_size
-    #         self.white_vote = False
-    #         self.current_digit = 0
+    def update(self):
+        if gpio.gpio_check(gpio.GPIO_CORREGE):
+            self.candidate_number = " " * self.candidate_number_size
+            self.white_vote = False
+            self.current_digit = 0
 
-    #     elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
-    #         # Salvar voto na memória flash
-    #         if self.candidate_number == " " * self.candidate_number_size:
-    #             self.candidate_number = "branco"
-    #         elif self.candidate_number not in candidates[self.position_text]:
-    #             self.candidate_number = "nulo"
-    #         FM.register_vote(self.position_text.lower(), self.candidate_number)
-    #         text_to_speech(f"Voto confirmado")
+        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
+            # Salvar voto na memória flash
+            if self.candidate_number == " " * self.candidate_number_size:
+                self.candidate_number = "branco"
+            elif self.candidate_number not in candidates[self.position_text]:
+                self.candidate_number = "nulo"
+            FM.register_vote(self.position_text.lower(), self.candidate_number)
+            text_to_speech(f"Voto confirmado")
 
-    #         self.next_state = self.next_state_to_go
-    #         self.candidate_number = " " * self.candidate_number_size
-    #         config.pirilim_candidate.play()
-    #         self.current_digit = 0
-    #     elif gpio.gpio_check(gpio.GPIO_BRANCO):
-    #         print('BRAnCAO')
-    #         self.white_vote = True
+            self.next_state = self.next_state_to_go
+            self.candidate_number = " " * self.candidate_number_size
+            config.pirilim_candidate.play()
+            self.current_digit = 0
+        elif gpio.gpio_check(gpio.GPIO_BRANCO):
+            self.white_vote = True
 
     def reset_state(self):    
         if self.timeout == 0:
