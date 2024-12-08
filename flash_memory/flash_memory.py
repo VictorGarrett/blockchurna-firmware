@@ -18,7 +18,8 @@ block = {
 }
 
 
-usb_drive_path = '/media/pi/blockchurna_drive'
+# usb_drive_path = '/media/pi/blockchurna_drive'
+usb_drive_path = os.path.join('media', 'pi', 'blockchurna_drive')
 
 class FlashMemory:
     def __init__(self):
@@ -61,19 +62,20 @@ class FlashMemory:
         data_to_sign = json.dumps(block).replace(" ", "")
         block["signature"] = crypto.sign.sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
         
-        file_path = 'finalized_section.section'
+        file_path = os.path.join(usb_drive_path, 'finalized_section.section')
         with open(file_path, 'w') as file:
             json.dump(block, file, indent=4)
-            self.send_data_to_flash(file_path)
-        file_path = 'finalized_section.tse'
+            # self.send_data_to_flash(file_path)
+
+        file_path = os.path.join(usb_drive_path, 'finalized_section.tse')
         with open(file_path, 'w') as file:
             json.dump(self.tse_data, file, indent=4)
-            self.send_data_to_flash(file_path)
+            # self.send_data_to_flash(file_path)
 
-        file_path = 'finalized_section.user'
+        file_path = os.path.join(usb_drive_path, 'finalized_section.user')
         with open(file_path, 'w') as file:
             json.dump(self.user_data, file, indent=4)
-            self.send_data_to_flash(file_path)
+            # self.send_data_to_flash(file_path)
 
     def send_data_to_flash(self, source_file):
         if os.path.exists(usb_drive_path):
