@@ -1,0 +1,311 @@
+{
+    "presences": [
+        {
+            "user_id": "5b5a6ffb5ddb48097f1f",
+            "timestamp": "2024-12-08T09:09:19.947965",
+            "signature": "8e7cb752afc6b473df3528aba1db33e8f9e7ffcad3fd8eee39e5291c82f49328bc70f1c6750dcd8b11cbae613c6c6865e921b6a88ce6075c9b5774f98f436b733599b73c94cc23497cb7f45127faa2f5c3fe5a424284cc7a1cdde25c052a9fb3362a9e7d015d7099d27de84777eccc1cba7ac981c7b19f4e8f973c59f0f04315c2008eaea5bf0447774249da6d082957f4bbcba4e12563dec27aa1efaf8d35101d696adc3e0754dd365b3336e3264d2fcb4f801e62f8cb7807a64643910a023ba397ea66e5ee674ce686d60774ab5a4ccf3534e02a57f7098956e13797169c849b5253d10c0a104bdbe36a800c309a2f9fad3cf71ec9267d3fac47aa2e28e525"
+        },
+        {
+            "user_id": "ce805f56ff64ce9f1bf8",
+            "timestamp": "2024-12-08T09:09:19.989019",
+            "signature": "48f66bf0cd27ed641f1e26f0772ddf3944480c0af6971d01f3b38c5da11357f84c6d6630bfeb74082afe2bf809424037dae3ef53d52d4a81dfb74c920dfb6c4ae54a623bd289d58d2cb33862a08c670fe274d058cf2efe3cc8b7b5ec73d8b477c3bdd40720ebf13b3632029af34893f10182e32940ee744849cdc1e91f252157e21381c2c61ae1d4ca3f79f74244017b36e7644844a23d970064f96dfd06d0391cce6c7e399e49920cdbb956a1b72d49379fa2de1d87f5a8b2c768a0220993d70f97c2d3e4ab3a1a1f9b03214e631e1fe8f63b9958f18928254f02dc35fc475eab21efce8490fc2cc2b51c68dd728d889bb5f250df672d257c4346654494eece"
+        },
+        {
+            "user_id": "56f326b0e23fb765963f",
+            "timestamp": "2024-12-08T09:09:20.031957",
+            "signature": "bf2b2c1cf200d9529433dbc11236e596771107b8ee45cc43ec4fbffdfef26518d8691b1438022baa2e51abcaf8b1dec748d53bef6d5e962a52b3651bad738240844e1df955636d860f324bfc2445d4dc2ed4f05fe8bf880a3dc0b5aea5e74b3c9336231fb52abb12d176761d51c2a083528ec332dcffad0c3f0f50e8919ae47598ac178c4d6440d377ce8d4f3980910f500c319d694da07cd57954d29458c1ba55234f53c0afbae7a3d2ac5a14a4f60aa35f33a0d7a1c493bcf995973c23a9d4613eb8b260470f0112e3a2b6353b46879f5c6ef72288a524fca7ade6ab6b6bf7a36cac612c17857a3a18a7fd4585787da40c0587c0fff5d8cc95c17f040d927f"
+        },
+        {
+            "user_id": "5887c27b14664077e318",
+            "timestamp": "2024-12-08T09:09:20.075416",
+            "signature": "72b01bec28df8dfa36da9356fd0ef9cf49dc9e7dede6d23e07fd582438627a77f1172d9e54ee66a901553f3921f338ace0763e146aae976da465096c63f7adaa677626de287909e07c9dbc68edb58c90fdf48993a0e623efd508751f794f719a3633bc8889c0250bfc380c4b403479eca15463c45331603b360891c43b50be5db8cd70a39b7242ea204dd83e80b38b94b0e04ea23c5d3b92171f7b7f51fbf448ac4e063c4cf4754d0c2d81092141030ef05c4610c37c6b957972ecc7e02d01e2f092b9aad8c77e9650112ea58b09a402bd17a21b9be4fa160b7995e53746660fd8d9700efcacdf31d0ff4129210a603b4ea0b7bf36684b8994dc3288e53da112"
+        },
+        {
+            "user_id": "b46338b9eb513bfaafc5",
+            "timestamp": "2024-12-08T09:09:20.116782",
+            "signature": "00d45e64948df57521995e188e6488269235375c8e5d154646e8371f002ac60df96c53ebccfaf86a7f32151b3ce6a7277f3b9bf8aee60687c0b9430f007eb0b4289497e10eae10edbd0cc5730fad44ad9cbced1cb0c872beca365b622c2f1ccf9ccb58535e700fe7ad7c1aecfa453e478f1cfb4e9d33c869d57c3e424257a6c9fea1319988e150544bdfaa60ff966ba5b45712591a5c06edf371bc29ebb2685a1d3f0c17b538f8b98d93c8da334820cd47e9ff544e23e23bc9306a725946fe006ba94ed2ca1590ce6770450f51202e827b71e173b2af310c0ad4cbb8674d4c385fb0aa5fdef0b7cfdbe388d20905405b623a1c2fc2485013d7cc3aee5017c0ea"
+        },
+        {
+            "user_id": "8788f46a439f4f718757",
+            "timestamp": "2024-12-08T09:09:20.161152",
+            "signature": "659f13f193838405721ab357a379b3aaec4eb76824549d5fd95dfd28f115b7930e9574bee42c60b6a329955ebf18f401fa3626c919c184fbef8efb8ba91b730c3e05d9466fa433acc921ba29e363c20527a121de5ca9fe183734247a5cb28078f68678dbd2989c689f3b230cd91b3c42322400148063791a14e38e1cdf0855d3798afb5997a70fd31c4dfa06a2d2a00581a0c6745e935e97c1659b12c7f0e273466ae1bdaac3c26cbcb44c64f0c8d818dd742c4924418cff6d4ec967eb6c7a66cd281cf8c27921a200f8d716edfb298a56a1ac3259ae8bbb37fc40c6e555a18547fc9cda9c0fd6a496c5b3cbd0d98fed54474a965a722bf3cd4cf26f8e27255e"
+        },
+        {
+            "user_id": "d7b977712bc0aa6acdf1",
+            "timestamp": "2024-12-08T09:09:20.204337",
+            "signature": "484ff5ccf48aa36a3cf1618d9ebfcb24ec988a01dcb8c857059554fd8a05c1dba4a5793823c86b69e0cf77a2fc6d4cf815074af8d99419b2c273db237c3db63ead2800582e12caa42613dfa1bd764130842eb74bb1b65f5d8897f8cb655636d467abd70bba39d7c6c682a90dc165e8361603d1d28ba49d690a1b4ea941bf587dc2140347eb54ab5dc97cc80518c0ee87c8f073479824c1bbbf1aefdc8e152ddc4dd64884dfc20c2b259fc48355c9ce992a6dbc0f17f4f7e401ee71e4b0679b3cda9055a22aa7ea53690651647d7b1b1060eaa95e288bc20a4e25a2a34d63792d332d49c71f5456851b6a6bc6f1f632302a04fc895469b0bfdf939c9d7eb5ade3"
+        },
+        {
+            "user_id": "c6f07accdb016a24396e",
+            "timestamp": "2024-12-08T09:09:20.248867",
+            "signature": "4c226379d42d3f9f95f00de107a49c99cccdbd7f44fb37e2665e2af8a0fb37634cfdb3942011a2aac3d4e23533748e843da331d296368b80e4e21e11c1757b5feb5b0d6f20d8723a807b628a327b7d3331a7019234eeaefa694851a4f560207f827fa71a4b2269c68a95fcffbd8883978959b6d897133d0000b6ca943816a792712f335d194255654309155b0fce015acdf73e7d4d795db329b8183d7a20a8088fe9002cfe06fd4b81bdb92154d4ea589bd5998935e3fdf4fceb0ef2a3c29f2a4a00782df06b57295748e573651a68a29fda5b528afad22e664139dc56001dffeed20d4dce96cb11a3195acf951c82cf1f8191d896a5da2495695529f9b67996"
+        },
+        {
+            "user_id": "10b82744669347897ab5",
+            "timestamp": "2024-12-08T09:09:20.294052",
+            "signature": "68d36eb7616f4b116473ec3787f04c2d401f27f76537cc264475ebae5adff167dbcab85baeef574c4d049ecf3d40b6a80e5428ba3c8f5012b8ca58bc82751b345c1184553dfaf25c0fa555e9d5cde841f523624979dbf293fab2ee1a0cfe5c7e6f218efb191f3caf9c4a0868e42da5cbb0bb4820f5de3f6dcb6a583193b6d4d1f967d73183c674cc747dd230b8e3265e5c7142c3a5301e8ecb9271642124cbff0d2d078f6ae7da92aa35530a958441efd9c559bbf8484050d8885a65c51d50979781f6e5e1161b4c7482a90965612712925ce15541b63a44993fa03cef2f5eaee84af5c2fd2c5542d92adfd5ae01f148467d06434fa285f947bcd1235fc6a66b"
+        },
+        {
+            "user_id": "a5ec5c49eef382efcc1e",
+            "timestamp": "2024-12-08T09:09:20.345238",
+            "signature": "35bd140b70fca46640e8dfe426d0396cd6679d54133d4632e39b96403bb83b049892ad10a5a6a87681075fb9cd0709d28cd893a33d4fcc6c6b10da9de1fae9111fb57028f5845dec3dbed4be768d77f06ff651d07bef55cfd909dcaaf29a67a992cfffe4c32325728044fe90f77c5fff97e4a0ebfefe632ff157223db0c60ec2d54bfb274ea9dbcdc84dadc543b65cacb31e52d0cd1724c00dec74cb0b7b186d46edff7e4657086138be68a11c180da843e0ffdbb87ba49df1013fd9b187b32936bfe7df4621d9cd1ac9dc3a8eab96deb5767fcbc98801aa664a7986a22a74bff6667caf1d4af748ad128dcce195a945dcc071b7e9e25fd9c9cfa2ee1c9a5279"
+        },
+        {
+            "user_id": "50a4be92c301dc113063",
+            "timestamp": "2024-12-08T09:09:20.384200",
+            "signature": "b71076dfac284a70fccd5df677486e9b661844eebe94eedb2fe6350d110901a64e3b59e37a72717f7a7c76bd2647954668afd249ba06d023845310299083c26056d59f6b5720839819e79893e9e924140a04f553f6d0fc378d72de5c74df9420fb361ef19afc195ae1555b81dcef39d0c238ab5ce689cf71a24fe8b3fc0afa5c99ce9a1eb187052d1c8e2c810b652b824617a7e7a333ff0ac2337892fa01eef911ba5d922a68cc11c9c83b14d5bcd03ed1131a7918753af5515082fa82450a9dd9d9fed371ee30e4aa593bb7386c20695ab5959023c1f28ce35f39c2e242df9bf720450c9869880dae9d90349f288e4a424cd84dace231f74e5bd31e49a74d41"
+        },
+        {
+            "user_id": "708e6f27e52e476cfe1d",
+            "timestamp": "2024-12-08T09:09:20.424070",
+            "signature": "2cfa7eaa57ffab3b4b178a0b19b666aaba03e1f3a90d4630a63eced8d7dd04322eaf8e33b6002809ed809acff4d2256b017d16bbb8028895ef2679bb1a524bc68d0329d27448bff2f87b8cbaec97b2287f7fa38dea641e5bbf98a7e41e284bca6d90ba9f4f2dcc7bb2968702d1d55183d6ff2f91be1a76d62f6a751a396b58315c085889269ab82a5e7bfc665bb11456f972f565ed1f747a344d75691277128cb243c25cd56def3858a4d94466079b1f18ab7bd9159f4eadd81594113d2b5bc9ef56a734a63c7b32c9706163dfb50dc983cd36fc292c81cf34caa90da265d650bb65ce0436754022d40e6a87ecac544e9af4f66c51166497a91a109378b182ba"
+        },
+        {
+            "user_id": "090adfab610ac04c63ab",
+            "timestamp": "2024-12-08T09:09:20.465005",
+            "signature": "56890972fbaaea2aab1bdeeeb38857bddf992cbf3f24ea114b6c953da4a270d430ea9e4bcbbba59d178bb3d4ace4615d0fff21ad7ab4088938f66aeca784685b4c3e555f08b9bbd11d38c604370a5983248632f1eb1930a14c48d0869b44e9f5f20f06aa5407fa7cdf44c5c4ad4c8020143f9c23b8edaf1695ebf03e5e7750c63e89d3bd01f0efaff96c0f2db266057719cf9f9f64ae38d5d7973b1dec02880a34fdb26980919757897d147965ccd360517b96d9f18b55fd7ec3c694a1d99962ff9ef2ad3747582bad45528e283fa07965fa7951ba0da32f7ea0bb16342f3543417accea5fa0d0047ca469bd0146f20c6a45b0c47c21742fd7ac83ea744023ee"
+        },
+        {
+            "user_id": "01b8b186a1d869910136",
+            "timestamp": "2024-12-08T09:09:20.505864",
+            "signature": "3ca4f92ca4e8bdf46c320466682686a3fa42a5c8a10bb98aa4d1bc752a2829ef6c1c2479e0f5c6f35d7408f6547c0fc9c2b8bca921fa589196e4d9c01812c15282cadd56eccb8253e5bac7661c31fda7f46f56bd832f49fc6ef1385eb930de8b623365d2509053f2eb394ea872ab1481eefbd6113c9d0ef5084ddc5318476023db5e62899bc551181c0455d77cb9d85c1beeb6c3969a33674c2319f4e42351367f25df8807cc61a2df22bab9927c5b72a7bf488eed50882a4a392c9422c1c11dec3061e9c0d475c5f2976128bea2abb272a60a70abbf13161d5ad7f4cf787b1cde42ffb21fd38d90979157ee35ad8cb6dc6b69101e29d04c942ef0cef5e8e3c9"
+        },
+        {
+            "user_id": "781ae0d88daa1bbd7b4a",
+            "timestamp": "2024-12-08T09:09:20.546572",
+            "signature": "142411a9c62605ee0e5449425c7b96f71f895506f0131dc25d67dfdc4bcdbe7bc09496c764fa3e6fdb8b4c4c448c5a52bfb7626ec62d0d4d4212766169f9ae15cd82167784314bcaf6367c792e04c801e887cc3794c1b8c445b1ba4970ab6a027b3dfd0e21361f1159d985b692fb79e5f3c637c5fba609aa3f9ea66433d2f0c3e9561fa0420bda46f2b7f92ed1fc6b25f1f6fb010cd22e8fb74afcb09d2aa509a3da0543ed2ef099e808a09d8cd48942ccc6e50cef1582289fc01fc49c05d53f3fa95989bf7ed4ce360843ed2d0ba6b1e3150f2653b3d3368649d9454799c77aff86621d4766af4ee854fd7247cd72666f5e29fe1a280e12be2da633616b6861"
+        },
+        {
+            "user_id": "14f4e0a1a724842873e2",
+            "timestamp": "2024-12-08T09:09:20.589912",
+            "signature": "ba62824f69e2a72a015a7179fdf98b61d85ed6473cc3ec60f8350f84719eee6f0a3b197129fe4bb02b6eddc7c2e2d207a38fde11b80658f7eed83c9a306ae4b535fbb89f25007409077b7a58bc830be405766434e6267c727b07270d5448dc30cb2fb1c032182f8fcc6f172b6dfd9b54ab5fd4b90202aef063ec72e51c2c696358b24c6404e9aa7a4ea3274566fce75068a2106d4c56b2af39d3393b244a2df2dfa29ae4a665dc5bf697e8b96a52ec0f948fe0cd1cc1dc7ef7413348c6cfbfbc43866305c65496aeb07a41a10fd75a2fd1fef349833070440938fb7d39c3036fc01b2ab32388f65778cbd9919780de1fe3ae275497b38a8b2974906be023cc28"
+        },
+        {
+            "user_id": "71df18ad8337037d720a",
+            "timestamp": "2024-12-08T09:09:20.631053",
+            "signature": "987dde5b7e12059dfbaa0f3012e745c1f5bb4e38001ea25f5801ab60172eb4965eda11b1fbf378f0ca4d60dfb1ed21a18a298df3cf4414acd7415422ba83b317cbd9a07741df00cae02d3de8de63ee8aa191e6b75900c89419a1a5b27f1af8b5bf2a382c5ac13794077af1482019b8c0ca92729324b54feff781b25b342382299d5035ddcc01aac783a99b32576ee44c32541fa586800a08d50733c09e2ce614bef440f30c849205b049e02c24d772d667c90b749ec46f183c19d91abcd030871e00256fdd6959ba8cc68d81d0f0e8d6f1abd410f07ef89da80cab0ed499f38a619173dc9e59833404b15f442216784615e2c6b96d00c4944d69eb27c3803e7a"
+        },
+        {
+            "user_id": "9f2e4b1356c648e1a2aa",
+            "timestamp": "2024-12-08T09:09:20.671456",
+            "signature": "4587405abcbd66209b2f60781c9aeaaa8be32f1cf9f47c859e54804373d5ce853ec922d064e10234a9fc78598e09efdbe454c43d487bdebb7970aa0f48666b7652ca2305cc9f8b732a735bec3dd06f0f3949d7533a8f46019c0f281be8b33216018d9af8acb6ab1178e057aabcebb4f26133b24de40373284bdac5b1b4b88e374d91546bab272a0e178f3e3cc275dc558d9c9ca1fefe81efa3ba361f2b4e9b261e491f92ab8116cc62c5806fcd67ed51756e44351e3d1a4b283b463b5dd8ca3f71ae049124f59d8cd29739780230e58f6b711254afc06b57ec165fdc29705922545685b0fb4645d17358fd53a133e1e837575de8e0a85cf9bab79afc25ca832e"
+        },
+        {
+            "user_id": "f6b518b2ecd9f47761ed",
+            "timestamp": "2024-12-08T09:09:20.711621",
+            "signature": "70cfacc424febe22a3619c02e578e87ae5d291ebf59e5cfacfca7600439d78b27a1a6f277be01312f89dce239c8ccf487dac175016e04d9bccc05f9749f68aab0ac4ea8bde40e32b2bee3b03f8e9c2e29c6990c9c4c66b99dcd711b6f813524884a27e4613e24683b5e983afc20e8949674b1a3a0de09ad331273d22a6e476d2a8d4bdd8bec34362f3a784508b351bffa428de2f1acbc61b417c3b9a9c8532df89d7b2fb06a285935358530653d2b6b0407541155e9277c5ff92c238562814e29b1364efaec2038ce510df1188c32e62c1e9ddac730bd8b648f379224e878ee47643eaec3c59fc9fe07607bb467c7c3fb5333b44e2f5255bb7ec3ade2faf1bea"
+        },
+        {
+            "user_id": "fd7de658119bf6541d49",
+            "timestamp": "2024-12-08T09:09:20.752814",
+            "signature": "701e4d866481ce2558b71b64afbdff31e3f0f03afd037e581bd185ba7e062b4adf3bc7491144495dd3a16b6513de83d9f6c97c3892dbffd44c68c8a771ba1bc7d027a4eec805e6f54ab88585793e5fd1dc2b77c0ee793b83024134b764027d9a26463384bf5fa5b60c78203d8db65daab01471ca33999eb1dc46a0e3ad2462731e92544c9acca4ca91cd9cf0eb362dccecc39f9e55dc4d21647ca309d00a7fe550519ae05a4d26f318b1d702860600f5bfc3867faa03ce1172c9c6a94b9f66241ee32c4f99849639e8a4e8152d2ea7f94b2f8ee3bf072d2d3e7c7a8f81ab9d56af8ea82ad8686fd2e69ccc68a0fb122b40ddee93aeed97e7d72b21f189a14625"
+        }
+    ],
+    "votes": [
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "052720b41cc7463f98726a811369a7c88a927f577a2e9f41c7140f2b30a223b1"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "0b88a1308f5e28f33749358ccaa0752864d9d9c51650c1fa33d2c528b8907c0f"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "1496bff253bcbdd88f0f0bd8db44f96aacad3fc97b203f123eb04e9218420c0b"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "16beea26d9b6f6ee723011ff73f95e0b5db2a4d238f2693659725c0d82ccd850"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "2258dde9295cea19c4a6c23f52041383cb6b92e6cbbb1297213c8dd788ec2d66"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "2774cb805f2ca24e12b63fa72bede2db028ea8a9295f90f1e46732be893884ad"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "2822a73512cee8860908e1d9561229806ed73e078691b10a9c23e2b810b32724"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "2a528ebc18abc45936339ba63dc8fd0fd1bf5bc074efdd226551781a05f1cde0"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "316f6a05c1680a2fb2b861c50ea3917da55ddbbdfd44f87a6a6e6c245cb66c8d"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "3511ca45d6c5dab3b6f6c768fd014232507ba0ddc37dd0b48ef5680471067e38"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "3ab761448ac411af991ac3a5d4de5ee3d8ffcedba0135ae175406f6155280665"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "4a30fd371b88acd959b9d2bca85362c52815862439ad8cbe455225c99217edf5"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "4b2df6027f422dd9db9e8281b06464baf2d9d4238475a92dd383d0acba2a64cf"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "4d0122895315b8ff3cd4a405dd633fc50dd0ec2f452e294a3ab2de99409d1a84"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "4f89bf25663cdbbd6bad854f0507f6c76b621fdcab7133612b4b2059e5ac0c1c"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "5c96fcef53d7f165cd4f58a87b7bda221943b4df4ace90d5c949dbb183f5f32b"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "60120e5bde747c8b526d2c92050664f8274ef4f753b901898caab8b85d1a1acc"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "6fb7e29f9a378355c803fab552958249a4e6057f60b45c107749a52e46e68ead"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "75b2a4d1f56de5b7cd322df473e5a4206c351f1845083caa68c03d2812898d54"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "8b19423c114a55a28ec0eb98eab666af53ee220ed2eb4d247fcc9625981772fd"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "91bbcd2d95009b6a6323c2caa23c0d15e792df1b7e7ab9fa54454bda1d90a731"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "95395182ba4c32cb79041492f326748e73c9c9eb4e554f8a60be7de8ce5ea8ae"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "a7709e2c1dea2823e8f2e87e77c1cf80e1bbc6bec9a0457b18dcaa0b9956b182"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "b0e16fc620d841fbc2db9721c28b1e1d72ec956d4348e83b13ce04915b2391de"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "48098",
+            "hash": "b10e5f823af6f707bc4cc9ca718c1e30eac3607340780ecdc622a5e84574d97a"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "b12ef0f7fa70ab78db2389e419aa61bd6ad225338fcc1ec1788d4023d81b4d3b"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "b363cfaa4f6a133b19f19a22b1207a5cc3e5a073399591256531dcfc4b667ff1"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "bdcfc194325acfcc3c68a87f85457243b3be11a61b0df57d8fa99431df442a89"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "c34bfcbeddc99adbc25ec886be7496c9c45fb4296d96a914ab53f47fffca38f5"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "c38beea616b9ca299d46aa549b75ca97bb07dee274edc97cb47546f2fa7426fe"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "ca740183bfa8f0833e74dca59883310e683dd4dc718f9776978f00c03d789411"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "cb7fae79b2c854189a62cec94476fd1a0c74a2b03de4eb9530857e9b0c206032"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "cec0ad0c67a86d9f7407f75d7483a24a9bb892466e876082dcf147f9aabbdaa8"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "d2ddae5ef1a71d275d7bde43012e9cf19228b9bb02bca9c06af020da1eb14e56"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "da38e86eba294ae7d5608fccbe922fc71176c075570689c075057eec792db4b4"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "ea7c074cfa4c6966ab28c9b0020c1695209def5f766b2fe9c72c95a04af7c2da"
+        },
+        {
+            "position": "prefeito",
+            "candidate": "81210",
+            "hash": "f5458ff87d8087fc65ec829e3b4053c7f268fa36a1055d2b18ac58a9a527f525"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "f675ce3123fc438f06c2f0ec8cbe7fe6b761962e7e1d0623cf324e936c2f9e75"
+        },
+        {
+            "position": "vereador",
+            "candidate": "26",
+            "hash": "fc73ac41b90702841773e99a048baffbc167a6400479d52ca9c66c81ffa30037"
+        },
+        {
+            "position": "vereador",
+            "candidate": "87",
+            "hash": "ff5271c6eef3dd5eb34914e9e19701a35f3aa9efea1ec22bf11c294c4f8d32b8"
+        }
+    ],
+    "city": "Campinas",
+    "state": "SP",
+    "section": "090",
+    "zone": "UNICAMP",
+    "signature": "a4c8c3a00000ea4d4b0f2e30d30562b09842aa01b74031b86ba2c2ade2235f0879ae39fde66f90e34bcfe7c0efc4e6b39e993d165252f59befb50c6ddb1770f189902cacf5f78da835f8f17e9835d19f08fcde1ece986305574c3e322ef460127db255c9bd68e01b1cc928a6d0595a9bf494cad4cd546e889ebdfb47505342fa349c6b4440f85d781aa9952c3893fa2d7462840af3ade7660997319e45564897cc811785e4b21c1f221308bc48112c74fe1d4b5fe847bf7be0f3836b62a4babf66d17fe59c14d614a19d669c42836154d1f11fb263ca91ee81afe2346d5b165f8c639a9e0b4a2fca53202ea9cc74e484da02b164f8458b392d174d2b6f6c9391"
+}
