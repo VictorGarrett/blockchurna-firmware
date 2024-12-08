@@ -6,6 +6,7 @@ NEWLINE = b'\n'
 class Printer:
     def __init__(self, printer_device="/dev/usb/lp0"):
         self.printer_device = printer_device
+        self.printer = None
     
     def set_text_size(self, size=1):
         """Set text size based on size parameter (1-8)."""
