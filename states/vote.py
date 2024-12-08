@@ -4,7 +4,7 @@ import pygame
 import sys
 from flash_memory.flash_memory import FM
 from threading import Timer
-# from gpio.gpio import GPIO 
+from gpio.gpio import GPIO 
 from text_to_speech.text_to_speech import text_to_speech
 
 def get_candidate_image(filepath: str): 
