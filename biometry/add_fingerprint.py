@@ -5,9 +5,6 @@ from adafruit_fingerprint import Adafruit_Fingerprint
 import adafruit_fingerprint
 import states.config as config
 
-
-
-
 def enroll_fingerprint_with_sensor(id_slot, finger_sensor):
 
     id_slot = int(id_slot)

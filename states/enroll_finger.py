@@ -43,7 +43,6 @@ class EnrollFinger(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                print(event.key)
                 if event.key == pygame.K_ESCAPE:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()

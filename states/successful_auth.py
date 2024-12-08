@@ -4,7 +4,7 @@ import sys
 import pygame
 from threading import Timer
 from datetime import datetime
-
+from text_to_speech.text_to_speech import text_to_speech
 
 class SuccessfulAuthState(State):
     def __init__(self):
@@ -38,6 +38,9 @@ class SuccessfulAuthState(State):
                 self.next_state = 'Identification'
 
     def render(self, screen):
+        if self.first_render:
+            text_to_speech(f"Autenticado com sucesso, DIOGO DA SILVA GOUVEIA, aperte confirma para confirmar sua identidade ou aperte correge para identificar-se novamente")
+            self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)
 

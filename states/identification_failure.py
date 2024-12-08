@@ -4,7 +4,7 @@ import sys
 import pygame
 from threading import Timer
 from datetime import datetime
-
+from text_to_speech.text_to_speech import text_to_speech
 
 class IdentificationFailureState(State):
     def __init__(self):
@@ -46,6 +46,7 @@ class IdentificationFailureState(State):
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
             self.first_render = False
+            text_to_speech("Falha na identificação, tente novamente")
          # Clear screen
         screen.fill(config.WHITE)
 

@@ -17,20 +17,21 @@ block = {
     "zone": "UTFPR"
 }
 
-user_data = []
-tse_data = []
+
 
 usb_drive_path = 'D:\\'  
 class FlashMemory:
     def __init__(self):
         self.current_voter = None
         self.already_voted = []
+        self.user_data = []
+        self.tse_data = []
 
-    def set_current_voter(self, userid):
-        self.current_voter = userid
+    def set_current_voter(self, voter_info):
+        self.current_voter = voter_info
 
     def register_presence(self):
-        userid = self.current_voter
+        userid = self.current_voter["key_id"]
         self.already_voted.append(userid)
         timestamp = str(datetime.datetime.now().timestamp()).split(".")[0]
         presence_data = {
@@ -45,13 +46,13 @@ class FlashMemory:
         
 
     def register_vote(self, position, candidate):
-        vote, user_pin, tse_pin = crypto.sign.generate_vote_obj(self.current_voter, position, candidate)
+        vote, user_pin, tse_pin = crypto.sign.generate_vote_obj(self.current_voter["key_id"], position, candidate)
         block["votes"].append({"position": vote["position"],
                                "candidate": vote["candidate"],
                                "hash": vote["hash"]})
         
-        user_data.append({"user_id": self.current_voter, "position": position, "pin": user_pin})
-        tse_data.append({"user_id": self.current_voter, "position": position, "pin": tse_pin})
+        self.user_data.append({"user_id": self.current_voter["key_id"], "position": position, "pin": user_pin})
+        self.tse_data.append({"user_id": self.current_voter["key_id"], "position": position, "pin": tse_pin})
 
     def sign_ballot(self):
         block["presences"].sort(key=lambda x: x["timestamp"])
@@ -65,12 +66,12 @@ class FlashMemory:
             self.send_data_to_flash(file_path)
         file_path = 'finalized_section.tse'
         with open(file_path, 'w') as file:
-            json.dump(tse_data, file, indent=4)
+            json.dump(self.tse_data, file, indent=4)
             self.send_data_to_flash(file_path)
 
         file_path = 'finalized_section.user'
         with open(file_path, 'w') as file:
-            json.dump(user_data, file, indent=4)
+            json.dump(self.user_data, file, indent=4)
             self.send_data_to_flash(file_path)
 
     def send_data_to_flash(self, source_file):

@@ -26,7 +26,6 @@ def load_candidates_from_json(json_file: str) -> dict:
 
 
 candidates = load_candidates_from_json("./candidates.json")
-# gpio = GPIO()
 
 TIMEOUT = 50
 class VoteState(State):
@@ -56,8 +55,18 @@ class VoteState(State):
             1073741920: "2",
             1073741921: "3",
             1073741922: "0",
-        }
 
+            pygame.K_0: "0",
+            pygame.K_1: "1", 
+            pygame.K_2: "2",
+            pygame.K_3: "3", 
+            pygame.K_4: "4",
+            pygame.K_5: "5", 
+            pygame.K_6: "6", 
+            pygame.K_7: "7",
+            pygame.K_8: "8",
+            pygame.K_9: "9",
+        }
 
     def handle_events(self, events):
         for event in events:
@@ -65,7 +74,6 @@ class VoteState(State):
                 pygame.quit()
                 sys.exit()
             elif event.type == pygame.KEYDOWN:
-                print(event.key)
                 if event.key == pygame.K_ESCAPE:
                     if event.key == pygame.K_ESCAPE:
                         pygame.quit()
@@ -121,7 +129,6 @@ class VoteState(State):
     #         self.white_vote = True
 
     def reset_state(self):    
-        print(self.timeout)
         if self.timeout == 0:
             self.next_state = "Identification"
             self.timeout = TIMEOUT
@@ -139,13 +146,11 @@ class VoteState(State):
             text_to_speech(f"Você está votando para {self.position_text}")
 
         if self.should_play_audio == True and self.audio_text:
-            print("text")
             self.should_play_audio = False 
             text_to_speech(self.audio_text)
             self.audio_text = ""
 
         self.candidate = None
-        # print(f"({self.candidate_number})")
         if self.candidate_number in candidates[self.position_text]:
             self.candidate = candidates[self.position_text][self.candidate_number]
         

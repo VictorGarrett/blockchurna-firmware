@@ -4,16 +4,9 @@ GS = b'\x1d'
 NEWLINE = b'\n'
 
 class Printer:
-    def __init__(self, printer_device="/dev/usb/lp1"):
-        try:
-            self.printer = open(printer_device, 'wb')
-            print(f"Connected to printer at {printer_device}")
-        except FileNotFoundError:
-            self.printer = None
-            print(f"Printer device {printer_device} not found.")
-        except PermissionError:
-            self.printer = None
-            print(f"Permission denied for {printer_device}. Try running with sudo.")
+    def __init__(self, printer_device="/dev/usb/lp0"):
+        self.printer_device = printer_device
+        self.printer = None
     
     def set_text_size(self, size=1):
         """Set text size based on size parameter (1-8)."""
@@ -75,10 +68,25 @@ class Printer:
             return
         self.printer.write(ESC + b'\x33' + bytes([spacing]))
 
+    def open(self):
+        """Open the connection to the printer."""
+        if not self.printer:
+            try:
+                self.printer_device = self.printer_device
+                self.printer = open(self.printer_device, 'wb')
+                print(f"Connected to printer at {self.printer_device}")
+            except FileNotFoundError:
+                self.printer = None
+                print(f"Printer device {self.printer_device} not found.")
+            except PermissionError:
+                self.printer = None
+                print(f"Permission denied for {self.printer_device}. Try running with sudo.")
+
     def close(self):
         """Close the connection to the printer."""
         if self.printer:
             self.printer.close()
+            self.printer = None
             print("Printer connection closed.")
 
     def print_line(self, text):

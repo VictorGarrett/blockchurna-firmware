@@ -1,19 +1,5 @@
-import time
-import serial
 from adafruit_fingerprint import Adafruit_Fingerprint
 import adafruit_fingerprint
-
-import json
-
-def load_number_key_mapping(json_file):
-
-    with open(json_file, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-    
-    keys = data.get("keys", [])
-    
-    return {i: keys[i] for i in len(keys)}
-
 
 class FingerprintSensor:
 
@@ -34,29 +20,29 @@ class FingerprintSensor:
         #         success = False
 
     def get_user_from_fingerprint(self):
-        print("Tryong to get image from sensor")
+        # print("Tryong to get image from sensor")
 
         try:
             if self.finger.get_image() != adafruit_fingerprint.OK:
                 return None
         except:
             return None
-        print("Finger detected. Converting to template...")
+        # print("Finger detected. Converting to template...")
         try:
             self.finger.image_2_tz()  # Convert image to template
         except:
             return None
-        print("Searching for a matching fingerprint...")
+        # print("Searching for a matching fingerprint...")
         result = self.finger.finger_fast_search()  # Search for the fingerprint
 
         if result == adafruit_fingerprint.OK:
-            print(f"Fingerprint matched! ({self.finger.finger_id})")
+            # print(f"Fingerprint matched! ({self.finger.finger_id})")
             return self.finger.finger_id
         elif result == adafruit_fingerprint.NOFINGER:
-            print("No finger detected.")
+            # print("No finger detected.")
             return None
         elif result == adafruit_fingerprint.NOTFOUND:
-            print("No match found.")
+            # print("No match found.")
             return -1
         else:
             print(f"Error: {result}")

@@ -4,8 +4,7 @@ from datetime import datetime
 import sys
 import pygame
 from threading import Timer
-
-
+from text_to_speech.text_to_speech import text_to_speech
 
 class EndState(State):
     def __init__(self):
@@ -34,6 +33,7 @@ class EndState(State):
             config.pirilim_end.play()
             r = Timer(5.0, self.reset_state)
             r.start()
+            text_to_speech(f"Fim, retire seu comprovante.")
             self.first_render = False
         screen.fill(config.WHITE)
 

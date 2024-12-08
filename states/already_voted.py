@@ -4,7 +4,7 @@ import sys
 import pygame
 from threading import Timer
 from datetime import datetime
-
+from text_to_speech.text_to_speech import text_to_speech
 
 class AlreadyVotedState(State):
     def __init__(self):
@@ -43,6 +43,7 @@ class AlreadyVotedState(State):
         if self.first_render:
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
+            text_to_speech(f"Voto já registrado para DIOGO DA SILVA GOUVEIA, se você acha que isso é um erro comunique o mesário da seção")
             self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)
