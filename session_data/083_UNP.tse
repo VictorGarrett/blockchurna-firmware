@@ -1,0 +1,302 @@
+[
+    {
+        "user_id": "5b5a6ffb5ddb48097f1f",
+        "position": "vereador",
+        "pin": "d64c6c9ad4bc95699b09"
+    },
+    {
+        "user_id": "5b5a6ffb5ddb48097f1f",
+        "position": "prefeito",
+        "pin": "185acfd4c97682b62a04"
+    },
+    {
+        "user_id": "5b5a6ffb5ddb48097f1f",
+        "position": "prefeito",
+        "pin": "87021ac0a08b8c36e946"
+    },
+    {
+        "user_id": "ce805f56ff64ce9f1bf8",
+        "position": "vereador",
+        "pin": "286bb940da8f4b3f851d"
+    },
+    {
+        "user_id": "ce805f56ff64ce9f1bf8",
+        "position": "prefeito",
+        "pin": "ed841abcdbabd81693ab"
+    },
+    {
+        "user_id": "ce805f56ff64ce9f1bf8",
+        "position": "prefeito",
+        "pin": "3c1d24c4f860326577eb"
+    },
+    {
+        "user_id": "56f326b0e23fb765963f",
+        "position": "vereador",
+        "pin": "9336df3beb9ceba053d2"
+    },
+    {
+        "user_id": "56f326b0e23fb765963f",
+        "position": "prefeito",
+        "pin": "67ca786923324df9a5dd"
+    },
+    {
+        "user_id": "56f326b0e23fb765963f",
+        "position": "prefeito",
+        "pin": "d40cb3642e00153abe7a"
+    },
+    {
+        "user_id": "5887c27b14664077e318",
+        "position": "vereador",
+        "pin": "7d4b941ff38e186c9785"
+    },
+    {
+        "user_id": "5887c27b14664077e318",
+        "position": "prefeito",
+        "pin": "5758d8c039305d59d2cc"
+    },
+    {
+        "user_id": "5887c27b14664077e318",
+        "position": "prefeito",
+        "pin": "e587bca8598123bc2811"
+    },
+    {
+        "user_id": "b46338b9eb513bfaafc5",
+        "position": "vereador",
+        "pin": "6b243e47519cedba95b6"
+    },
+    {
+        "user_id": "b46338b9eb513bfaafc5",
+        "position": "prefeito",
+        "pin": "a240e43be43d00ecbe95"
+    },
+    {
+        "user_id": "b46338b9eb513bfaafc5",
+        "position": "prefeito",
+        "pin": "a760c31404c0ab53ddf8"
+    },
+    {
+        "user_id": "8788f46a439f4f718757",
+        "position": "vereador",
+        "pin": "b3edcb1f6c329346ac7a"
+    },
+    {
+        "user_id": "8788f46a439f4f718757",
+        "position": "prefeito",
+        "pin": "406cd84836581ddfd968"
+    },
+    {
+        "user_id": "8788f46a439f4f718757",
+        "position": "prefeito",
+        "pin": "eea0eb8ff987f8bc4e2d"
+    },
+    {
+        "user_id": "d7b977712bc0aa6acdf1",
+        "position": "vereador",
+        "pin": "72548ef12cb8b830ed47"
+    },
+    {
+        "user_id": "d7b977712bc0aa6acdf1",
+        "position": "prefeito",
+        "pin": "f41ba9983d302635d3c7"
+    },
+    {
+        "user_id": "d7b977712bc0aa6acdf1",
+        "position": "prefeito",
+        "pin": "ad673d029593e794fa80"
+    },
+    {
+        "user_id": "c6f07accdb016a24396e",
+        "position": "vereador",
+        "pin": "83338fb49379fcd634a3"
+    },
+    {
+        "user_id": "c6f07accdb016a24396e",
+        "position": "prefeito",
+        "pin": "14ae43946761768fb6ad"
+    },
+    {
+        "user_id": "c6f07accdb016a24396e",
+        "position": "prefeito",
+        "pin": "cb3589c80c06168b349c"
+    },
+    {
+        "user_id": "10b82744669347897ab5",
+        "position": "vereador",
+        "pin": "6feb4afe236c82c06543"
+    },
+    {
+        "user_id": "10b82744669347897ab5",
+        "position": "prefeito",
+        "pin": "f08196b2ba719fa42c88"
+    },
+    {
+        "user_id": "10b82744669347897ab5",
+        "position": "prefeito",
+        "pin": "dea5670f95b4a1930fe0"
+    },
+    {
+        "user_id": "a5ec5c49eef382efcc1e",
+        "position": "vereador",
+        "pin": "d9dfd281b02013e5b238"
+    },
+    {
+        "user_id": "a5ec5c49eef382efcc1e",
+        "position": "prefeito",
+        "pin": "c9e858efd49fb53679c4"
+    },
+    {
+        "user_id": "a5ec5c49eef382efcc1e",
+        "position": "prefeito",
+        "pin": "70be1f3ddd2c61960b51"
+    },
+    {
+        "user_id": "50a4be92c301dc113063",
+        "position": "vereador",
+        "pin": "9ff855941af7b4836478"
+    },
+    {
+        "user_id": "50a4be92c301dc113063",
+        "position": "prefeito",
+        "pin": "5b1426f71ca1167de948"
+    },
+    {
+        "user_id": "50a4be92c301dc113063",
+        "position": "prefeito",
+        "pin": "9f33e71d207ca14a41ba"
+    },
+    {
+        "user_id": "708e6f27e52e476cfe1d",
+        "position": "vereador",
+        "pin": "a866ef95df5e5088340c"
+    },
+    {
+        "user_id": "708e6f27e52e476cfe1d",
+        "position": "prefeito",
+        "pin": "897434d7b78bc580c569"
+    },
+    {
+        "user_id": "708e6f27e52e476cfe1d",
+        "position": "prefeito",
+        "pin": "804dbb63bd2c6caa4e36"
+    },
+    {
+        "user_id": "090adfab610ac04c63ab",
+        "position": "vereador",
+        "pin": "fe276978007f02457f1a"
+    },
+    {
+        "user_id": "090adfab610ac04c63ab",
+        "position": "prefeito",
+        "pin": "026493e73814f8586eaf"
+    },
+    {
+        "user_id": "090adfab610ac04c63ab",
+        "position": "prefeito",
+        "pin": "6e88c0d6c5d9bcbfd0f0"
+    },
+    {
+        "user_id": "01b8b186a1d869910136",
+        "position": "vereador",
+        "pin": "c2f96b6aefd3bffe2155"
+    },
+    {
+        "user_id": "01b8b186a1d869910136",
+        "position": "prefeito",
+        "pin": "86d296de6afee88d347b"
+    },
+    {
+        "user_id": "01b8b186a1d869910136",
+        "position": "prefeito",
+        "pin": "62f3d6ffcee1a4b75b74"
+    },
+    {
+        "user_id": "781ae0d88daa1bbd7b4a",
+        "position": "vereador",
+        "pin": "056cab310cad2df67433"
+    },
+    {
+        "user_id": "781ae0d88daa1bbd7b4a",
+        "position": "prefeito",
+        "pin": "7e256e2a04ec972706f0"
+    },
+    {
+        "user_id": "781ae0d88daa1bbd7b4a",
+        "position": "prefeito",
+        "pin": "e1424e22567f5199050f"
+    },
+    {
+        "user_id": "14f4e0a1a724842873e2",
+        "position": "vereador",
+        "pin": "b4bc784fc60dd81eb214"
+    },
+    {
+        "user_id": "14f4e0a1a724842873e2",
+        "position": "prefeito",
+        "pin": "3dc8159caec34b722033"
+    },
+    {
+        "user_id": "14f4e0a1a724842873e2",
+        "position": "prefeito",
+        "pin": "46e830660e74765f5933"
+    },
+    {
+        "user_id": "71df18ad8337037d720a",
+        "position": "vereador",
+        "pin": "451f54d73e6030b1f1d3"
+    },
+    {
+        "user_id": "71df18ad8337037d720a",
+        "position": "prefeito",
+        "pin": "681e71c7bdca13375f18"
+    },
+    {
+        "user_id": "71df18ad8337037d720a",
+        "position": "prefeito",
+        "pin": "cff46d0492df1cdac7ea"
+    },
+    {
+        "user_id": "9f2e4b1356c648e1a2aa",
+        "position": "vereador",
+        "pin": "a8d079eadf4eb67a7df7"
+    },
+    {
+        "user_id": "9f2e4b1356c648e1a2aa",
+        "position": "prefeito",
+        "pin": "ec2986e821430d383d25"
+    },
+    {
+        "user_id": "9f2e4b1356c648e1a2aa",
+        "position": "prefeito",
+        "pin": "b4602cbc6a5463015ba0"
+    },
+    {
+        "user_id": "f6b518b2ecd9f47761ed",
+        "position": "vereador",
+        "pin": "d3ea08e847e959991b5f"
+    },
+    {
+        "user_id": "f6b518b2ecd9f47761ed",
+        "position": "prefeito",
+        "pin": "b9491ef2fa0e01e6db1f"
+    },
+    {
+        "user_id": "f6b518b2ecd9f47761ed",
+        "position": "prefeito",
+        "pin": "b31d492aa5207c9c1aee"
+    },
+    {
+        "user_id": "fd7de658119bf6541d49",
+        "position": "vereador",
+        "pin": "2d4968a42ad5ca802dd3"
+    },
+    {
+        "user_id": "fd7de658119bf6541d49",
+        "position": "prefeito",
+        "pin": "ebbaef9336379ebf1544"
+    },
+    {
+        "user_id": "fd7de658119bf6541d49",
+        "position": "prefeito",
+        "pin": "1f2eddc141d42c92ef41"
+    }
+]

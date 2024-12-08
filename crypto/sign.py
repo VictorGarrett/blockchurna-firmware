@@ -29,7 +29,7 @@ def sign_data(private_key_path: str, data: str) -> str:
 def register_vote(vote_data, tse_data, user_data, user_id: str, vereador_number: str, prefeito_number: str):
     presence_data = {
         "user_id": user_id,
-        "timestamp": datetime.datetime.now().isoformat()  
+        "timestamp": str(datetime.datetime.now().timestamp()).split(".")[0]  
     }
     data_to_sign = (presence_data['user_id'] + presence_data['timestamp']).encode()
     presence_data["signature"] = sign_data(f"./crypto/keys/{user_id}", data_to_sign).hex()
@@ -87,7 +87,7 @@ def end_voting(vote_data, tse_data,user_data):
     vote_data["votes"].sort(key=lambda x: x["hash"])
     data_to_sign = json.dumps(vote_data).replace(" ", "")
     vote_data["signature"] = sign_data(f"./crypto/keys/ballot", data_to_sign.encode()).hex()
-    session_path = f"./session_data/{vote_data['session']}_{vote_data['zone']}"
+    session_path = f"./session_data/{vote_data['section']}_{vote_data['zone']}"
     with open(f"{session_path}.sess", "w") as json_file:
         json.dump(vote_data, json_file, indent=4)
     with open(f"{session_path}.tse", "w") as json_file:
@@ -103,7 +103,7 @@ def simulate_session(city, state, session, zone):
         "votes": [],
         "city": city.replace(" ", "_"),
         "state": state, 
-        "session": session,
+        "section": session,
         "zone": zone.replace(" ", "_")
     }
     tse_data = []
