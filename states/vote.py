@@ -124,6 +124,7 @@ class VoteState(State):
             self.candidate_number = " " * self.candidate_number_size
             config.pirilim_candidate.play()
             self.current_digit = 0
+            
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
             self.white_vote = True
 

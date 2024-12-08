@@ -1,3 +1,4 @@
+from gpio.gpio import gpio
 from states.state import State
 import states.config as config
 import sys
@@ -29,11 +30,11 @@ class SuccessfulAuthState(State):
                 pygame.quit()
                 sys.exit()
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN or gpio.gpio_check(gpio.GPIO_CONFIRMA):
                 # registrar presença na flash memory
                 self.next_state = 'Vote Vereador'
             
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE:
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE or gpio.gpio_check(gpio.GPIO_CORREGE):
                 # registrar presença na flash memory
                 self.next_state = 'Identification'
 
