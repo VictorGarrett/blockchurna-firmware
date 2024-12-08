@@ -19,7 +19,7 @@ block = {
 
 
 # usb_drive_path = '/media/pi/blockchurna_drive'
-usb_drive_path = os.path.join('media', 'pi', 'blockchurna_drive')
+usb_drive_path = os.path.join('/media', 'pi', 'blockchurna_drive')
 
 class FlashMemory:
     def __init__(self):
