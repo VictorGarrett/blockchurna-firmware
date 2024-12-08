@@ -1,3 +1,4 @@
+from printer.print_vote_receipt import print_vote_receipt
 from states.state import State
 import states.config as config
 import sys
@@ -20,6 +21,7 @@ class ConfirmingVote(State):
         if self.counter == 3:
             self.next_state = "End"
             FM.register_presence()
+            print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
             self.first_render = True
         else: 
             self.timer = Timer(1.0, self.reset_state)
