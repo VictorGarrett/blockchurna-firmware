@@ -18,8 +18,8 @@ block = {
 }
 
 
+usb_drive_path = '/media/pi/blockchurna_drive'
 
-usb_drive_path = 'D:\\'  
 class FlashMemory:
     def __init__(self):
         self.current_voter = None
