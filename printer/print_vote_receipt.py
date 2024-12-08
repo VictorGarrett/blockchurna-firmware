@@ -1,7 +1,7 @@
 from printer.printer import Printer
 from datetime import date
 
-printer = Printer("/dev/usb/lp1")
+printer = Printer()
 
 def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin):
     def __init__(self):

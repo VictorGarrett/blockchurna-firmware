@@ -4,7 +4,7 @@ GS = b'\x1d'
 NEWLINE = b'\n'
 
 class Printer:
-    def __init__(self, printer_device="/dev/usb/lp1"):
+    def __init__(self, printer_device="/dev/usb/lp0"):
         try:
             self.printer = open(printer_device, 'wb')
             print(f"Connected to printer at {printer_device}")
