@@ -7,11 +7,20 @@ import random
 from flash_memory.flash_memory import FM
 from text_to_speech.text_to_speech import text_to_speech
 
+def load_voter_keys_mapping(json_file):
+
+    with open(json_file, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+    
+    keys = data.get("keys", [])
+    
+    return {i: keys[i] for i in len(keys)}
+
 class IdentificationState(State):
     def __init__(self, finger_sensor):
         super().__init__()
         self.finger = finger_sensor
-        self.voter_info = self.finger.load_voter_keys_mapping("../voter_keys.json")
+        self.voter_info = load_voter_keys_mapping("../voter_keys.json")
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
 
