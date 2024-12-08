@@ -29,7 +29,7 @@ def sign_data(private_key_path: str, data: str) -> str:
 def register_vote(vote_data, tse_data, user_data, user_id: str, vereador_number: str, prefeito_number: str):
     presence_data = {
         "user_id": user_id,
-        "timestamp": datetime.datetime.now().isoformat()  
+        "timestamp": str(datetime.datetime.now().timestamp()).split(".")[0]  
     }
     data_to_sign = (presence_data['user_id'] + presence_data['timestamp']).encode()
     presence_data["signature"] = sign_data(f"./crypto/keys/{user_id}", data_to_sign).hex()
