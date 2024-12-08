@@ -5,7 +5,7 @@ import adafruit_fingerprint
 
 import json
 
-def load_number_key_mapping(json_file):
+def load_voter_keys_mapping(json_file):
 
     with open(json_file, 'r', encoding='utf-8') as file:
         data = json.load(file)

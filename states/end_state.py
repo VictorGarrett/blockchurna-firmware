@@ -5,7 +5,8 @@ import sys
 import pygame
 from threading import Timer
 from text_to_speech.text_to_speech import text_to_speech
-
+from printer.print_vote_receipt import print_vote_receipt
+from flash_memory.flash_memory import FM
 
 class EndState(State):
     def __init__(self):
@@ -19,6 +20,7 @@ class EndState(State):
         self.first_render = True
         
     def reset_state(self):
+        print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
         self.next_state = "Identification"
 
     def handle_events(self, events):
