@@ -7,6 +7,7 @@ import random
 import json
 from flash_memory.flash_memory import FM
 from text_to_speech.text_to_speech import text_to_speech
+from printer.print_section_result import print_section_result
 
 def load_voter_keys_mapping(json_file):
 
@@ -38,6 +39,17 @@ class IdentificationState(State):
             1073741920: "2",
             1073741921: "3",
             1073741922: "0",
+
+            pygame.K_0: "0",
+            pygame.K_1: "1", 
+            pygame.K_2: "2",
+            pygame.K_3: "3", 
+            pygame.K_4: "4",
+            pygame.K_5: "5", 
+            pygame.K_6: "6", 
+            pygame.K_7: "7",
+            pygame.K_8: "8",
+            pygame.K_9: "9",
         }
 
     def handle_events(self, events):
@@ -69,6 +81,7 @@ class IdentificationState(State):
                 if self.password == ballot_pw:
                     self.next_state = "Finalize Section"
                     FM.sign_ballot()
+                    print_section_result()
                     pass
                 if self.password == '72345':
                     self.password = "" 
