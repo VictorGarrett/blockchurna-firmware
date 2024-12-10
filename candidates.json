@@ -5,10 +5,30 @@
             "name": "Diogenes Nascimento",
             "party": "Partido Super Tchurus Cobol"
         },
+        "91002": {
+            "image": "plato.png",
+            "name": "Platão Morrimento",
+            "party": "Partido Super Tchurus Cobol"
+        },
         "36500": {
             "image": "socrates.png",
             "name": "Socrates Paqueta",
             "party": "Partido da BET"
+        },
+        "36600": {
+            "image": "aristo.jpg",
+            "name": "Aristóteles Bauermann",
+            "party": "Partido da BET"
+        },
+        "42123": {
+            "image": "agam.jpg",
+            "name": "Agamemnon Pereira",
+            "party": "VASCO"
+        },
+        "42321": {
+            "image": "aquiles.jpg",
+            "name": "Aquiles da Silva",
+            "party": "VASCO"
         }
     },
     "Prefeito": {
@@ -21,6 +41,11 @@
             "image": "medusa.png",
             "name": "Medusa Cafusa",
             "party": "Partido da BET"
+        },
+        "42": {
+            "image": "perseu.jpg",
+            "name": "Perseu Luceu",
+            "party": "VASCO"
         }
     }
 }
