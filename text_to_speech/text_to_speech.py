@@ -2,6 +2,7 @@ from gtts import gTTS
 import pygame
 import os
 import threading
+import states.config as config
 
 output_number = 0
 
@@ -12,13 +13,11 @@ def play(text, lang="pt-br"):
     tts.save(f"text_to_speech/output/output{output_number}.mp3")
     
     # Play the audio using Pygame
-    pygame.mixer.init()
-    pygame.mixer.music.load(f"text_to_speech/output/output{output_number}.mp3")
+    output_sound = pygame.mixer.Sound(f"text_to_speech/output/output{output_number}.mp3")
     output_number += 1
-    pygame.mixer.music.play()
+    config.channel1.play(output_sound)
+    config.channel1.set_volume(0.0, 1.0)
 
-    while pygame.mixer.music.get_busy():
-        pass
 
 def text_to_speech(text, lang="pt-BR"):
     """Gera e toca áudio usando threads."""

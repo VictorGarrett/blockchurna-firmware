@@ -7,9 +7,12 @@ pygame.display.set_caption("BLCKSHRN")
 clock = pygame.time.Clock()
 
 pygame.mixer.init()
+pygame.mixer.set_num_channels(2)
 
 pirilim_candidate = pygame.mixer.Sound("./assets/inter.mp3")
 pirilim_end = pygame.mixer.Sound("./assets/fim.mp3")
+channel0 = pygame.mixer.Channel(0)
+channel1 = pygame.mixer.Channel(1)
 
 text_color = (255, 255, 255)
 font = pygame.font.Font(None, 120)

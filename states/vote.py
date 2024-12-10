@@ -102,7 +102,8 @@ class VoteState(State):
 
                     self.next_state = self.next_state_to_go
                     self.candidate_number = " " * self.candidate_number_size
-                    config.pirilim_candidate.play()
+                    config.channel0.play(config.pirilim_candidate)
+                    config.channel0.set_volume(1.0, 0.0)
                     self.current_digit = 0
 
     def update(self):
