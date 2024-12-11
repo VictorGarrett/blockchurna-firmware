@@ -14,7 +14,6 @@ class SuccessfulAuthState(State):
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
         self.title_text = 'AUTENTICADO COM SUCESSO'
-        self.subtitle_text = FM.current_voter["name"]
         self.intruction_text_1 = 'Aperte CONFIRMA para confirmar sua identidade'
         self.intruction_text_2 = 'ou aperte CORREGE para identificar-se novamente'
 
@@ -30,16 +29,20 @@ class SuccessfulAuthState(State):
 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN or gpio.gpio_check(gpio.GPIO_CONFIRMA):
                 # registrar presença na flash memory
+                self.first_render = True
                 self.next_state = 'Vote Vereador'
                 FM.register_presence()
             
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE or gpio.gpio_check(gpio.GPIO_CORREGE):
                 # registrar presença na flash memory
+                self.first_render = True
                 self.next_state = 'Identification'
 
     def render(self, screen):
         if self.first_render:
-            text_to_speech(f"Autenticado com sucesso, DIOGO DA SILVA GOUVEIA, aperte confirma para confirmar sua identidade ou aperte correge para identificar-se novamente")
+            voter_name = FM.current_voter["name"]
+            self.subtitle_text = voter_name
+            text_to_speech(f"Autenticado com sucesso, {voter_name}, aperte confirma para confirmar sua identidade ou aperte correge para identificar-se novamente")
             self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)
