@@ -91,7 +91,7 @@ class IdentificationState(State):
     def update(self):
         key = self.finger.get_user_from_fingerprint()
         print(key)
-        if key:
+        if key is not None:
             if key >= 0:
                 if key in FM.already_voted:
                     self.next_state = "AlreadyVoted"
