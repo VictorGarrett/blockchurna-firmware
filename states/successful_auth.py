@@ -14,7 +14,7 @@ class SuccessfulAuthState(State):
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
         self.title_text = 'AUTENTICADO COM SUCESSO'
-        self.subtitle_text = 'DIOGO DA SILVA GOUVEIA'
+        self.subtitle_text = FM.current_voter["name"]
         self.intruction_text_1 = 'Aperte CONFIRMA para confirmar sua identidade'
         self.intruction_text_2 = 'ou aperte CORREGE para identificar-se novamente'
 
