@@ -36,7 +36,7 @@ class EndState(State):
             # config.pirilim_end.play()
             config.channel0.play(config.pirilim_end)
             config.channel0.set_volume(1.0, 0.0)
-            r = Timer(5.0, self.reset_state)
+            r = Timer(3.0, self.reset_state)
             r.start()
             self.first_render = False
         screen.fill(config.WHITE)

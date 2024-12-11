@@ -46,6 +46,7 @@ def print_section_result():
     # Print location details
     printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
     printer.print_line("")
+    printer.print_line("")
     printer.close()
     
 
