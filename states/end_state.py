@@ -19,7 +19,7 @@ class EndState(State):
         self.first_render = True
         
     def reset_state(self):
-        self.first_render = False
+        self.first_render = True
         FM.set_current_voter(None)
         self.next_state = "Identification"
 
