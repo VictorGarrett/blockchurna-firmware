@@ -21,8 +21,6 @@ class SuccessfulAuthState(State):
 
         self.footer_text = "Município - Zona - Seção"
         self.first_render = True
-        
-        
     
     def handle_events(self, events):
         for event in events:
