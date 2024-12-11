@@ -60,15 +60,12 @@ class IdentificationState(State):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 # registrar presença na flash memory
                 # current_voter = random.choice(keys)
-                finger_id = self.finger.get_user_from_fingerprint()
-                print(finger_id)
-                if finger_id is not None:
-                    current_voter = self.voter_info[finger_id]
-                    if current_voter["key_id"] in FM.already_voted:
-                        self.next_state = "AlreadyVoted"
-                    else:
-                        FM.set_current_voter(current_voter)
-                        self.next_state = "SuccessfulAuth"
+                current_voter = self.voter_info[0]
+                if current_voter["key_id"] in FM.already_voted:
+                    self.next_state = "AlreadyVoted"
+                else:
+                    FM.set_current_voter(current_voter)
+                    self.next_state = "SuccessfulAuth"
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 self.next_state = "IdentificationFailure" 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
@@ -93,6 +90,7 @@ class IdentificationState(State):
 
     def update(self):
         key = self.finger.get_user_from_fingerprint()
+        print(key)
         if key:
             if key >= 0:
                 if key in FM.already_voted:
