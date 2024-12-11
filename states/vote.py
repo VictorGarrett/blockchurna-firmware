@@ -137,15 +137,19 @@ class VoteState(State):
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
             self.white_vote = True
 
-    def reset_state(self):    
-        if self.timeout == 0:
-            self.next_state = "Identification"
+    def reset_state(self):  
+        if self.next_state != 'Confirming Vote':  
+            if self.timeout == 0:
+                self.next_state = "Identification"
+                self.timeout = TIMEOUT
+                self.first_render = True
+            else: 
+                self.timer = Timer(1.0, self.reset_state)
+                self.timeout -= 1
+                self.timer.start()
+        else:
             self.timeout = TIMEOUT
             self.first_render = True
-        else: 
-            self.timer = Timer(1.0, self.reset_state)
-            self.timeout -= 1
-            self.timer.start()
 
     def render(self, screen):
         if self.first_render and self.next_state != 'Confirming Vote':
