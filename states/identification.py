@@ -61,12 +61,14 @@ class IdentificationState(State):
                 # registrar presença na flash memory
                 # current_voter = random.choice(keys)
                 finger_id = self.finger.get_user_from_fingerprint()
-                current_voter = self.voter_info[finger_id]
-                if current_voter["key_id"] in FM.already_voted:
-                    self.next_state = "AlreadyVoted"
-                else:
-                    FM.set_current_voter(current_voter)
-                    self.next_state = "SuccessfulAuth"
+                print(finger_id)
+                if finger_id is not None:
+                    current_voter = self.voter_info[finger_id]
+                    if current_voter["key_id"] in FM.already_voted:
+                        self.next_state = "AlreadyVoted"
+                    else:
+                        FM.set_current_voter(current_voter)
+                        self.next_state = "SuccessfulAuth"
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_p:
                 self.next_state = "IdentificationFailure" 
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_g:
