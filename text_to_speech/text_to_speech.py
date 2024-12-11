@@ -7,6 +7,7 @@ import states.config as config
 
 def generate_audio(text, lang="pt-br"):
     """Gera o áudio com gTTS e retorna o caminho do arquivo salvo."""
+    os.makedirs("text_to_speech/output", exist_ok=True)
     filename = f"text_to_speech/output/{uuid.uuid4().hex}.mp3"  # Nome único para evitar conflitos
     tts = gTTS(text, lang=lang)
     tts.save(filename)
