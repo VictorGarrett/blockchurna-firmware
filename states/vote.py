@@ -44,6 +44,7 @@ class VoteState(State):
         self.should_play_audio = False 
         self.audio_text = ""
         self.timeout = TIMEOUT
+        self.is_changing_state = False
         self.has_timeouted = False
         self.keyboard_mapping = {
             1073741913: "7",
@@ -102,6 +103,7 @@ class VoteState(State):
                     FM.register_vote(self.position_text.lower(), self.candidate_number)
 
                     self.next_state = self.next_state_to_go
+                    self.is_changing_state = True
                     self.timeout = TIMEOUT
                     self.timer.cancel()
                     self.first_render = True
@@ -114,6 +116,7 @@ class VoteState(State):
     def update(self):
         if self.has_timeouted:
             self.next_state = "Identification"
+            self.is_changing_state = True
             self.timer.cancel()
             self.timeout = TIMEOUT
             self.first_render = True
@@ -134,6 +137,7 @@ class VoteState(State):
             # text_to_speech(f"Voto confirmado")
 
             self.next_state = self.next_state_to_go
+            self.is_changing_state = True
             self.timer.cancel()
             self.timeout = TIMEOUT
             self.first_render = True
@@ -155,8 +159,8 @@ class VoteState(State):
             self.timer.start()
 
     def render(self, screen):
-        if self.first_render and self.next_state != 'Confirming Vote':
-            print("SETTING FIRST RENDER")
+        if self.first_render and not self.is_changing_state:
+            print(f"SETTING FIRST RENDER - {self.candidate_number_size}")
             self.timeout = TIMEOUT
             self.first_render=False
             self.timer = Timer(1.0, self.reset_state)
@@ -172,6 +176,7 @@ class VoteState(State):
         if self.candidate_number in candidates[self.position_text]:
             self.candidate = candidates[self.position_text][self.candidate_number]
         
+        self.is_changing_state = False
         screen.fill(config.WHITE)
 
         # Render timeout time 
