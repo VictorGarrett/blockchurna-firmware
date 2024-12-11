@@ -12,6 +12,8 @@ pygame.mixer.set_num_channels(2)
 
 pirilim_candidate = pygame.mixer.Sound("./assets/inter.mp3")
 pirilim_end = pygame.mixer.Sound("./assets/fim.mp3")
+pirilim_candidate.set_volume(1)
+pirilim_end.set_volume(1)
 channel0 = pygame.mixer.Channel(0)
 channel1 = pygame.mixer.Channel(1)
 
