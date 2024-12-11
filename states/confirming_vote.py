@@ -47,6 +47,7 @@ class ConfirmingVote(State):
 
     def render(self, screen):
         if self.first_render:
+            FM.register_presence()
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
             # text_to_speech(f"Gravando voto e gerando comprovante")
