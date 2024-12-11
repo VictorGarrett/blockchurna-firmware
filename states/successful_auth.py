@@ -33,7 +33,6 @@ class SuccessfulAuthState(State):
                 # registrar presença na flash memory
                 # self.first_render = True
                 self.next_state = 'Vote Vereador'
-                FM.register_presence()
             
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE:
                 # registrar presença na flash memory

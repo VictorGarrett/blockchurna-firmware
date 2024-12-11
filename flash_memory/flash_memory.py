@@ -57,6 +57,8 @@ class FlashMemory:
         self.sign_ballot()
 
     def sign_ballot(self):
+        self.register_presence()
+
         block["presences"].sort(key=lambda x: x["timestamp"])
         block["votes"].sort(key=lambda x: x["hash"])
         if "signature" in block.keys():

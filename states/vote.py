@@ -101,6 +101,8 @@ class VoteState(State):
                     FM.register_vote(self.position_text.lower(), self.candidate_number)
 
                     self.next_state = self.next_state_to_go
+                    self.timeout = TIMEOUT
+                    self.first_render = True
                     self.candidate_number = " " * self.candidate_number_size
                     config.pirilim_candidate.play()
                     # config.channel0.play(config.pirilim_candidate)
@@ -123,9 +125,12 @@ class VoteState(State):
             # text_to_speech(f"Voto confirmado")
 
             self.next_state = self.next_state_to_go
+            self.timeout = TIMEOUT
+            self.first_render = True
             self.candidate_number = " " * self.candidate_number_size
             config.pirilim_candidate.play()
             self.current_digit = 0
+            self.white_vote = False
             
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
             self.white_vote = True
@@ -160,11 +165,11 @@ class VoteState(State):
 
         # Render timeout time 
         datetime_text = f"{self.timeout} segundos"
-        config.render_multiline_text(datetime_text, config.font_medium, config.BLACK, (50,screen.get_height() - 50), line_spacing=5)
+        config.render_multiline_text(datetime_text, config.font_medium, config.BLACK, (3* screen.get_width() // 4,screen.get_height() - 40), line_spacing=5)
 
         if self.timeout < 0.5 * TIMEOUT:
             celera_irmao_text = f"VAI VOTAR IRMÃO?"
-            config.render_multiline_text(celera_irmao_text, config.font_medium, config.BLACK, (screen.get_width() // 2,screen.get_height() - 50), line_spacing=5)
+            config.render_multiline_text(celera_irmao_text, config.font_medium, config.BLACK, (3* screen.get_width() // 4,screen.get_height() - 60), line_spacing=5)
         # Render title text
         title_surface = config.font_small.render(self.title_text, True, config.BLACK)
         screen.blit(title_surface, (20, 20))
