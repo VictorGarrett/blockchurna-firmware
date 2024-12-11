@@ -46,7 +46,7 @@ class SuccessfulAuthState(State):
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA):
             # self.first_render = True
             self.next_state = 'Vote Vereador'
-            FM.register_presence()
+            # FM.register_presence()
 
     def render(self, screen):
         voter_name = FM.current_voter["name"]
