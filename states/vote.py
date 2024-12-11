@@ -86,7 +86,7 @@ class VoteState(State):
                     candidate_number = list(self.candidate_number)
                     if self.current_digit < self.candidate_number_size:
                         candidate_number[self.current_digit] = self.keyboard_mapping[event.key]  # Convert key to char
-                        text_to_speech(self.keyboard_mapping[event.key])
+                        # text_to_speech(self.keyboard_mapping[event.key])
                         self.current_digit += 1
                     self.candidate_number = ''.join(candidate_number)
                     self.should_play_audio = True
@@ -119,7 +119,7 @@ class VoteState(State):
             elif self.candidate_number not in candidates[self.position_text]:
                 self.candidate_number = "nulo"
             FM.register_vote(self.position_text.lower(), self.candidate_number)
-            text_to_speech(f"Voto confirmado")
+            # text_to_speech(f"Voto confirmado")
 
             self.next_state = self.next_state_to_go
             self.candidate_number = " " * self.candidate_number_size
@@ -144,11 +144,11 @@ class VoteState(State):
             self.first_render=False
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
-            text_to_speech(f"Você está votando para {self.position_text}")
+            # text_to_speech(f"Você está votando para {self.position_text}")
 
         if self.should_play_audio == True and self.audio_text:
             self.should_play_audio = False 
-            text_to_speech(self.audio_text)
+            # text_to_speech(self.audio_text)
             self.audio_text = ""
 
         self.candidate = None

@@ -53,7 +53,7 @@ class SuccessfulAuthState(State):
         if self.first_render:
             voter_name = FM.current_voter["name"]
             self.subtitle_text = voter_name
-            text_to_speech(f"Autenticado com sucesso, {voter_name}, aperte confirma para confirmar sua identidade ou aperte correge para identificar-se novamente")
+            # text_to_speech(f"Autenticado com sucesso, {voter_name}, aperte confirma para confirmar sua identidade ou aperte correge para identificar-se novamente")
             self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)

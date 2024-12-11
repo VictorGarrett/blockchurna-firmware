@@ -48,7 +48,7 @@ class TooManyAttemptsState(State):
 
     def render(self, screen):
         if self.first_render:
-            text_to_speech("Muitas falhas consecutivas, comunique o mesário da seção")
+            # text_to_speech("Muitas falhas consecutivas, comunique o mesário da seção")
             self.first_render = False
          # Clear screen
         screen.fill(config.WHITE)

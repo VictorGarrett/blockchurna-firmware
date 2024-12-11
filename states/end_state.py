@@ -35,7 +35,7 @@ class EndState(State):
             config.channel0.set_volume(1.0, 0.0)
             r = Timer(5.0, self.reset_state)
             r.start()
-            text_to_speech(f"Fim, retire seu comprovante.")
+            # text_to_speech(f"Fim, retire seu comprovante.")
             self.first_render = False
         screen.fill(config.WHITE)
 

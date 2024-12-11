@@ -46,7 +46,7 @@ class IdentificationFailureState(State):
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
             self.first_render = False
-            text_to_speech("Falha na identificação, tente novamente")
+            # text_to_speech("Falha na identificação, tente novamente")
          # Clear screen
         screen.fill(config.WHITE)
 
