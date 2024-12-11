@@ -7,6 +7,7 @@ from threading import Timer
 from datetime import datetime
 from text_to_speech.text_to_speech import text_to_speech
 from flash_memory.flash_memory import FM
+
 class SuccessfulAuthState(State):
     def __init__(self):
         super().__init__()
@@ -20,6 +21,7 @@ class SuccessfulAuthState(State):
 
         self.footer_text = "Município - Zona - Seção"
         self.first_render = True
+        
     
     def handle_events(self, events):
         for event in events:
@@ -27,16 +29,25 @@ class SuccessfulAuthState(State):
                 pygame.quit()
                 sys.exit()
 
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN or gpio.gpio_check(gpio.GPIO_CONFIRMA):
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 # registrar presença na flash memory
                 self.first_render = True
                 self.next_state = 'Vote Vereador'
                 FM.register_presence()
             
-            elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE or gpio.gpio_check(gpio.GPIO_CORREGE):
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE:
                 # registrar presença na flash memory
                 self.first_render = True
                 self.next_state = 'Identification'
+
+    def update(self):
+        if gpio.gpio_check(gpio.GPIO_CORREGE):
+            self.first_render = True
+            self.next_state = 'Identification'
+        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
+            self.first_render = True
+            self.next_state = 'Vote Vereador'
+            FM.register_presence()
 
     def render(self, screen):
         if self.first_render:
