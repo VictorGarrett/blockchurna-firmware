@@ -44,6 +44,7 @@ class VoteState(State):
         self.should_play_audio = False 
         self.audio_text = ""
         self.timeout = TIMEOUT
+        self.has_timeouted = False
         self.keyboard_mapping = {
             1073741913: "7",
             1073741914: "8",
@@ -111,6 +112,13 @@ class VoteState(State):
                     self.current_digit = 0
 
     def update(self):
+        if self.has_timeouted:
+            self.next_state = "Identification"
+            self.timer.cancel()
+            self.timeout = TIMEOUT
+            self.first_render = True
+            self.has_timeouted = False
+
         if gpio.gpio_check(gpio.GPIO_CORREGE):
             self.candidate_number = " " * self.candidate_number_size
             self.white_vote = False
@@ -140,9 +148,7 @@ class VoteState(State):
     def reset_state(self):  
         print("RUNNING RESET")  
         if self.timeout == 0:
-            self.next_state = "Identification"
-            self.timeout = TIMEOUT
-            self.first_render = True
+            self.has_timeouted = True
         else: 
             self.timer = Timer(1.0, self.reset_state)
             self.timeout -= 1
