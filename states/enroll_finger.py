@@ -3,11 +3,11 @@ import states.config as config
 import pygame
 import sys
 from flash_memory.flash_memory import FM
-# from gpio.gpio import GPIO 
+from gpio.gpio import GPIO 
 from text_to_speech.text_to_speech import text_to_speech
 from biometry.add_fingerprint import enroll_fingerprint_with_sensor
 
-# gpio = GPIO()
+gpio = GPIO()
 
 class EnrollFinger(State):
     def __init__(self, finger_sensor):
