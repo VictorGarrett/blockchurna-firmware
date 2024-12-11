@@ -1,3 +1,4 @@
+from flash_memory.flash_memory import FM
 from states.state import State
 import states.config as config
 from datetime import datetime
@@ -18,6 +19,8 @@ class EndState(State):
         self.first_render = True
         
     def reset_state(self):
+        self.first_render = False
+        FM.set_current_voter(None)
         self.next_state = "Identification"
 
     def handle_events(self, events):
@@ -35,7 +38,6 @@ class EndState(State):
             config.channel0.set_volume(1.0, 0.0)
             r = Timer(5.0, self.reset_state)
             r.start()
-            # text_to_speech(f"Fim, retire seu comprovante.")
             self.first_render = False
         screen.fill(config.WHITE)
 
