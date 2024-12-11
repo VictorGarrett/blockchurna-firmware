@@ -92,8 +92,8 @@ def end_voting(vote_data, tse_data,user_data):
         json.dump(vote_data, json_file, indent=4)
     with open(f"{session_path}.tse", "w") as json_file:
         json.dump(tse_data, json_file, indent=4)
-    with open(f"{session_path}.user", "w") as json_file:
-        json.dump(user_data, json_file, indent=4)
+    # with open(f"{session_path}.user", "w") as json_file:
+    #     json.dump(user_data, json_file, indent=4)
 
 
 def simulate_session(city, state, session, zone):

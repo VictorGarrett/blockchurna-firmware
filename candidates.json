@@ -29,6 +29,16 @@
             "image": "aquiles.jpg",
             "name": "Aquiles da Silva",
             "party": "VASCO"
+        },
+        "88321": {
+            "image": "curupira.jpg",
+            "name": "Curupira",
+            "party": "BRASA"
+        },
+        "88123": {
+            "image": "mula.jpg",
+            "name": "Mula sem Cabeça",
+            "party": "BRASA"
         }
     },
     "Prefeito": {
@@ -46,6 +56,11 @@
             "image": "perseu.jpg",
             "name": "Perseu Luceu",
             "party": "VASCO"
+        },
+        "88": {
+            "image": "boitata.jpg",
+            "name": "Boitatá",
+            "party": "BRASA"
         }
     }
 }
