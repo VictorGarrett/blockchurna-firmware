@@ -38,7 +38,7 @@ class ConfirmingVote(State):
         if gpio.gpio_check(gpio.GPIO_CORREGE):
             print_vote_receipt(FM.current_voter["key_id"], FM.current_voter["name"], FM.user_data[-2]["pin"], FM.user_data[-1]["pin"])
 
-        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
+        elif gpio.gpio_check(gpio.GPIO_CONFIRMA):
             self.next_state = "End"
             self.first_render = True
             
