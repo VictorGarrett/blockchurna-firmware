@@ -1,3 +1,4 @@
+from flash_memory.flash_memory import FM
 from states.state import State
 import states.config as config
 import sys
@@ -13,7 +14,7 @@ class AlreadyVotedState(State):
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
         self.title_text = 'VOTO JÁ REGISTRADO PARA'
-        self.subtitle_text = 'DIOGO DA SILVA GOUVEIA'
+        
         self.intruction_text_1 = 'Se você acha que isso é um erro'
         self.intruction_text_2 = 'comunique o mesário da seção'
 
@@ -30,6 +31,7 @@ class AlreadyVotedState(State):
 
     def reset_state(self):   
         if self.counter == 5:
+            FM.set_current_voter(None)
             self.next_state = "Identification"
             self.counter = 0
             self.first_render = True
@@ -40,6 +42,7 @@ class AlreadyVotedState(State):
             self.timer.start()
           
     def render(self, screen):
+        self.subtitle_text = FM.current_voter["name"]
         if self.first_render:
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
