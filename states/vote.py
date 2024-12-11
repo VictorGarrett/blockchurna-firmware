@@ -149,6 +149,7 @@ class VoteState(State):
 
     def render(self, screen):
         if self.first_render:
+            self.timeout = TIMEOUT
             self.first_render=False
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
