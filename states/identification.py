@@ -60,7 +60,8 @@ class IdentificationState(State):
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_RETURN:
                 # registrar presença na flash memory
                 # current_voter = random.choice(keys)
-                current_voter = self.voter_info[0]
+                finger_id = self.finger.get_user_from_fingerprint()
+                current_voter = self.voter_info[finger_id]
                 if current_voter["key_id"] in FM.already_voted:
                     self.next_state = "AlreadyVoted"
                 else:
