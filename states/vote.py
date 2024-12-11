@@ -148,7 +148,7 @@ class VoteState(State):
             self.timer.start()
 
     def render(self, screen):
-        if self.first_render:
+        if self.first_render and self.next_state != 'Confirming Vote':
             print("SETTING FIRST RENDER")
             self.timeout = TIMEOUT
             self.first_render=False
