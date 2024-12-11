@@ -35,7 +35,6 @@ def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin)
     printer.print_line(f"ID do Eleitor: {voter_id}")
     printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
     printer.print_line("")
-    printer.print_line("")
     printer.close()
 
 

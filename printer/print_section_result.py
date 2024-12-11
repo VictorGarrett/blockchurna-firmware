@@ -46,10 +46,8 @@ def print_section_result():
     # Print location details
     printer.print_line("UF: PR  Zona: 177  Secao: UTFPR")
     printer.print_line("")
-    printer.print_line("")
     printer.close()
-
-    printer.close()
+    
 
 def _abbreviate_and_wrap(name, printer_columns, bold_adjustment=0.1, max_lines=3):
     """
