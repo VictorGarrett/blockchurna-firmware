@@ -1,3 +1,4 @@
+from asyncio import sleep
 import datetime
 import json
 import os
@@ -68,12 +69,12 @@ class FlashMemory:
         with open(file_path, 'w+') as file:
             json.dump(block, file, indent=4)
             # self.send_data_to_flash(file_path)
-
+        sleep(1)
         file_path = os.path.join(usb_drive_path, 'finalized_section.tse')
         with open(file_path, 'w+') as file:
             json.dump(self.tse_data, file, indent=4)
             # self.send_data_to_flash(file_path)
-
+        sleep(1)
         file_path = os.path.join(usb_drive_path, 'finalized_section.user')
         with open(file_path, 'w+') as file:
             json.dump(self.user_data, file, indent=4)
