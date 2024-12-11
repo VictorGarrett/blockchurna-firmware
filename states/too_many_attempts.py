@@ -44,10 +44,12 @@ class TooManyAttemptsState(State):
                     self.password = ""
                 if self.password == "77777":
                     self.next_state = "Identification"
+                    self.first_render = True
 
 
     def render(self, screen):
         if self.first_render:
+            self.counter = 5
             # text_to_speech("Muitas falhas consecutivas, comunique o mesário da seção")
             self.first_render = False
          # Clear screen
