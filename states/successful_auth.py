@@ -44,7 +44,7 @@ class SuccessfulAuthState(State):
         if gpio.gpio_check(gpio.GPIO_CORREGE):
             self.first_render = True
             self.next_state = 'Identification'
-        elif gpio.gpio_check(gpio.GPIO_CONFIRMA) and self.can_confirm:
+        elif gpio.gpio_check(gpio.GPIO_CONFIRMA):
             self.first_render = True
             self.next_state = 'Vote Vereador'
             FM.register_presence()
