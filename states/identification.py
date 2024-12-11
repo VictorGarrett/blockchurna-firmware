@@ -93,7 +93,7 @@ class IdentificationState(State):
         print(key)
         if key is not None:
             if key >= 0:
-                if key in FM.already_voted:
+                if self.voter_info[key]["key_id"] in FM.already_voted:
                     self.next_state = "AlreadyVoted"
                 else:
                     FM.set_current_voter(self.voter_info[key])
