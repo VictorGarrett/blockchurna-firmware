@@ -1,51 +1,56 @@
 {
-    "Vereador": {
-        "91001": {
-            "image": "diogenes.png",
-            "name": "Diogenes Nascimento",
-            "party": "Partido Super Tchurus Cobol"
-        },
-        "91002": {
-            "image": "plato.jpg",
-            "name": "Platão Morrimento",
-            "party": "Partido Super Tchurus Cobol"
-        },
-        "36500": {
-            "image": "socrates.png",
-            "name": "Socrates Paqueta",
-            "party": "Partido da BET"
-        },
-        "36600": {
-            "image": "aristo.jpg",
-            "name": "Aristóteles Bauermann",
-            "party": "Partido da BET"
-        },
-        "42123": {
-            "image": "agam.jpg",
-            "name": "Agamemnon Pereira",
-            "party": "VASCO"
-        },
-        "42321": {
-            "image": "aquiles.jpg",
-            "name": "Aquiles da Silva",
-            "party": "VASCO"
-        }
+  "Vereador": {
+    "91001": {
+      "image": "diogenes.png",
+      "name": "Diogenes Nascimento",
+      "party": "Partido Super Tchurus Cobol"
     },
-    "Prefeito": {
-        "91": {
-            "image": "saci.png",
-            "name": "Saci Junior",
-            "party": "Partido Super Tchurus Cobol"
-        },
-        "36": {
-            "image": "medusa.png",
-            "name": "Medusa Cafusa",
-            "party": "Partido da BET"
-        },
-        "42": {
-            "image": "perseu.jpg",
-            "name": "Perseu Luceu",
-            "party": "VASCO"
-        }
+    "91002": {
+      "image": "plato.jpg",
+      "name": "Platão Morrimento",
+      "party": "Partido Super Tchurus Cobol"
+    },
+    "36500": {
+      "image": "socrates.png",
+      "name": "Socrates Paqueta",
+      "party": "Partido da BET"
+    },
+    "36600": {
+      "image": "aristo.jpg",
+      "name": "Aristóteles Bauermann",
+      "party": "Partido da BET"
+    },
+    "42123": {
+      "image": "agam.jpg",
+      "name": "Agamemnon Pereira",
+      "party": "VASCO"
+    },
+    "42321": {
+      "image": "aquiles.jpg",
+      "name": "Aquiles da Silva",
+      "party": "VASCO"
+    },
+    "42333": {
+      "image": "nicolau.jpg",
+      "name": "Nicolau Copernico",
+      "party": "VASCO"
     }
+  },
+  "Prefeito": {
+    "91": {
+      "image": "saci.png",
+      "name": "Saci Junior",
+      "party": "Partido Super Tchurus Cobol"
+    },
+    "36": {
+      "image": "medusa.png",
+      "name": "Medusa Cafusa",
+      "party": "Partido da BET"
+    },
+    "42": {
+      "image": "perseu.jpg",
+      "name": "Perseu Luceu",
+      "party": "VASCO"
+    }
+  }
 }
