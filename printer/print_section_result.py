@@ -22,7 +22,13 @@ def print_section_result():
 
     votes = data.get("votes", [])
 
-    vote_counts = Counter(vote["candidate"] for vote in votes)
+    # Separate votes by position
+    prefeito_votes = [vote["candidate"] for vote in votes if vote["position"] == "prefeito"]
+    vereador_votes = [vote["candidate"] for vote in votes if vote["position"] == "vereador"]
+
+    # Count votes for each position
+    prefeito_counts = Counter(prefeito_votes)
+    vereador_counts = Counter(vereador_votes)
 
     # Print header information
     printer.open()
@@ -34,13 +40,16 @@ def print_section_result():
     printer.print_line("DATA: " + date.today().strftime('%d/%m/%Y'))
     printer.print_line("")
 
-    # Print vote results
-    printer.select_font('A')
-    printer.set_bold(False)
-    printer.set_text_size(1)
-    for candidate, count in vote_counts.items():
+    # Print prefeito results
+    printer.print_line("RESULTADOS PARA PREFEITO")
+    for candidate, count in prefeito_counts.items():
         printer.print_line(f"{candidate}: {count} voto(s)")
-    
+    printer.print_line("")
+
+    # Print vereador results
+    printer.print_line("RESULTADOS PARA VEREADOR")
+    for candidate, count in vereador_counts.items():
+        printer.print_line(f"{candidate}: {count} voto(s)")
     printer.print_line("")
 
     # Print location details
@@ -48,7 +57,6 @@ def print_section_result():
     printer.print_line("")
     printer.print_line("")
     printer.close()
-    
 
 def _abbreviate_and_wrap(name, printer_columns, bold_adjustment=0.1, max_lines=3):
     """
