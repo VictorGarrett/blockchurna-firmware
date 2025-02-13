@@ -20,13 +20,13 @@ class ConfirmingVote(State):
         
         
     def reset_state(self):     
-        if self.counter == 3:
-            self.next_state = "End"
-            self.first_render = True
-        else: 
-            self.timer = Timer(1.0, self.reset_state)
-            self.counter += 1
-            self.timer.start()
+        # if self.counter == 3:
+        #     self.next_state = "End"
+        #     self.first_render = True
+        # else: 
+        self.timer = Timer(1.0, self.reset_state)
+        self.counter += 1
+        self.timer.start()
 
     def handle_events(self, events):
         for event in events:
@@ -40,7 +40,7 @@ class ConfirmingVote(State):
 
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA):
             self.next_state = "End"
-            self.first_render = True
+            # self.first_render = True
             
         elif gpio.gpio_check(gpio.GPIO_BRANCO):
             pass
