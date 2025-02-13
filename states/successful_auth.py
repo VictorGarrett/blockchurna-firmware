@@ -16,7 +16,7 @@ class SuccessfulAuthState(State):
         self.counter = 0
         self.title_text = 'AUTENTICADO COM SUCESSO'
         self.intruction_text_1 = 'Aperte CONFIRMA para confirmar sua identidade'
-        self.intruction_text_2 = 'ou aperte CORREGE para identificar-se novamente'
+        self.intruction_text_2 = 'ou aperte CORRIGE para identificar-se novamente'
 
 
         self.footer_text = "Município - Zona - Seção"
