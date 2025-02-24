@@ -4,7 +4,7 @@ from datetime import date
 printer = Printer()
 
 def print_vote_receipt(voter_id, voter_name, counselor_vote_pin, mayor_vote_pin):
-
+    print("Printing vote receipt...")
     # Print header information
     printer.open()
     printer.select_font('A')
