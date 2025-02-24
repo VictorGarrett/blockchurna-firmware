@@ -15,7 +15,7 @@ class ConfirmingVote(State):
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
-
+4
         self.first_render = True
         
         
