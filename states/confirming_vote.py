@@ -6,7 +6,7 @@ import pygame
 from threading import Timer
 from flash_memory.flash_memory import FM
 from gpio.gpio import gpio 
-
+from time import sleep
 from text_to_speech.text_to_speech import text_to_speech
 
 class ConfirmingVote(State):
