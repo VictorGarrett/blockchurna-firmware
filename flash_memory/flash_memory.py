@@ -33,6 +33,9 @@ class FlashMemory:
 
     def register_presence(self):
         userid = self.current_voter["key_id"]
+        if userid in self.already_voted:
+            return
+
         self.already_voted.append(userid)
         timestamp = str(datetime.datetime.now().timestamp()).split(".")[0]
         presence_data = {
