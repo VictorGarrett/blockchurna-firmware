@@ -37,6 +37,7 @@ class ConfirmingVote(State):
 
     def update(self):
         if gpio.gpio_check(gpio.GPIO_CORREGE):
+            sleep(1)
             self.first_render = True
             self.counter = 0
 
