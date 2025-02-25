@@ -15,7 +15,7 @@ class ConfirmingVote(State):
         self.text = config.font.render("Game State - Press ESC to Exit", True, config.text_color)
         self.text_rect = self.text.get_rect(center=(config.screen.get_width() // 2, config.screen.get_height() // 2))
         self.counter = 0
-
+        self.saindo = False
         self.first_render = True
         
         
@@ -36,13 +36,15 @@ class ConfirmingVote(State):
                 sys.exit()
 
     def update(self):
+        self.saindo = False
         if gpio.gpio_check(gpio.GPIO_CORREGE):
             sleep(1)
-            self.first_render = True
             self.counter = 0
+            self.first_render = True
 
         elif gpio.gpio_check(gpio.GPIO_CONFIRMA):
             self.next_state = "End"
+            self.saindo = True
             self.counter = 0
             self.first_render = True
             
@@ -50,7 +52,7 @@ class ConfirmingVote(State):
             pass
 
     def render(self, screen):
-        if self.first_render:
+        if self.first_render and not self.saindo:
             FM.register_presence()
             self.timer = Timer(1.0, self.reset_state)
             self.timer.start()
