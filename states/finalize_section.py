@@ -55,16 +55,16 @@ class FinalizeSection(State):
             text_final = config.font_large.render("SEÇÃO FINALIZADA.", True, config.BLACK)
             screen.blit(text_final, (config.screen.get_width() // 2 - text_final.get_width() // 2, config.screen.get_height() // 2))
             for event in events:
-            if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
-                self.password += self.keyboard_mapping[event.key]
-                print(self.password)
-                if not self.password.startswith("7"):
-                    self.password = ""
-                if len(self.password) > 5:
-                    self.password = ""
-                if self.password == "77777":
-                    pygame.quit()
-                    sys.exit()
+                if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
+                    self.password += self.keyboard_mapping[event.key]
+                    print(self.password)
+                    if not self.password.startswith("7"):
+                        self.password = ""
+                    if len(self.password) > 5:
+                        self.password = ""
+                    if self.password == "77777":
+                        pygame.quit()
+                        sys.exit()
         else:
             # Text
             text1 = config.font_large.render("FINALIZANDO SEÇÃO...", True, config.BLACK)
