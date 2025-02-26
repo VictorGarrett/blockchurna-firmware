@@ -42,6 +42,16 @@ class FinalizeSection(State):
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
+                self.destruct += self.keyboard_mapping[event.key]
+                print(self.destruct)
+                if not self.destruct.startswith("7"):
+                    self.destruct = ""
+                if len(self.destruct) > 5:
+                    self.destruct = ""
+                if self.destruct == "77777":
+                    pygame.quit()
+                    sys.exit()
 
     def render(self, screen):
         if not self.timer_active and not self.session_finalized:
@@ -54,17 +64,6 @@ class FinalizeSection(State):
         if self.session_finalized:
             text_final = config.font_large.render("SEÇÃO FINALIZADA.", True, config.BLACK)
             screen.blit(text_final, (config.screen.get_width() // 2 - text_final.get_width() // 2, config.screen.get_height() // 2))
-            for event in events:
-                if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
-                    self.destruct += self.keyboard_mapping[event.key]
-                    print(self.destruct)
-                    if not self.destruct.startswith("7"):
-                        self.destruct = ""
-                    if len(self.destruct) > 5:
-                        self.destruct = ""
-                    if self.destruct == "77777":
-                        pygame.quit()
-                        sys.exit()
         else:
             # Text
             text1 = config.font_large.render("FINALIZANDO SEÇÃO...", True, config.BLACK)
