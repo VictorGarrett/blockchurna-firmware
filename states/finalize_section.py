@@ -14,7 +14,7 @@ class FinalizeSection(State):
         self.max_counter = 3
         self.timer_active = False 
         self.session_finalized = False
-        self.password = ""
+        self.destruct = ""
         self.keyboard_mapping = {
             1073741913: "7",
             1073741914: "8",
@@ -56,13 +56,13 @@ class FinalizeSection(State):
             screen.blit(text_final, (config.screen.get_width() // 2 - text_final.get_width() // 2, config.screen.get_height() // 2))
             for event in events:
                 if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
-                    self.password += self.keyboard_mapping[event.key]
-                    print(self.password)
-                    if not self.password.startswith("7"):
-                        self.password = ""
-                    if len(self.password) > 5:
-                        self.password = ""
-                    if self.password == "77777":
+                    self.destruct += self.keyboard_mapping[event.key]
+                    print(self.destruct)
+                    if not self.destruct.startswith("7"):
+                        self.destruct = ""
+                    if len(self.destruct) > 5:
+                        self.destruct = ""
+                    if self.destruct == "77777":
                         pygame.quit()
                         sys.exit()
         else:
