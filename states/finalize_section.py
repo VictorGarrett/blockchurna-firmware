@@ -3,6 +3,7 @@ import states.config as config
 import sys
 import pygame
 from threading import Timer
+import time
 
 class FinalizeSection(State):
     def __init__(self):
@@ -13,6 +14,19 @@ class FinalizeSection(State):
         self.max_counter = 3
         self.timer_active = False 
         self.session_finalized = False
+        self.password = ""
+        self.keyboard_mapping = {
+            1073741913: "7",
+            1073741914: "8",
+            1073741915: "9",
+            1073741916: "4",
+            1073741917: "5",
+            1073741918: "6",
+            1073741919: "1",
+            1073741920: "2",
+            1073741921: "3",
+            1073741922: "0",
+        }
 
     def reset_state(self):
         if self.counter < self.max_counter:
@@ -40,6 +54,17 @@ class FinalizeSection(State):
         if self.session_finalized:
             text_final = config.font_large.render("SEÇÃO FINALIZADA.", True, config.BLACK)
             screen.blit(text_final, (config.screen.get_width() // 2 - text_final.get_width() // 2, config.screen.get_height() // 2))
+            for event in events:
+            if event.type == pygame.KEYDOWN and event.key in self.keyboard_mapping.keys():
+                self.password += self.keyboard_mapping[event.key]
+                print(self.password)
+                if not self.password.startswith("7"):
+                    self.password = ""
+                if len(self.password) > 5:
+                    self.password = ""
+                if self.password == "77777":
+                    pygame.quit()
+                    sys.exit()
         else:
             # Text
             text1 = config.font_large.render("FINALIZANDO SEÇÃO...", True, config.BLACK)
