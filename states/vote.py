@@ -184,7 +184,7 @@ class VoteState(State):
         config.render_multiline_text(datetime_text, config.font_medium, config.BLACK, (3* screen.get_width() // 5,screen.get_height() - 50), line_spacing=5)
 
         if self.timeout < 0.5 * TIMEOUT:
-            celera_irmao_text = f"VAI VOTAR IRMÃO?"
+            celera_irmao_text = f"TEMPO RESTANTE"
             config.render_multiline_text(celera_irmao_text, config.font_medium, config.BLACK, (3* screen.get_width() // 5,screen.get_height() - 80), line_spacing=5)
         # Render title text
         title_surface = config.font_small.render(self.title_text, True, config.BLACK)
