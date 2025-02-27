@@ -10,15 +10,15 @@ from text_to_speech.text_to_speech import text_to_speech
 from printer.print_section_result import print_section_result
 import os
 
-usb_drive_path = os.path.join('/media', 'pi', 'blockchurna_drive')
+# usb_drive_path = os.path.join('/media', 'pi', 'blockchurna_drive')
 
-def eject_usb_linux(mount_point):
-    try:
-        # Unmount the drive
-        os.system(f"udisksctl unmount -b {mount_point}")
-        print(f"USB device at {mount_point} ejected successfully!")
-    except Exception as e:
-        print(f"Error ejecting USB: {e}")
+# def eject_usb_linux(mount_point):
+#     try:
+#         # Unmount the drive
+#         os.system(f"udisksctl unmount -b {mount_point}")
+#         print(f"USB device at {mount_point} ejected successfully!")
+#     except Exception as e:
+#         print(f"Error ejecting USB: {e}")
 
 def load_voter_keys_mapping(json_file):
 
@@ -92,7 +92,7 @@ class IdentificationState(State):
                 if self.password == ballot_pw:
                     self.next_state = "Finalize Section"
                     FM.sign_ballot()
-                    eject_usb_linux(usb_drive_path)   
+                    # eject_usb_linux(usb_drive_path)   
                     print_section_result()
                     pass
                 if self.password == '72345':
