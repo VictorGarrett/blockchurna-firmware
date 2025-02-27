@@ -7,7 +7,7 @@ import os
 printer = Printer()
 
 def print_section_result():
-    usb_drive_path = os.path.join('/media', 'pi', 'BLOCKCHURNA1')
+    usb_drive_path = os.path.join('/mnt', 'usb')
     file_name = os.path.join(usb_drive_path, "finalized_section.section")
 
     try:
