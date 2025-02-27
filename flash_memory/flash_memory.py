@@ -73,19 +73,19 @@ class FlashMemory:
             json.dump(block, file1, indent=4)
             file1.flush()  # Flush the internal Python buffer
             os.fsync(file1.fileno())  # Force write the OS buffer to disk
-            # self.send_data_to_flash(file_path)
+            self.send_data_to_flash(file_path)
         file_path = os.path.join(usb_drive_path, 'finalized_section.tse')
         with open(file_path, 'w+') as file2:
             json.dump(self.tse_data, file2, indent=4)
             file2.flush()  # Flush the internal Python buffer
             os.fsync(file2.fileno())  # Force write the OS buffer to disk
-            # self.send_data_to_flash(file_path)
+            self.send_data_to_flash(file_path)
         file_path = os.path.join(usb_drive_path, 'finalized_section.user')
         with open(file_path, 'w+') as file3:
             json.dump(self.user_data, file3, indent=4)
             file3.flush()  # Flush the internal Python buffer
             os.fsync(file3.fileno())  # Force write the OS buffer to disk
-            # self.send_data_to_flash(file_path)
+            self.send_data_to_flash(file_path)
 
     def send_data_to_flash(self, source_file):
         if os.path.exists(usb_drive_path):
