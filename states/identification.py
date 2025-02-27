@@ -8,6 +8,7 @@ import json
 from flash_memory.flash_memory import FM
 from text_to_speech.text_to_speech import text_to_speech
 from printer.print_section_result import print_section_result
+import os
 
 usb_drive_path = os.path.join('/media', 'pi', 'blockchurna_drive')
 
